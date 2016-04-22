@@ -1,0 +1,65 @@
+.top-bar, .top-bar ul {
+  background-color: #2a2a2a;
+}
+.menu-text{
+  color:#FFFFFF;
+}
+.menu a{
+  color:#F2F2F2;
+  font-: bold;
+}
+.submenu a:hover , a:focus{
+  background-color: #1585cf;
+}
+
+.button.dropdown::after {
+  border-color: #f2f2f2 transparent transparent;
+}
+
+header {
+  padding-top: 20px;
+}
+
+
+footer .columns{
+  margin-bottom: 0.5em;
+}
+footer .column {
+  padding: 0;
+}
+footer .callout a {
+  color: #000000;
+  text-decoration: none;
+  line-height: inherit;
+  cursor: pointer;
+}
+footer .callout{
+  margin:0;
+}
+footer .site-map a{
+  padding: 0;
+}
+footer .lead{
+  margin-bottom: 0.4rem;
+}
+footer .foot{
+  background-color: #000000;
+  padding: 0.5em; 
+}
+footer .row a:hover, footer .row a:focus {
+    color: #1585cf;
+}
+
+/*a img {
+    border: 0;
+}
+footer .row .expanded .callout ul li a{
+    color:#000000;
+}
+footer a , footer .menu-text{
+  color:#ffffff;
+}
+
+footer a:hover{
+  color:#2199e8;
+}
