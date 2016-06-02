@@ -20,7 +20,6 @@ header {
   padding-top: 20px;
 }
 
-
 footer .columns{
   margin-bottom: 0.5em;
 }
@@ -50,16 +49,6 @@ footer .row a:hover, footer .row a:focus {
     color: #1585cf;
 }
 
-/*a img {
-    border: 0;
-}
-footer .row .expanded .callout ul li a{
-    color:#000000;
-}
-footer a , footer .menu-text{
-  color:#ffffff;
-}
-
-footer a:hover{
-  color:#2199e8;
+.row article .row .large-6 img {
+  width: 370px;
 }
