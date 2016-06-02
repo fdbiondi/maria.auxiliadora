@@ -1,8 +1,9 @@
-css
-img
-index1.html
+drwxrwxr-x 6 guido guido     4096 jun  2 16:05 ./
+drwxrwxr-x 4 guido www-data  4096 jun  2 15:34 ../
+drwxrwxr-x 2 guido guido     4096 jun  2 15:31 css/
 index.html
 js
 prueba.txt
 readme.md
 test.html
+

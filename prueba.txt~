@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+css
+img
+index1.html
+index.html
+js
+prueba.txt
+readme.md
+test.html
+=======
+total 68
+drwxrwxr-x 6 guido guido     4096 jun  2 16:05 ./
+drwxrwxr-x 4 guido www-data  4096 jun  2 15:34 ../
+drwxrwxr-x 2 guido guido     4096 jun  2 15:31 css/
+drwxrwxr-x 8 guido guido     4096 jun  2 15:50 .git/
+drwxrwxr-x 3 guido guido     4096 jun  2 15:31 img/
+-rw-rw-r-- 1 guido guido     4942 jun  2 15:31 index1.html
+-rw-rw-r-- 1 guido guido    13371 jun  2 15:31 index.html
+drwxrwxr-x 3 guido guido     4096 jun  2 15:31 js/
+-rw-rw-r-- 1 guido guido        0 jun  2 16:05 prueba.txt
+-rw-rw-r-- 1 guido guido       58 jun  2 15:48 readme.md
+-rw-rw-r-- 1 guido guido    13330 jun  2 15:31 test.html
+>>>>>>> b5725fb7ac5563e5f887062dfd9a89b6bfbaec62
