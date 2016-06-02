@@ -2340,7 +2340,7 @@ select {
     padding-right: 1.5rem;
     position: relative; }
   .dropdown.menu.medium-horizontal > li.is-dropdown-submenu-parent > a::after {
-    content: '';
+    content: none;
     display: block;
     width: 0;
     height: 0;
