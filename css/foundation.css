@@ -2215,7 +2215,7 @@ select {
     width: 0;
     height: 0;
     border: inset 6px;
-    border-color: transparent transparent transparent #2199e8;
+    border-color: transparent transparent transparent #cacaca;/*2199e8*/
     border-left-style: solid;
     border-right-width: 0;
     position: absolute;
@@ -2229,7 +2229,7 @@ select {
   width: 0;
   height: 0;
   border: inset 6px;
-  border-color: transparent #2199e8 transparent transparent;
+  border-color: transparent #cacaca transparent transparent; /*2199e8*/
   border-right-style: solid;
   border-left-width: 0;
   border-left-width: 0;
