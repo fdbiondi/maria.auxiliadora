@@ -1,0 +1,10 @@
+$(document).ready(function(){
+   /*$(".has-submenu").hover(
+       function(){
+           $(this).children('.submenu').slideDown(250);
+       },
+       function(){
+           $(this).children('.submenu').slideUp(250);
+       }
+   );*/
+});
