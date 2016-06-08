@@ -70,3 +70,16 @@ footer .row a:hover, footer .row a:focus {
 .row article .row .large-6 img {
   width: 370px;
 }
+.azul{
+  background-color: blue;
+}
+.verde{
+  background-color: green;
+}
+.rojo{
+  background-color: indianred;
+}
+.bord{
+  border: 1px solid dimgrey;
+  border-radius: 5px;
+}
