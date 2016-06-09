@@ -83,3 +83,7 @@ footer .row a:hover, footer .row a:focus {
   border: 1px solid dimgrey;
   border-radius: 5px;
 }
+.dark-grey{
+  color:#696969;
+  font-size: 1.1em;
+}
