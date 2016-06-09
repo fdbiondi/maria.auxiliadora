@@ -52,6 +52,8 @@ footer .callout a {
 }
 footer .callout{
   margin:0;
+  padding: 22px;
+  height: 220px;
 }
 footer .site-map a{
   padding: 0;
@@ -70,16 +72,130 @@ footer .row a:hover, footer .row a:focus {
 .row article .row .large-6 img {
   width: 370px;
 }
-.azul{
-  background-color: blue;
+.large-4.img img{
+  border: 1px solid #b3b3b3;
+  border-radius: 15px;
 }
-.verde{
-  background-color: green;
+
+/*** MEDIA QUERIES ***/
+
+@media screen and (max-width: 19.9375em) {
+  .orbit-previous, .orbit-next {
+    width: 1em;
+    position: absolute;
+    top: 50%;
+  }
+  div.orbit{
+    max-height: 199px;
+  }
+  nav.orbit-bullets button{
+    max-height: 10px;
+    max-width: 10px;
+  }
+  .orbit-container{
+    max-height: 168px;
+  }
+  img.orbit-image{
+    min-height: 162px;
+  }
 }
-.rojo{
-  background-color: indianred;
+@media screen and (min-width: 20em) and (max-width: 29.9375em) {
+  div.orbit{
+    max-height: 287px;
+  }
+  nav.orbit-bullets button{
+    max-height: 13px;
+    max-width: 13px;
+  }
+  .orbit-container{
+    max-height: 258px;
+  }
+  img.orbit-image{
+    min-height: 250px;
+  }
 }
-.bord{
-  border: 1px solid dimgrey;
-  border-radius: 5px;
+@media screen and (min-width: 30em) and (max-width: 39.9375em) {
+  div.orbit{
+    max-height: 390px;
+  }
+  nav.orbit-bullets button{
+    max-height: 16px;
+    max-width: 16px;
+  }
+  .orbit-container{
+    max-height: 349px;
+  }
+  img.orbit-image{
+    min-height: 342px;
+  }
+
+}
+@media screen and (min-width: 40em) and (max-width: 51.9375em) {
+  div.medium-8.column{
+    width: 66%;
+    min-height: 370px;
+  }
+  div.medium-4.column{
+    width: 33%;
+    min-height: 370px;
+  }
+  div.orbit{
+    max-height: 385px;
+  }
+  nav.orbit-bullets button{
+    max-height: 18px;
+    max-width: 18px;
+  }
+  .orbit-container{
+    max-height: 365px;
+  }
+  img.orbit-image{
+    min-height: 317px;
+  }
+}
+@media screen and (min-width: 52em) and (max-width: 63.9375em) {
+  .notice-slide.medium-8{
+    width: 66%;
+    min-height: 380px;
+  }
+  .notice-slide.medium-4{
+    width: 33%;
+    min-height: 380px;
+  }
+  div.orbit{
+    max-height: 450px;
+  }
+  nav.orbit-bullets button{
+    max-height: 18px;
+    max-width: 18px;
+  }
+  .orbit-container{
+    max-height: 380px;
+  }
+  img.orbit-image{
+    min-height: 378px;
+  }
+}
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .notice-slide.medium-8{
+    width: 66%;
+    min-height: 446px;
+  }
+  div.orbit{
+    max-height: 524px;
+  }
+  .orbit-container{
+    max-height: 490px;
+  }
+  img.orbit-image{
+    min-height: 430px;
+  }
+}
+@media screen and (min-width: 75em) {
+  div.orbit{
+    min-height: 525px;
+  }
+  img.orbit-image{
+    min-height: 455px;
+  }
 }
