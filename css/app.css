@@ -29,11 +29,16 @@ header img{
 }
 
 /*** MAIN MANU TOP-BAR ***/
-#main-menu ul .title-menu:hover, #main-menu ul .title-menu:focus, #main-menu ul .title-menu:active {
+#main-menu ul .title-menu:hover, #main-menu ul .title-menu:focus, #main-menu ul .title-menu:active{
   color: #1585cf;
 }
-#main-menu ul .title-menu:focus{
-  border: 0;
+#main-menu a:focus{
+  outline: none;
+}
+
+/*** SLIDE***/
+.notice-slide button{
+  outline: none;
 }
 
 /*** FOOTER ***/
