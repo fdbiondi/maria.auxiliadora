@@ -27,15 +27,13 @@ header img{
 .is-dropdown-submenu{
   border:none;
 }
+
 /*** MAIN MANU TOP-BAR ***/
-#main-menu ul .title-menu:hover{
+#main-menu ul .title-menu:hover, #main-menu ul .title-menu:focus, #main-menu ul .title-menu:active {
   color: #1585cf;
 }
-#main-menu.title-menu:focus{
-  border-color: red;
-}
-#main-menu.has-submenu:focus{
-  border-color: red;
+#main-menu ul .title-menu:focus{
+  border: 0;
 }
 
 /*** FOOTER ***/
