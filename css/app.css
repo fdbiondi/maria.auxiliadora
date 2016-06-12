@@ -74,9 +74,15 @@ footer .row a:hover, footer .row a:focus {
 .row article .row .large-6 img {
   width: 370px;
 }
-.large-4.img img{
+
+/*** CONTACT INFO ***/
+.contact-img img{
   border: 1px solid #b3b3b3;
   border-radius: 15px;
+}
+.contact-info p i{
+  color:#696969;
+  font-size: 1.1em;
 }
 
 /*** MEDIA QUERIES ***/
