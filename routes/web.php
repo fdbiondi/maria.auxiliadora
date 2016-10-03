@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('materias/crear', [
+                        'as' => 'subjects.create',
+                        'uses' =>'SubjectController@create'
+]);
+
+Route::post('materias/crear', [
+    'as' => 'subjects.store',
+    'uses' =>'SubjectController@store'
+]);
+
+/*
+Route::get('materias', [
+                        'as' => 'subjects.list',
+                        'uses' => 'SubjectController@list'
+]);*/
