@@ -17,6 +17,13 @@ class SubjectController extends Controller
     {
         Subject::create($request->except('_token'));
 
-        return redirect()->back();
+        return redirect()->route('subjects.list');
+    }
+
+    public function all()
+    {
+        $subjects=Subject::all();
+
+        return view('management.subjects.list', compact('subjects'));
     }
 }

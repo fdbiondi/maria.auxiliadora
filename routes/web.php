@@ -11,6 +11,8 @@
 |
 */
 
+/*Subjects*/
+
 Route::get('materias/crear', [
                         'as' => 'subjects.create',
                         'uses' =>'SubjectController@create'
@@ -21,8 +23,7 @@ Route::post('materias/crear', [
     'uses' =>'SubjectController@store'
 ]);
 
-/*
 Route::get('materias', [
                         'as' => 'subjects.list',
-                        'uses' => 'SubjectController@list'
-]);*/
+                        'uses' => 'SubjectController@all'
+]);
