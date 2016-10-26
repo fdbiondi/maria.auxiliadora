@@ -1,0 +1,17 @@
+{
+  "module": "Nombre modulo",
+  "principal_function": "funcion principal",
+  "function_details": [
+    "enumerar los detalles",
+    "no tanto ni tan poco"
+  ],
+  "last_update": "yyyy-MM-dd",
+  "authors": "nombre author",
+  "considerations": [
+    "",
+    ""
+  ],
+  "collaborators":  ["",""],
+  "keywords": ["palabras"],
+  "submodules":[/* array de modulos */]
+}
