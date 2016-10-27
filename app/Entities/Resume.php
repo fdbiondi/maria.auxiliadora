@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Resume extends Model
+class Resume extends Entity
 {
+    protected $table = 'resumes';
+    
     /**
      * The attributes that are mass assignable.
      *

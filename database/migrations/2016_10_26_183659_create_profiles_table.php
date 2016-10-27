@@ -23,8 +23,8 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('city_id');
             $table->string('phone', 20);
 
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('account_id')->references('id')->on('accounts');
 
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class AccountsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,26 +11,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entities\User::class)->create([
+        factory(App\Entities\Account::class)->create([
             'name' => 'Federico',
             'email' => 'fdbion@gmail.com',
             'password' => bcrypt('11235813'),
         ]);
-        factory(App\Entities\User::class)->create([
+        factory(App\Entities\Account::class)->create([
             'name' => 'David',
             'email' => 'david.boero@gmail.com',
             'password' => bcrypt('11235813'),
         ]);
-        factory(App\Entities\User::class)->create([
+        factory(App\Entities\Account::class)->create([
             'name' => 'Guido',
             'email' => 'gambrosino@gmail.com',
             'password' => bcrypt('11235813'),
         ]);
-        factory(App\Entities\User::class)->create([
+        factory(App\Entities\Account::class)->create([
             'name' => 'Lucas',
             'email' => 'lcs.arregui@gmail.com',
             'password' => bcrypt('11235813'),
         ]);
-        factory(App\Entities\User::class, 50)->create();
+        factory(App\Entities\Account::class, 50)->create();
     }
 }

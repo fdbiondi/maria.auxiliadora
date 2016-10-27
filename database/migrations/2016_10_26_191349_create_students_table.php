@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedInteger('account_id');
             $table->unsignedInteger('tutor_id');
 
-            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('tutor_id')->references('id')->on('tutors');
 
             $table->timestamps();

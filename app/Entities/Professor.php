@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Professor extends Model
+class Professor extends Entity
 {
+    protected $table = 'professors';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,11 +16,11 @@ class Professor extends Model
     ];
 
     public function account() {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo(Account::getClass());
     }
 
     public function resume() {
-        return $this->hasOne('App\Resume');
+        return $this->hasOne(Resume::getClass());
     }
 
 }

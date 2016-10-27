@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\Account::class, function (Faker\Generator $faker) {
+$factory->define(App\Entities\Account::class, function (Faker\Generator $faker) {
 
     static $password;
 

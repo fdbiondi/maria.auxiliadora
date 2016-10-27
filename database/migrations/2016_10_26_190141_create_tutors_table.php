@@ -17,7 +17,7 @@ class CreateTutorsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('account_id');
             
-            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('accounts');
             
             $table->timestamps();
         });

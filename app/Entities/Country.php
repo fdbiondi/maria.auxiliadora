@@ -2,16 +2,16 @@
 
 namespace App\Entities;
 
-class Subject extends Entity
+class Country extends Entity
 {
-    protected $table = "subjects";
-    
+    protected $table = 'countries';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description'
+        'name'
     ];
 }
