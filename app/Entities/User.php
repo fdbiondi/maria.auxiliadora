@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,4 +26,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function isSuperAdmin(){
+        return ($this->role == "SUPERADMIN");
+    }
+    public function isStudent(){
+        return ($this->role == "STUDENT");
+    }
+    public function isPreceptor(){
+        return ($this->role == "PRECEPTOR");
+    }
+    public function isProfessor(){
+        return ($this->role == "PROFESSOR");
+    }
+    public function isAdministrator(){
+        return ($this->role == "ADMINISTRATOR");
+    }
 }
