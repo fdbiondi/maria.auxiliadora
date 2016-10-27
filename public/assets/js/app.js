@@ -111,7 +111,7 @@ function sendAjaxPromise(URL, type, dataType, data, button_loading) {
 //***************************************************
 //***************SHOW FORM ERRORS********************
 
-function showErrorFields(error_type, messages) {
+function showErrorFieldsAlert(error_type, messages) {
     var errorFields = "";
 
     if(error_type == "fields") {
