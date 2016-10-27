@@ -10,7 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', function () {
     if(Auth::check())
         route('home');
@@ -52,4 +51,3 @@ Route::group(['namespace' => 'Admin'], function() {
         Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectsController@delete']);
     });
 });
-    

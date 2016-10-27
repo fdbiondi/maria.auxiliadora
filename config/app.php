@@ -166,8 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-
-        //
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -192,6 +191,7 @@ return [
          * DebugBar Provider
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -238,11 +238,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+    
         /* Facades Laravel Collective */
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        
         /* Facade DebugBar */
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
