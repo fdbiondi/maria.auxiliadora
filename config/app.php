@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,20 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Laravel Collective Provider...
+         */
+        Collective\Html\HtmlServiceProvider::class,
+
+        /*
+         * My providers
+         */
+        App\Providers\HtmlServiceProvider::class,
+
+        /*
+         * DebugBar Provider
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -225,6 +239,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-    ],
+        /* Facades Laravel Collective */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
+        /* Facade DebugBar */
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        /* Helpers */
+        'DateTimeUtils' => App\Helpers\DateTimeUtils::class,
+        'Menu' => App\Helpers\Menu::class,
+    ],
 ];
