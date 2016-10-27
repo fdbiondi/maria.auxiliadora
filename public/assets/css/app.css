@@ -1,0 +1,25 @@
+/*---
+-Control para poner detras del spinner para simular carga de pagina
+---*/
+.overlay{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.81);
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+.plus {
+    display: flex;
+    margin: 0 auto;
+    top: 10%;
+}
+/******************************************************/
+/******************************************************/
+input.loading {
+    background: #ccc url(http://loadinggif.com/generated-image?imageId=4&bgColor=%23ffffff&fgColor=%23000000&transparentBg=1&download=0&random=0.6667832023050364) no-repeat right center;
+}
+.width-auto{
+    width: auto;
+}
