@@ -27,3 +27,7 @@ Route::get('materias', [
                         'as' => 'subjects.list',
                         'uses' => 'SubjectController@all'
 ]);
+
+Route::get('/', 'HomeController@index');
+
+Route::auth();
