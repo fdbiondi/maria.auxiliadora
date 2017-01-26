@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\Validator;
-
 abstract class BaseRepository 
 {
     protected $column = "name";
@@ -20,6 +18,10 @@ abstract class BaseRepository
         return $this->getModel()->newQuery();
     }
 
+    /**
+     * @param integer $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     */
     public function findOrFail($id)
     {
         return $this->newQuery()->findOrFail($id);
@@ -53,10 +55,5 @@ abstract class BaseRepository
     public function getById($id, $columns = ['*'])
     {
         return $this->getModel()->find($id, $columns);
-    }
-
-    public function validate($attributes, $rules)
-    {
-        return Validator::make($attributes, $rules);
     }
 }

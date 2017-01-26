@@ -26,12 +26,17 @@ class SubjectRepository extends BaseRepository
 
     public function update($id, $data)
     {
-        return $this->findOrFail($id)->fill((array)$data)->save();
+        $subject = $this->findOrFail($id);
+
+        $subject->fill($data);
+
+        return $subject->save();
     }
 
     public function delete($id)
     {
         $subject = $this->findOrFail($id);
+        
         return [
             'delete' => $subject->delete(),
             'subject_name' => $subject->name
