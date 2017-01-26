@@ -7,15 +7,8 @@
 @section('content')
     <div class="col-md-6">
         <h2 class="font-bold">{{ trans('login.page.title')}}</h2>
-        <p>
-            {{ trans('login.page.text_1')}}
-        </p>
-        <p>
-            {{ trans('login.page.text_2')}}
-        </p>
-        <p>
-            <small>{{ trans('login.page.text_3')}}</small>
-        </p>
+        <p><img src="{{ asset(config('constants.LOGO_IMAGE')) }}" alt="" class="img-responsive logo-image-login"></p>
+        <p>{{ trans('login.page.welcome')}}</p>
     </div>
     <div class="col-md-6">
         <div class="ibox-content">

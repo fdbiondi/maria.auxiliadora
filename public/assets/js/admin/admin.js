@@ -8,11 +8,7 @@ $( document ).ready(function(){
         var url = $form.attr('action');
 
         var data = $form.serializeObject();
-        //var _TOKEN = data._token;
-        delete data._token;
-
-        data = {'_token': _TOKEN , data: JSON.stringify(data)};
-
+        
         sendAjaxPromise(url, 'POST', 'json', data, null);
     });
 
@@ -41,10 +37,8 @@ $( document ).ready(function(){
 var action = "";
 
 function ajaxSuccess(data) {
-    if(data.error){
-
-        if (!showErrorFieldsAlert(data.error_type, data.message) && (action == "save" || action == "delete"))
-            showErrorAlert(TRY_AGAIN, data.message);
+    if(data.error) {
+        showErrorAlert(TRY_AGAIN, data.message);
     }
     else{
         var title = OK_FORM_TITLE, text = "";

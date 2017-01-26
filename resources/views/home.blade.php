@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('styles')
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Home Style -->
+    {!! Html::style('assets/css/home.css') !!}
+@endsection
+
 @section('content-header')
     @include('partials.content-header',[
         'title'=>trans('general.home.title'),
@@ -7,14 +14,18 @@
 @endsection
 
 @section('content')
-    <div class="row" style="margin-top: 3em">
-        @include('partials.errors')
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row" style="margin-bottom:1em">
-                        <div class="col-md-4 col-md-offset-4" >
-                            <h2><strong>{{ trans('general.home.welcome') }}</strong></h2>
+    <div class="container">
+        <div class="row">
+            @include('partials.errors')
+            <div class="col-md-8 col-md-offset-1">
+                <div class="welcome-text flex-center position-ref full-height">
+                    <div class="content">
+                        <div class="title m-b-md">
+                            {{ trans('general.home.welcome') }}
+                        </div>
+
+                        <div class="links">
+                            <span>{{ trans('general.home.select_option') }}</span>
                         </div>
                     </div>
                 </div>

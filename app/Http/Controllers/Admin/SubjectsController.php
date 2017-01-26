@@ -37,21 +37,23 @@ class SubjectsController extends Controller
 
     public function store(Request $request)
     {
-        $data = json_decode($request->get("data"));
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'description' => 'max:255'
+        ]);
 
-        $response = $this->validator((array)$data, ['name' => 'required|max:100', 'description' => 'max:255']);
+        $subject = $this->subjectRepository->create(
+            $request->get("name"),
+            $request->get("description")
+        );
 
-        if(!$response['error']) {
-            $subject = $this->subjectRepository->create($data->name, $data->description);
-
-            if ($subject->save()){
-                $response['message'] = trans('admin.subject.create.message.success', ['name' => $data->name]);
-                $response['error'] = false;
-            }
-            else{
-                $response['message'] = trans('admin.subject.create.message.error');
-                $response['error'] = true;
-            }
+        if ($subject->save()){
+            $response['message'] = trans('admin.subject.create.message.success', ['name' => $request->get("name")]);
+            $response['error'] = false;
+        }
+        else{
+            $response['message'] = trans('admin.subject.create.message.error');
+            $response['error'] = true;
         }
 
         if ($request->ajax()) {
@@ -61,21 +63,20 @@ class SubjectsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = json_decode($request->get('data'));
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'description' => 'max:255'
+        ]);
 
-        $response = $this->validator((array)$data, ['name' => 'required|max:100', 'description' => 'max:255']);
+        $subject = $this->subjectRepository->update($id, $request->all());
 
-        if(!$response['error']) {
-            $subject = $this->subjectRepository->update($id, $data);
-
-            if ($subject){
-                $response['message'] = trans('admin.subject.edit.message.success', ['name' => $data->name]);
-                $response['error'] = false;
-            }
-            else{
-                $response['message'] = trans('admin.subject.edit.message.error');
-                $response['error'] = true;
-            }
+        if ($subject){
+            $response['message'] = trans('admin.subject.edit.message.success', ['name' => $request->get('name')]);
+            $response['error'] = false;
+        }
+        else{
+            $response['message'] = trans('admin.subject.edit.message.error');
+            $response['error'] = true;
         }
 
         if ($request->ajax()) {
@@ -100,22 +101,5 @@ class SubjectsController extends Controller
         if ($request->ajax()) {
             return response()->json($response);
         }
-    }
-
-    public function validator(Array $attributes, $rules) {
-        $response = array();
-
-        $validate = $this->subjectRepository->validate($attributes, $rules);
-
-        if ($validate->fails()) {
-            $response['message'] = $validate->errors()->getMessages();
-            $response['error_type'] = "fields";
-            $response['error'] = true;
-        }
-        else if ($validate->passes()) {
-            $response['error'] = false;
-        }
-
-        return $response;
     }
 }

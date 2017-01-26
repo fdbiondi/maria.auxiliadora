@@ -1,0 +1,69 @@
+#page-wrapper {
+    background-color: #fafafa;
+}
+
+.welcome-text {
+    color: #636b6f;
+    font-family: 'Raleway';
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+    text-shadow: 2px 2px #ccced0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    padding-bottom:15%;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > span, .links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 700px) {
+    .title {
+        font-size: 5em;
+    }
+
+    .links > span, .links > a {
+        font-size: .8em;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 4em;
+    }
+
+    .links > span, .links > a {
+        font-size: .6em;
+        letter-spacing: .05rem;
+    }
+}

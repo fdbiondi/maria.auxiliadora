@@ -10,6 +10,7 @@
     width: 100%;
     top: 0;
 }
+
 .plus {
     display: flex;
     margin: 0 auto;
@@ -20,6 +21,19 @@
 input.loading {
     background: #ccc url(http://loadinggif.com/generated-image?imageId=4&bgColor=%23ffffff&fgColor=%23000000&transparentBg=1&download=0&random=0.6667832023050364) no-repeat right center;
 }
+
 .width-auto{
     width: auto;
+}
+
+.nav-header {
+    padding: 18px 25px;
+}
+
+.logo-image-login {
+    width:100px;
+}
+
+.logo-image {
+    width:60px;
 }

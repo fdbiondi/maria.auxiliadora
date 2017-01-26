@@ -80,9 +80,13 @@ function ajaxPromise(url,type,dataType,data,button_loading){
 }
 
 function ajaxPromiseFail(jqXHR, textStatus, errorThrown) {
-    showErrorAlert("Error processing your request.",'Server is not responding, please try again');
-    console.log("err. msj.: " + jqXHR.responseText);
-    console.log("errThrown: " + errorThrown);
+    if(textStatus == "error") {
+        if(!fieldErrors(jqXHR.status, jqXHR.responseJSON)) {
+            showErrorAlert("Error processing your request.", 'Server is not responding, please try again');
+            console.log("err. msj.: " + jqXHR.responseText);
+            console.log("errThrown: " + errorThrown);
+        }
+    }
 }
 
 function ajaxPromiseAllways() {
@@ -96,14 +100,12 @@ function ajaxPromiseAllways() {
 //****FUNCTION THAT HANDLE THE AJAX RESPONSE*********
 
 function sendAjaxPromise(URL, type, dataType, data, button_loading) {
-    ajaxPromise(URL,type,dataType,data,button_loading).done(
-        function(data){
+    ajaxPromise(URL,type,dataType,data,button_loading)
+        .done(function(data){
             ajaxSuccess(data);
-        }).fail(
-        function(jqXHR, textStatus, errorThrown){
+        }).fail(function(jqXHR, textStatus, errorThrown){
             ajaxPromiseFail(jqXHR, textStatus, errorThrown);
-        }).always(
-        function(){
+        }).always(function(){
             ajaxPromiseAllways();
         });
 }
@@ -111,16 +113,15 @@ function sendAjaxPromise(URL, type, dataType, data, button_loading) {
 //***************************************************
 //***************SHOW FORM ERRORS********************
 
-function showErrorFieldsAlert(error_type, messages) {
-    var errorFields = "";
+function fieldErrors(status, errors) {
+    var errorMessage = "";
 
-    if(error_type == "fields") {
-        $.each(messages, function (i, message) {
-            message.forEach(function (msg) {
-                errorFields += msg + "\n";
-            });
+    if(status == 422) {
+        $.each(errors, function (i, message) {
+            errorMessage += message + "\n";
         });
-        showErrorAlert(ERROR_FORM_TITLE + " " + ERROR_FORM_SUBTITLE, errorFields.toString());
+        showErrorAlert(ERROR_FORM_TITLE + " " + ERROR_FORM_SUBTITLE, errorMessage.toString());
+
         return true;
     }
 
