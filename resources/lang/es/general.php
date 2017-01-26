@@ -44,6 +44,7 @@ return [
     'home' => [
         'title' => 'Inicio - Panel Administración Colegio María Auxiliadora',
         'welcome' => 'Bienvenido!',
+        'select_option' => 'Seleccione una opción del menu.'
     ],
     'label' => [
         'address' => 'Dirección',

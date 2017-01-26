@@ -21,4 +21,7 @@ return [
     'TIME_MINUTES_UNIX' => 3600,
     //unix time for one day
     'ONE_DAY_UNIX' => 86400,//24 hs
+
+    'LOGO_IMAGE' => 'assets/img/logos/ma-logo.png',
+    'LOGO_IMAGE_TEXT' => 'assets/img/logos/ma-logo-texto.png',
 ];
