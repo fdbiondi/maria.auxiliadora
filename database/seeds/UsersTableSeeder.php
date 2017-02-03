@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
         factory(App\Entities\User::class)->create([
             'name' => 'Guido',
             'last_name' => 'Ambrosino',
-            'email' => 'gambrosino@gmail.com',
+            'email' => 'ambrosino.guido@gmail.com',
             'password' => bcrypt('11235813'),
             'dni' => '35222222',
             'city_id' => 1,
