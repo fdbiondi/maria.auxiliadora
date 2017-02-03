@@ -26,7 +26,7 @@ abstract class BaseRepository
     {
         return $this->newQuery()->findOrFail($id);
     }
-
+    
     public function findBy($att, $condition, $column, $relation= [])
     {
         return $this->getModel()

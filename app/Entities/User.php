@@ -9,11 +9,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-class Account extends Entity implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends Entity implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword, Authorizable;
 
-    protected $table = 'accounts';
+    protected $table = 'users';
     
     /**
      * The attributes that are mass assignable.
@@ -21,7 +21,7 @@ class Account extends Entity implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'last_name', 'dni', 'address', 'phone', 'city_id', 'role_id'
     ];
 
     /**
@@ -32,9 +32,19 @@ class Account extends Entity implements AuthenticatableContract, AuthorizableCon
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    public function profile()
+
+    public function tutor()
     {
-        return $this->hasOne(Profile::getClass());
+        return $this->belongsTo(User::getClass());
+    }
+
+    public function students()
+    {
+        return $this->hasMany(User::getClass());
+    }
+
+    public function resume() 
+    {
+        return $this->hasOne(Resume::getClass());
     }
 }
