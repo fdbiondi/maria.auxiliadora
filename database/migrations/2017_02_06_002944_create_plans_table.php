@@ -16,7 +16,7 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('code');
+            $table->string('code'); //TODO code puede que sea igual a name
             $table->date('date');
             $table->boolean('current')->default(true);
             $table->timestamps();

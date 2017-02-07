@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-class PlanSubject extends Entity
+class CourseUser extends Entity
 {
     //
 }

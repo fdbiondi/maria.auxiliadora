@@ -34,18 +34,17 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
         'password', 'remember_token',
     ];
 
-    public function tutor()
+    public function tutors()
     {
-        return $this->belongsTo(User::getClass());
-    }
-
-    public function students()
-    {
-        return $this->hasMany(User::getClass());
+        return $this->belongsToMany(User::getClass());
     }
 
     public function resume() 
     {
         return $this->hasOne(Resume::getClass());
+    }
+
+    public function courses() {
+        return $this->belongsToMany(Course::getClass());
     }
 }

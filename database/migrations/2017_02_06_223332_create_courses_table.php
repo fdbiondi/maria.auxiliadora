@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelPlansTable extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateLevelPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('level_plans', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('level_id');
-            $table->unsignedInteger('plan_id');
-
+            $table->unsignedInteger('division_id');
+            $table->date('date'); //fecha o año del curso en el que se asiste, year (promocion)
+            
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('division_id')->references('id')->on('divisions');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateLevelPlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('level_plans');
+        Schema::dropIfExists('courses');
     }
 }

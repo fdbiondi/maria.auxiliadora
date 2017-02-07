@@ -17,6 +17,7 @@ class CreateExamsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
+            //TODO puede tener numero de acta
             $table->dateTime('date_time');
             $table->timestamps();
         });

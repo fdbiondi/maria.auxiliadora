@@ -2,11 +2,8 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Level extends Model
+class Level extends Entity
 {
-    //
     public function plans() {
         return $this->belongsToMany(Plan::getClass());
     }

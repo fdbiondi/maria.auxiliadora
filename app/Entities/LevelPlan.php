@@ -2,9 +2,7 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class LevelPlan extends Model
+class LevelPlan extends Entity
 {
     //
 }

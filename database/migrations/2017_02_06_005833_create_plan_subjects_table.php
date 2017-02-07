@@ -18,8 +18,8 @@ class CreatePlanSubjectsTable extends Migration
             $table->unsignedInteger('plan_id');
             $table->unsignedInteger('subject_id');
             
-            $table->foreign('plan_id')->references('id')->on('subjects');
-            $table->foreign('subject_id')->references('id')->on('plans');
+            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('subject_id')->references('id')->on('subjects');
             $table->timestamps();
         });
     }

@@ -2,9 +2,7 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Exam extends Model
+class Exam extends Entity
 {
     public function subject()
     {
