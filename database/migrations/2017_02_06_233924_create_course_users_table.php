@@ -17,8 +17,9 @@ class CreateCourseUsersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('user_id');
-            //TODO puede tener un campo current o estado para saber que es el actual 
-
+            //TODO puede tener un campo current para saber cual es el actual 
+            //TODO ó estado cursa, repite, paso de año
+            
             $table->foreign('course_id')->references('id')->on('courses');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
