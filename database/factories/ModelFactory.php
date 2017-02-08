@@ -51,3 +51,22 @@ $factory->define(App\Entities\City::class, function (Faker\Generator $faker) {
         'province_id' => 1,
     ];
 });
+
+$factory->define(App\Entities\Role::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->text(8),
+    ];
+});
+
+$factory->define(App\Entities\Level::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->unique()->numberBetween(0,5),
+    ];
+});
+
+$factory->define(App\Entities\Division::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->unique()->randomLetter,
+    ];
+});
+

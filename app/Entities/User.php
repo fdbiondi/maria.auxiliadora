@@ -41,10 +41,14 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
 
     public function resume() 
     {
-        return $this->hasOne(Resume::getClass());
+        return $this->hasMany(Resume::getClass());
     }
 
     public function courses() {
         return $this->belongsToMany(Course::getClass());
+    }
+    
+    public function role() {
+        return $this->belongsTo(Role::getClass());
     }
 }
