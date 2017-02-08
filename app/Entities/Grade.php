@@ -2,9 +2,7 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Grade extends Model
+class Grade extends Entity
 {
     public function course_user_subject() {
         return $this->belongsTo(CourseUserSubject::getClass());
