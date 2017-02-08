@@ -14,4 +14,8 @@ class Subject extends Entity
     protected $fillable = [
         'name', 'description'
     ];
+
+    public function plans() {
+        return $this->belongsToMany(Plan::getClass());
+    }
 }

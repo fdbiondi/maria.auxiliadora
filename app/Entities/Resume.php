@@ -12,6 +12,10 @@ class Resume extends Entity
      * @var array
      */
     protected $fillable = [
-        'path'
+        'path', 'user_id'
     ];
+
+    public function professional() {
+        return $this->belongsTo(User::getClass());
+    }
 }

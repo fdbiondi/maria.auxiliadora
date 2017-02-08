@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTutorsTable extends Migration
+class CreateExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTutorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutors', function (Blueprint $table) {
+        Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('account_id');
-            
-            $table->foreign('account_id')->references('id')->on('accounts');
-            
+            $table->unsignedInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            //TODO puede tener numero de acta
+            $table->dateTime('date_time');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTutorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutors');
+        Schema::dropIfExists('exams');
     }
 }

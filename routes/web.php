@@ -50,4 +50,14 @@ Route::group(['namespace' => 'Admin'], function() {
         Route::post('update/{id}', ['as' => 'subject.update', 'uses' => 'SubjectsController@update']);
         Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectsController@delete']);
     });
+
+    Route::group(['prefix' => 'users'], function () {
+        // Matches The "/admin/users" URL
+        Route::get('list', ['as' => 'user.list', 'uses' => 'UsersController@index']);
+        Route::get('create', ['as' => 'user.create', 'uses' => 'UsersController@create']);
+        Route::post('store', ['as' => 'user.store', 'uses' => 'UsersController@store']);
+        Route::get('edit/{id}', ['as' => 'user.edit', 'uses' => 'UsersController@edit']);
+        Route::post('update/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
+        Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UsersController@delete']);
+    });
 });

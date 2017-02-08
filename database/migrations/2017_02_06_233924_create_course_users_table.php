@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResumesTable extends Migration
+class CreateCourseUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateResumesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resumes', function (Blueprint $table) {
+        Schema::create('course_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path');
-
+            $table->unsignedInteger('course_id');
             $table->unsignedInteger('user_id');
+            //TODO puede tener un campo current para saber cual es el actual 
+            //TODO ó estado cursa, repite, paso de año
+            
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->foreign('user_id')->references('id')->on('users');
-
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateResumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resumes');
+        Schema::dropIfExists('course_users');
     }
 }
