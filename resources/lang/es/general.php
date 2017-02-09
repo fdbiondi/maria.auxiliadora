@@ -47,22 +47,32 @@ return [
         'select_option' => 'Seleccione una opción del menu.'
     ],
     'label' => [
-        'address' => 'Dirección',
         'active' => 'Activar',
+        'address' => 'Dirección',
+
+        'days' => 'Días',
+        'days_times' => 'Días y Horarios',
         'desactive' => 'Desactivar',
         'description' => 'Descripción',
-        'days_times' => 'Días y Horarios',
-        'days' => 'Días',
         'details' => 'Detalles',
+
         'email' => 'Email',
+
         'images' => 'Imágenes',
+
+        'last_name' => 'Apellido',
         'logo'  => 'Logo',
+
         'model_status' => '{0} Desactivo'.'|{1} Activo',
+
         'name' => 'Nombre',
+
         'password' => 'Contraseña',
         'phone' => 'Teléfono',
         'profile' => 'Perfil',
+
         'type' => 'Tipo',
+
         'user_profile' => 'Perfil de Usuario',
     ],
     'language' => 'es', //TODO=> implementar cambio de lenguaje

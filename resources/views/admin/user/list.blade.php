@@ -36,7 +36,12 @@
                                 @foreach($users as $user)
                                     <tr class="gradeX">
                                         <td>{{ $user->name }}</td>
-                                        <td>{{ $user->description }}</td>
+                                        <td>{{ $user->last_name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->address }}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->dni }}</td>
+                                        <td>{{ $user->role->name }}</td>
                                         <td>
                                             @include('admin.partials.action_buttons', [
                                                 'url' => [

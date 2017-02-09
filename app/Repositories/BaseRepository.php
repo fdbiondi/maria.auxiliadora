@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 abstract class BaseRepository 
 {
-    protected $column = "name";
+    protected $column = "last_name";
 
     /**
      * @return \App\Entities\Entity
