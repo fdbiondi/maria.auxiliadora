@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CountriesTableSeeder::class);
         $this->call(ProvincesTableSeeder::class);
         $this->call(CitiesTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SubjectsTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
         $this->call(DivisionsTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
     }
 }

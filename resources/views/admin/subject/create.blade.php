@@ -20,10 +20,7 @@
                         {!! Form::open(['id' => 'admin_form', 'route' => 'subject.store', 'method' => 'POST']) !!}
                             @include('admin.subject.partials.fields')
                             <div class="form-group">
-                                {{ Form::button(trans('general.button.save'), [
-                                    'class' => 'ladda-button ladda-button-demo btn btn-primary btn-block',
-                                    'id' => 'btn_save',
-                                    'data-style' =>'zoom-in'])}}
+                                @include('admin.partials.save_button')
                             </div>
                         {!! Form::close() !!}
                     </div>

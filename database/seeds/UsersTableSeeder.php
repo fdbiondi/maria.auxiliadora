@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('11235813'),
             'dni' => '35462239',
             'city_id' => 1,
+            'role_id' => 6
         ]);
         factory(App\Entities\User::class)->create([
             'name' => 'David',
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('11235813'),
             'dni' => '35111111',
             'city_id' => 1,
+            'role_id' => 6
         ]);
         factory(App\Entities\User::class)->create([
             'name' => 'Guido',
@@ -34,6 +36,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('11235813'),
             'dni' => '35222222',
             'city_id' => 1,
+            'role_id' => 6
         ]);
         factory(App\Entities\User::class)->create([
             'name' => 'Lucas',
@@ -42,6 +45,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('11235813'),
             'dni' => '35333333',
             'city_id' => 1,
+            'role_id' => 6
         ]);
         factory(App\Entities\User::class, 50)->create();
     }

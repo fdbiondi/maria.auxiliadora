@@ -47,23 +47,49 @@ return [
         'select_option' => 'Seleccione una opción del menu.'
     ],
     'label' => [
-        'address' => 'Dirección',
         'active' => 'Activar',
+        'address' => 'Dirección',
+
+        'city' => 'Ciudad',
+
+        'days' => 'Días',
+        'days_times' => 'Días y Horarios',
         'desactive' => 'Desactivar',
         'description' => 'Descripción',
-        'days_times' => 'Días y Horarios',
-        'days' => 'Días',
         'details' => 'Detalles',
+        'dni' => 'Número de Documento',
+
         'email' => 'Email',
+
         'images' => 'Imágenes',
+
+        'last_name' => 'Apellido',
         'logo'  => 'Logo',
+
         'model_status' => '{0} Desactivo'.'|{1} Activo',
+
         'name' => 'Nombre',
+
         'password' => 'Contraseña',
+        'password_confirmation' => 'Confirmar Contraseña',
         'phone' => 'Teléfono',
         'profile' => 'Perfil',
+
+        'role' => 'Rol',
+
+        'select_city' => 'Seleccione Ciudad',
+        'select_role' => 'Seleccione Rol',
+
         'type' => 'Tipo',
+
         'user_profile' => 'Perfil de Usuario',
+        //Roles ?? aca o separado ?
+        'preceptor' => 'Preceptor',
+        'student' => 'Estudiante',
+        'professor' => 'Profesor',
+        'secretary' => 'Secretario',
+        'tutor' => 'Tutor',
+        'super_admin' => 'Super Administrador',
     ],
     'language' => 'es', //TODO=> implementar cambio de lenguaje
     'message' => [
@@ -79,6 +105,14 @@ return [
             'date_invalid' => "Formato de fecha incorrecto. Verifique.",
             'file' => 'Hubo un inconveniente al subir el archivo. Intente nuevamente.',
         ),
+    ],
+    'roles' => [
+        'preceptor' => 'Preceptor',
+        'student' => 'Estudiante',
+        'professor' => 'Profesor',
+        'secretary' => 'Secretario',
+        'tutor' => 'Tutor',
+        'super_admin' => 'Super Administrador',
     ],
     'title' => 'Colegio María Auxiliadora - Sistema de Gestión',
 ];

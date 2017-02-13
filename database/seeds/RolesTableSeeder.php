@@ -12,27 +12,27 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         factory(App\Entities\Role::class)->create([
-            'name' => 'Preceptor',
+            'name' => 'preceptor',
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'Student',
+            'name' => 'student',
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'Professor',
+            'name' => 'professor',
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'Secretary',
+            'name' => 'secretary',
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'Tutor',
+            'name' => 'tutor',
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'SuperAdmin',
+            'name' => 'super_admin',
         ]);
     }
 }

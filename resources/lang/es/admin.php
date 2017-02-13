@@ -47,4 +47,56 @@ return [
             'delete' => 'Desea dar de baja la Materia :name.',
         ],
     ],
+    'user' => [
+        'list' => [
+            'title' => 'Usuarios',
+            'table' => [
+                'title' => 'Listado de Usuarios',
+                'add' => 'Agregar Nuevo Usuario',
+                'header' => [
+                    'name' => 'Nombre',
+                    'last_name' => 'Apellido',
+                    'email' => 'Email',
+                    'address' => 'Dirección',
+                    'phone' => 'Teléfono',
+                    'dni' => 'DNI',
+                    'role' => 'Rol',
+                    'actions' => 'Acciones',
+                    //'' => '',
+                    //'relation' => ''
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+        'create' => [
+            'title' => 'Nuevo Usuario',
+            'subtitle' => 'Datos del Usuario',
+            'message' => [
+                'success' => 'Se ha creado el Usuario :name satisfactoriamente.',
+                'error' => 'No se guardaron los datos del Usuario.',
+            ],
+            'back' => 'Volver a Usuarios',
+        ],
+        'edit' => [
+            'title' => 'Editar Usuario',
+            'message' => [
+                'success' => 'Se ha actualizado el Usuario :name satisfactoriamente.',
+                'error' => 'No se pudieron actualizar los datos del Usuario.',
+            ],
+        ],
+        'delete' => [
+            'title' => 'Baja de Usuario',
+            'message' => [
+                'success' => 'Se ha dado de baja el Usuario :name satisfactoriamente.',
+                'error' => 'No se pudo dar de baja el Usuario :name.',
+                'has_relation' => 'No se pudo dar de baja el usuario porque se encuentra asignado a un curso actualmente.'
+            ],
+        ],
+        'field' => [
+
+        ],
+        'question' => [
+            'delete' => 'Desea dar de baja el Usuario :name.',
+        ],
+    ],
 ];

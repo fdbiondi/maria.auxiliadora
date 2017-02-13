@@ -25,7 +25,10 @@ class CreateUsersTable extends Migration
             $table->string('phone', 25)->default('');
             
             $table->unsignedInteger('city_id');
+            $table->unsignedInteger('role_id');
+            
             $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('role_id')->references('id')->on('roles');
             
             $table->rememberToken();
             $table->timestamps();

@@ -59,14 +59,17 @@
 
 @section('scripts')
     @parent
-    <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.subject.question.delete') }}" ;
-        ACTION_URL = "{{ route('subject.list') }}";
-    </script>
     <!-- DATATABLES PLUGIN -->
     {!! Html::script('assets/template/js/plugins/dataTables/datatables.min.js') !!}
     <!-- DATATABLES IMPLEMENTATION JS -->
     {!! Html::script('assets/js/admin/datatable.js') !!}
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
+    <script type="text/javascript">
+        var QUESTION_DELETE = "{{ trans('admin.subject.question.delete') }}" ;
+        ACTION_URL = "{{ route('subject.list') }}";
+
+        $order = [[ 0, "asc" ]];
+        $fileToExportName = "Subjects";
+    </script>
 @stop

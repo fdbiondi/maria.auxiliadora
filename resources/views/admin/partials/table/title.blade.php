@@ -9,6 +9,8 @@
         <a class="collapse-link">
             <i class="fa fa-chevron-up"></i>
         </a>
-        <a href="{{ $route }}" class="btn btn-xs btn-primary">{{ $button }}</a>
+        <a href="{{ $route }}" title="{{ $button }}" class="btn btn-md btn-primary">
+            <i class="fa fa-file-text"></i>
+        </a>
     </div>
 </div>

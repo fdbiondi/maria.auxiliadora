@@ -10,7 +10,12 @@ return [
                 'route' => 'subject.list',
                 'text' => 'Materias',
             ],
-            /*'countries' => [ //FIXME example
+            'user' => [
+                'icon'=>'fa-globe',
+                'route' => 'user.list',
+                'text' => 'Usuarios',
+            ],
+            /*'countries' => [ 
                 'icon'=>'fa-globe',
                 'route' => 'countries.list',
                 'text' => 'Países', 
