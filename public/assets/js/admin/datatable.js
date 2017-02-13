@@ -1,12 +1,16 @@
-$(document).ready(function(){
+var $info = false;
+var $order = [[ 0 , "asc" ]];
+var $paging = true;
+var $fileToExportName = "exportedFile";
+
+$(function(){
     $('.dataTables-list').DataTable({
         dom: '<"html5buttons"B>lTfgitp',
         buttons: [
-            { extend: 'copy'},
+            {extend: 'copy'},
             {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
-            {extend: 'pdf', title: 'ExampleFile'},
-
+            {extend: 'excel', title: $fileToExportName},
+            {extend: 'pdf', title: $fileToExportName},
             {extend: 'print',
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
@@ -20,6 +24,9 @@ $(document).ready(function(){
         ],
         language: {
             url: LANG_DATA_TABLE_URL
-        }
+        },
+        info: $info,
+        order: $order,
+        paging: $paging
     });
 });

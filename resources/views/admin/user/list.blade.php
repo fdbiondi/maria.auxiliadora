@@ -41,7 +41,7 @@
                                         <td>{{ $user->address }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->dni }}</td>
-                                        <td>{{ $user->role->name }}</td>
+                                        <td>{{ trans('general.roles.'.$user->role->name) }}</td>
                                         <td>
                                             @include('admin.partials.action_buttons', [
                                                 'url' => [
@@ -64,14 +64,18 @@
 
 @section('scripts')
     @parent
-    <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.user.question.delete') }}" ;
-        ACTION_URL = "{{ route('user.list') }}";
-    </script>
     <!-- DATATABLES PLUGIN -->
     {!! Html::script('assets/template/js/plugins/dataTables/datatables.min.js') !!}
             <!-- DATATABLES IMPLEMENTATION JS -->
     {!! Html::script('assets/js/admin/datatable.js') !!}
             <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
+
+    <script type="text/javascript">
+        var QUESTION_DELETE = "{{ trans('admin.user.question.delete') }}" ;
+        ACTION_URL = "{{ route('user.list') }}";
+
+        $order = [[ 1, "asc" ]];
+        $fileToExportName = "Users";
+    </script>
 @stop

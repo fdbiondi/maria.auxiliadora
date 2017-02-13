@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\CityRepository;
+use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
@@ -10,11 +12,15 @@ use App\Http\Controllers\Controller;
 class UsersController extends Controller
 {
     protected $userRepository;
+    protected $roleRepository;
+    protected $cityRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository, CityRepository $cityRepository)
     {
         $this->middleware('auth');
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     public function index()
@@ -26,22 +32,32 @@ class UsersController extends Controller
     public function create()
     {
         $user = $this->userRepository->getModel();
-        return view('admin.user.create', compact('user'));
+        $roles = $this->roleRepository->getAll();
+        $cities = $this->cityRepository->getAll();
+        return view('admin.user.create', compact('user', 'roles', 'cities'));
     }
 
     public function edit($id)
     {
         $user = $this->userRepository->findOrFail($id);
-        return view('admin.user.edit', compact('user'));
+        $roles = $this->roleRepository->getAll();
+        $cities = $this->cityRepository->getAll();
+        return view('admin.user.edit', compact('user', 'roles', 'cities'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6|confirmed',
+            'dni' => 'required',
+            'role_id' => 'required',
+            'city_id' => 'required',
         ]);
-
-        $user = $this->userRepository->create();
+        
+        $user = $this->userRepository->create($request->all());
 
         if ($user->save()){
             $response['message'] = trans('admin.user.create.message.success', ['name' => $request->get("name")]);
@@ -60,7 +76,13 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'min:6|confirmed',
+            'dni' => 'required',
+            'role_id' => 'required',
+            'city_id' => 'required',
         ]);
 
         $user = $this->userRepository->update($id, $request->all());
