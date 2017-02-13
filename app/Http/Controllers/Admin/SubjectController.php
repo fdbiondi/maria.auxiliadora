@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-class SubjectsController extends Controller
+class SubjectController extends Controller
 {
     protected $subjectRepository;
 

@@ -11,6 +11,6 @@ class SubjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entities\Subject::class, 10)->create();
+        //factory(App\Entities\Subject::class, 10)->create();
     }
 }

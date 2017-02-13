@@ -49,7 +49,7 @@ class UserRepository extends BaseRepository
 
     public function delete($id)
     {
-        
+        return true;
     }
 
     public function prepareDataToSave(Array $data) {

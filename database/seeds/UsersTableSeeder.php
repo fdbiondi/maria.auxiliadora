@@ -47,6 +47,7 @@ class UsersTableSeeder extends Seeder
             'city_id' => 1,
             'role_id' => 6
         ]);
-        factory(App\Entities\User::class, 50)->create();
+        
+        factory(App\Entities\User::class, 10)->create();
     }
 }
