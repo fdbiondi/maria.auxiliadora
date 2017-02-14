@@ -61,13 +61,13 @@ $factory->define(App\Entities\Role::class, function (Faker\Generator $faker){
 
 $factory->define(App\Entities\Level::class, function (Faker\Generator $faker){
     return [
-        'name' => $faker->unique()->numberBetween(0,5),
+        'name' => $faker->unique()->numberBetween(1,5),
     ];
 });
 
 $factory->define(App\Entities\Division::class, function (Faker\Generator $faker){
     return [
-        'name' => $faker->unique()->randomLetter,
+        'name' => $faker->unique()->randomElement(['A','B','C']),
     ];
 });
 

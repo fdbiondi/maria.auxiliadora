@@ -15,6 +15,9 @@ class Subject extends Entity
         'name', 'description'
     ];
 
+    /**
+     * Relationships
+     */
     public function plans() {
         return $this->belongsToMany(Plan::getClass());
     }

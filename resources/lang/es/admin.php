@@ -99,4 +99,51 @@ return [
             'delete' => 'Desea dar de baja el Usuario :name.',
         ],
     ],
+    'course' => [
+        'list' => [
+            'title' => 'Cursos',
+            'table' => [
+                'title' => 'Listado de Cursos',
+                'add' => 'Agregar Nuevo Curso',
+                'header' => [
+                    'name'=> 'Nombre',
+                    'date' => 'Fecha',
+                    'level' => 'Año',
+                    'division' => 'División',
+                    'actions' => 'Acciones',
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+        'create' => [
+            'title' => 'Nuevo Curso',
+            'subtitle' => 'Datos del Curso',
+            'message' => [
+                'success' => 'Se ha creado el Curso :name satisfactoriamente.',
+                'error' => 'No se guardaron los datos del Curso.',
+            ],
+            'back' => 'Volver a Cursos',
+        ],
+        'edit' => [
+            'title' => 'Editar Curso',
+            'message' => [
+                'success' => 'Se ha actualizado el Curso :name satisfactoriamente.',
+                'error' => 'No se pudieron actualizar los datos del Curso.',
+            ],
+        ],
+        'delete' => [
+            'title' => 'Baja de Curso',
+            'message' => [
+                'success' => 'Se ha dado de baja el Curso :name satisfactoriamente.',
+                'error' => 'No se pudo dar de baja el Curso :name.',
+                'has_relation' => 'No se pudo dar de baja el usuario porque se encuentra asignado a un curso actualmente.'
+            ],
+        ],
+        'field' => [
+
+        ],
+        'question' => [
+            'delete' => 'Desea dar de baja el Curso :name.',
+        ],
+    ],
 ];

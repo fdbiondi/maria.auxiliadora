@@ -20,6 +20,5 @@ class LevelsPlansSubjectsTableSeeder extends Seeder
         foreach ($plans as $plan) {
             $plan->subjects()->attach(factory(App\Entities\Subject::class, 10)->create());
         }
-        //factory(App\Entities\Level::class, 5)->create();
     }
 }

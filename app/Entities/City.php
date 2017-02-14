@@ -14,7 +14,10 @@ class City extends Entity
     protected $fillable = [
         'name', 'province_id'
     ];
-    
+
+    /**
+     * Relationships
+     */
     public function province()
     {
         return $this->belongsTo(Province::getClass());

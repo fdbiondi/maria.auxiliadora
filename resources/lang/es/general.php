@@ -52,11 +52,13 @@ return [
 
         'city' => 'Ciudad',
 
+        'date' => 'Fecha',
         'days' => 'Días',
         'days_times' => 'Días y Horarios',
-        'desactive' => 'Desactivar',
+        'deactivate' => 'Desactivar',
         'description' => 'Descripción',
         'details' => 'Detalles',
+        'division' => 'División',
         'dni' => 'Número de Documento',
 
         'email' => 'Email',
@@ -64,6 +66,7 @@ return [
         'images' => 'Imágenes',
 
         'last_name' => 'Apellido',
+        'level' => 'Nivel',
         'logo'  => 'Logo',
 
         'model_status' => '{0} Desactivo'.'|{1} Activo',
@@ -78,18 +81,16 @@ return [
         'role' => 'Rol',
 
         'select_city' => 'Seleccione Ciudad',
+        'select_division' => 'Seleccione División',
+        'select_level' => 'Seleccione Nivel',
         'select_role' => 'Seleccione Rol',
+        'select_year' => 'Seleccione Año',
 
         'type' => 'Tipo',
 
         'user_profile' => 'Perfil de Usuario',
-        //Roles ?? aca o separado ?
-        'preceptor' => 'Preceptor',
-        'student' => 'Estudiante',
-        'professor' => 'Profesor',
-        'secretary' => 'Secretario',
-        'tutor' => 'Tutor',
-        'super_admin' => 'Super Administrador',
+
+        'year' => 'Año',
     ],
     'language' => 'es', //TODO=> implementar cambio de lenguaje
     'message' => [
@@ -113,6 +114,13 @@ return [
         'secretary' => 'Secretario',
         'tutor' => 'Tutor',
         'super_admin' => 'Super Administrador',
+    ],
+    'levels' => [
+        '1' => '1ro',
+        '2' => '2do',
+        '3' => '3ro',
+        '4' => '4to',
+        '5' => '5to',
     ],
     'title' => 'Colegio María Auxiliadora - Sistema de Gestión',
 ];

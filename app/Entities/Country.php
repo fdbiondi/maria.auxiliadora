@@ -14,4 +14,9 @@ class Country extends Entity
     protected $fillable = [
         'name'
     ];
+
+    /**
+     * Relationships
+     */
+    
 }
