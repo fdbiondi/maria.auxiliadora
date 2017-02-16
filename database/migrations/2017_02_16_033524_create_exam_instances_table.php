@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGradesTable extends Migration
+class CreateExamInstancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateGradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('exam_instances', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade');
-            $table->string('description');
-            $table->unsignedInteger('course_user_subject_id');
-            
-            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subjects');
+            $table->string('name');
+            $table->date('from');
+            $table->date('to');    
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('exam_instances');
     }
 }

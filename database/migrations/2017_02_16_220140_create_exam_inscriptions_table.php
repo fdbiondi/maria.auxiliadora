@@ -15,12 +15,11 @@ class CreateExamInscriptionsTable extends Migration
     {
         Schema::create('exam_inscriptions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade'); //TODO ver si la nota la guardamos aca o en la tabla de notas
-            $table->unsignedInteger('exam_id');
-            $table->unsignedInteger('course_user_subject_id');
+            $table->unsignedInteger('exam_act_id');
+            $table->unsignedInteger('user_id');
 
-            $table->foreign('exam_id')->references('id')->on('exams');
-            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subjects');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('exam_act_id')->references('id')->on('exam_acts');
             $table->timestamps();
         });
     }

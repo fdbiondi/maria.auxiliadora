@@ -12,14 +12,18 @@ class Exam extends Entity
      * @var array
      */
     protected $fillable = [
-
+        'grade', 'exam_act_id', 'course_user_subject_id', 'attended'
     ];
 
     /**
      * Relationships
      */
-    public function subject()
+    public function exam_act()
     {
-        return $this->belongsTo(Subject::getClass());
+        return $this->belongsTo(ExamAct::getClass());
+    }
+
+    public function course_user_subject(){
+        return $this->belongsTo(CourseUserSubject::getClass());
     }
 }

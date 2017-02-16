@@ -12,18 +12,18 @@ class ExamInscription extends Entity
      * @var array
      */
     protected $fillable = [
-        'grade', 'exam_id', 'course_user_subject_id',
+        'exam_act_id','user_id'
     ];
 
     /**
      * Relationships
      */
-    public function exam()
+    public function exam_act()
     {
-        return $this->belongsTo(Exam::getClass());
+        return $this->belongsTo(ExamAct::getClass());
     }
 
-    public function course_user_subject(){
-        return $this->belongsTo(CourseUserSubject::getClass());
+    public function user(){
+        return $this->belongsTo(User::getClass());
     }
 }

@@ -15,10 +15,14 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects');
-            //TODO puede tener numero de acta
-            $table->dateTime('date_time');
+            $table->integer('grade'); //TODO ver si la nota la guardamos aca o en la tabla de notas
+            $table->boolean('attended')->default(false);
+            $table->unsignedInteger('exam_act_id');
+            $table->unsignedInteger('course_user_subject_id');
+
+            $table->foreign('exam_act_id')->references('id')->on('exam_acts');
+            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subjects');
+
             $table->timestamps();
         });
     }
