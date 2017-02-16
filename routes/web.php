@@ -39,25 +39,40 @@ Route::post('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ResetPa
 Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
 
-Route::group(['namespace' => 'Admin'], function() {
-    // Controllers Within The "App\Http\Controllers\Admin" Namespace
-    Route::group(['prefix' => 'subjects'], function () {
-        // Matches The "/admin/subjects" URL
-        Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectsController@index']);
-        Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectsController@create']);
-        Route::post('store', ['as' => 'subject.store', 'uses' => 'SubjectsController@store']);
-        Route::get('edit/{id}', ['as' => 'subject.edit', 'uses' => 'SubjectsController@edit']);
-        Route::post('update/{id}', ['as' => 'subject.update', 'uses' => 'SubjectsController@update']);
-        Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectsController@delete']);
-    });
+/**
+ * Admin Routes
+ */
+Route::group(['middleware'=> 'auth'], function() {
+    Route::group(['namespace' => 'Admin'], function () {
+        // Controllers Within The "App\Http\Controllers\Admin" Namespace
+        Route::group(['prefix' => 'subjects'], function () {
+            // Matches The "/admin/subjects" URL
+            Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectController@index']);
+            Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectController@create']);
+            Route::post('store', ['as' => 'subject.store', 'uses' => 'SubjectController@store']);
+            Route::get('edit/{id}', ['as' => 'subject.edit', 'uses' => 'SubjectController@edit']);
+            Route::post('update/{id}', ['as' => 'subject.update', 'uses' => 'SubjectController@update']);
+            Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectController@delete']);
+        });
 
-    Route::group(['prefix' => 'users'], function () {
-        // Matches The "/admin/users" URL
-        Route::get('list', ['as' => 'user.list', 'uses' => 'UsersController@index']);
-        Route::get('create', ['as' => 'user.create', 'uses' => 'UsersController@create']);
-        Route::post('store', ['as' => 'user.store', 'uses' => 'UsersController@store']);
-        Route::get('edit/{id}', ['as' => 'user.edit', 'uses' => 'UsersController@edit']);
-        Route::post('update/{id}', ['as' => 'user.update', 'uses' => 'UsersController@update']);
-        Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UsersController@delete']);
+        Route::group(['prefix' => 'users'], function () {
+            // Matches The "/admin/users" URL
+            Route::get('list', ['as' => 'user.list', 'uses' => 'UserController@index']);
+            Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
+            Route::post('store', ['as' => 'user.store', 'uses' => 'UserController@store']);
+            Route::get('edit/{id}', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
+            Route::post('update/{id}', ['as' => 'user.update', 'uses' => 'UserController@update']);
+            Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
+        });
+        // Controllers Within The "App\Http\Controllers\Admin" Namespace
+        Route::group(['prefix' => 'courses'], function () {
+            // Matches The "/admin/courses" URL
+            Route::get('list', ['as' => 'course.list', 'uses' => 'CourseController@index']);
+            Route::get('create', ['as' => 'course.create', 'uses' => 'CourseController@create']);
+            Route::post('store', ['as' => 'course.store', 'uses' => 'CourseController@store']);
+            Route::get('edit/{id}', ['as' => 'course.edit', 'uses' => 'CourseController@edit']);
+            Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
+            Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
+        });
     });
 });

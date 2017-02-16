@@ -33,7 +33,10 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
+    /** 
+     * Relationships 
+     */
     public function tutors()
     {
         return $this->belongsToMany(User::getClass());

@@ -2,9 +2,9 @@
 
 namespace App\Entities;
 
-class City extends Entity
+class ExamInstance extends Entity
 {
-    protected $table = 'cities';
+    protected $table = 'exam_instances';
 
     /**
      * The attributes that are mass assignable.
@@ -12,14 +12,14 @@ class City extends Entity
      * @var array
      */
     protected $fillable = [
-        'name', 'province_id'
+        'name','from','to'
     ];
 
     /**
      * Relationships
      */
-    public function province()
+    public function exam_acts()
     {
-        return $this->belongsTo(Province::getClass());
+        return $this->hasMany(ExamAct::getClass());
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     protected $userRepository;
     protected $roleRepository;
@@ -17,7 +17,6 @@ class UsersController extends Controller
 
     public function __construct(UserRepository $userRepository, RoleRepository $roleRepository, CityRepository $cityRepository)
     {
-        $this->middleware('auth');
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
         $this->cityRepository = $cityRepository;
@@ -110,7 +109,7 @@ class UsersController extends Controller
         if($response['delete']){
             $response['message'] = trans('admin.user.delete.message.success', ['name' => $response['user_name']]);
             $response['error'] = false;
-        }else{
+        } else{
             $response['message'] = trans('admin.user.delete.message.error');
             $response['error'] = true;
         }

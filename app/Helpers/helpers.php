@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\DateTimeUtils;
+use Carbon\Carbon;
 
 /**
  * @return \App\Entities\User|null
@@ -63,4 +64,18 @@ function getDateFormatted($unixDate)
         return "";
     else
         return DateTimeUtils::getDateFormatted($unixDate);
+}
+
+function getDateForSet($value) {
+    if($value=="" || $value==null)
+        return null;
+    else
+        return Carbon::createFromFormat('d/m/Y',$value);
+}
+
+function getDateForGet($value){
+    if($value=="0000-00-00" || $value==null || $value=="")
+        return null;
+    else
+        return Carbon::parse($value)->format('d/m/Y');
 }

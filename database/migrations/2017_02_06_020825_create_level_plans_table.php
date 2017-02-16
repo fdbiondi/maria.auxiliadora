@@ -13,7 +13,7 @@ class CreateLevelPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('level_plans', function (Blueprint $table) {
+        Schema::create('level_plan', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('level_id');
             $table->unsignedInteger('plan_id');
@@ -31,6 +31,6 @@ class CreateLevelPlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('level_plans');
+        Schema::dropIfExists('level_plan');
     }
 }

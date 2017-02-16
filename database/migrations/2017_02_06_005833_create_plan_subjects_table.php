@@ -13,7 +13,7 @@ class CreatePlanSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('plan_subjects', function (Blueprint $table) {
+        Schema::create('plan_subject', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('plan_id');
             $table->unsignedInteger('subject_id');
@@ -31,6 +31,6 @@ class CreatePlanSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plan_subjects');
+        Schema::dropIfExists('plan_subject');
     }
 }

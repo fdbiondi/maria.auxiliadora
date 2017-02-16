@@ -15,6 +15,11 @@ return [
                 'route' => 'user.list',
                 'text' => 'Usuarios',
             ],
+            'course' => [
+                'icon'=>'fa-globe',
+                'route' => 'course.list',
+                'text' => 'Cursos',
+            ],
             /*'countries' => [ 
                 'icon'=>'fa-globe',
                 'route' => 'countries.list',

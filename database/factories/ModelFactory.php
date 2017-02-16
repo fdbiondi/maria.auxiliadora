@@ -61,13 +61,35 @@ $factory->define(App\Entities\Role::class, function (Faker\Generator $faker){
 
 $factory->define(App\Entities\Level::class, function (Faker\Generator $faker){
     return [
-        'name' => $faker->unique()->numberBetween(0,5),
+        'name' => $faker->unique()->numberBetween(1,5),
     ];
 });
 
 $factory->define(App\Entities\Division::class, function (Faker\Generator $faker){
     return [
-        'name' => $faker->unique()->randomLetter,
+        'name' => $faker->unique()->randomElement(['A','B','C']),
+    ];
+});
+
+$factory->define(App\Entities\Plan::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->text(10),
+        'code' => $faker->unique()->numberBetween(0,10),
+        'date' => $faker->date('Y-m-d'),
+    ];
+});
+
+$factory->define(App\Entities\LevelPlan::class, function (Faker\Generator $faker) {
+    return [
+        'level_id' => $faker->randomDigit,
+        'plan_id' => $faker->randomDigit,
+    ];
+});
+
+$factory->define(App\Entities\PlanSubject::class, function (Faker\Generator $faker) {
+    return [
+        'plan_id' => $faker->randomDigit,
+        'subject_id' => $faker->randomDigit,
     ];
 });
 

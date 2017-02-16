@@ -2,7 +2,7 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.subject.create.title'),
+        'title'=>trans('admin.subject.edit.title'),
         'breadcrumbs' => [],
         'previous_url' => route('subject.list'),
         'previous_text' => trans('admin.subject.create.back')])

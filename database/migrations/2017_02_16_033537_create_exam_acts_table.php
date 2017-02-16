@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourseUserSubjectsTable extends Migration
+class CreateExamActsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateCourseUserSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_user_subjects', function (Blueprint $table) {
+        Schema::create('exam_acts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade');
-            //todo can have a state field (libre cursando aprobada reprobada recupera)
+            $table->string('act_number');
+            $table->string('classroom'); //todo podria ser una tabla que posea ls salones
+            $table->dateTime('date_time');
+            $table->unsignedInteger('exam_instance_id');
             $table->unsignedInteger('subject_id');
-            $table->unsignedInteger('course_user_id');
+            
+            $table->foreign('exam_instance_id')->references('id')->on('exam_instances');
             $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->foreign('course_user_id')->references('id')->on('course_users');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateCourseUserSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_user_subjects');
+        Schema::dropIfExists('exam_acts');
     }
 }

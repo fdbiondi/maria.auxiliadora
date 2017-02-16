@@ -15,6 +15,9 @@ class Resume extends Entity
         'path', 'user_id'
     ];
 
+    /**
+     * Relationships
+     */
     public function professional() {
         return $this->belongsTo(User::getClass());
     }
