@@ -21,4 +21,23 @@ class Course extends Entity
     public function users() {
         return $this->belongsToMany(User::getClass());
     }
+
+    public function level() {
+        return $this->belongsTo(Level::getClass());
+    }
+
+    public function division() {
+        return $this->belongsTo(Division::getClass());
+    }
+    
+    /**
+     * Methods
+     */
+    public function getDateAttribute($attr) {
+        return getDateForGet($attr);
+    }
+
+    public function setDateAttribute($value) {
+        $this->attributes['date'] = getDateForSet($value);
+    }
 }

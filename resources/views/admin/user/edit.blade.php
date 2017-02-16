@@ -8,7 +8,7 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.user.create.title'),
+        'title'=>trans('admin.user.edit.title'),
         'breadcrumbs' => [],
         'previous_url' => route('user.list'),
         'previous_text' => trans('admin.user.create.back')])

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Course;
+use Carbon\Carbon;
 
 class CourseRepository extends BaseRepository
 {
@@ -19,9 +20,7 @@ class CourseRepository extends BaseRepository
 
     public function create(Array $data)
     {
-        return $this->getModel()->create([
-            $this->prepareDataToSave($data)
-        ]);
+        return $this->getModel()->create($this->prepareDataToSave($data));
     }
 
     public function update($id, $data)
@@ -40,9 +39,11 @@ class CourseRepository extends BaseRepository
 
     public function prepareDataToSave(Array $data) {
         return [
-            'date' => $data["date"],
+            'date' => $data["date"], //Carbon::now()->format('Y-m-d H:i:s');
             'level_id' => $data["level_id"],
             'division_id'=> $data["division_id"],
         ];
     }
+
+    
 }

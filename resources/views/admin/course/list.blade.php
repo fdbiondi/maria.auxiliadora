@@ -35,8 +35,9 @@
                                 <tbody>
                                 @foreach($courses as $course)
                                     <tr class="gradeX">
-                                        <td>{{ $course->name }}</td>
-                                        <td>{{ $course->description }}</td>
+                                        <td>{{ trans('general.levels.'.$course->level->name) }}</td>
+                                        <td>{{ $course->division->name }}</td>
+                                        <td>{{ getDateForGet($course->date) }}</td>
                                         <td>
                                             @include('admin.partials.action_buttons', [
                                                 'url' => [

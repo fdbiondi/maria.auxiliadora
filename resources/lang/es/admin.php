@@ -106,10 +106,9 @@ return [
                 'title' => 'Listado de Cursos',
                 'add' => 'Agregar Nuevo Curso',
                 'header' => [
-                    'name'=> 'Nombre',
-                    'date' => 'Fecha',
                     'level' => 'Año',
                     'division' => 'División',
+                    'date' => 'Fecha',
                     'actions' => 'Acciones',
                 ],
             ],
