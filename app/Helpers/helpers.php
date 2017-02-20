@@ -11,6 +11,10 @@ function currentUser()
     return auth()->user();
 }
 
+function showLogUser() {
+    return currentUser()->name . " " . currentUser()->last_name;
+}
+
 /**
  * @return string
  */

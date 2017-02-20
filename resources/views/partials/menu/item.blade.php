@@ -8,6 +8,10 @@
 >
     <a href="{{ $route }}">
         <i class="fa {{ $icon }}"></i>
-        {{ $text }}
+        @if(isset($toggle))
+            {{ $text }}
+        @else
+            <span class="nav-label">{{ $text }}</span>
+        @endif
     </a>
 </li>

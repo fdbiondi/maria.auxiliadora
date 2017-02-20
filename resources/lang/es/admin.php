@@ -145,4 +145,13 @@ return [
             'delete' => 'Desea dar de baja el Curso :name.',
         ],
     ],
+    'profile' => [
+        'edit' => [
+            'title' => 'Perfil',
+            'message' => [
+                'success' => 'Se han actualizado sus datos.',
+                'error' => 'No se pudieron actualizar sus datos.',
+            ],
+        ],
+    ],
 ];

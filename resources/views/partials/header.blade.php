@@ -5,11 +5,8 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">{{ trans('general.header.title') }}</span>
+                <span class="m-r-sm text-muted welcome-message">{{ showLogUser() }}</span>
             </li>
-            {{--<li>
-                <span class="m-r-sm text-muted welcome-message"><strong>{{ auth()->user()->name }}</strong></span>
-            </li>--}}
             <li>
                 <a href="{{ route('logout') }}">
                     <i class="fa fa-sign-out"></i> {{ trans('login.general.logout') }}

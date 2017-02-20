@@ -10,6 +10,7 @@
     <ul class="nav nav-second-level collapse">
         @foreach($items as $item => $content)
             @include('partials.menu.item', [
+                'toggle' => true,
                 'route' => route($content['route']),
                 'icon' => $content['icon'],
                 'text' => $content['text'],

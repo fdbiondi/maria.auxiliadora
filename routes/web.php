@@ -74,7 +74,9 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
 
     Route::group(['prefix' => 'profile'], function () {
         // Matches The "/profile" URL
-        Route::get('view', ['as' => 'profile.view', 'uses' => 'ProfileController@edit']);
+        Route::get('view', ['as' => 'profile.view', 'uses' => 'ProfileController@view']);
         Route::post('update', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+        Route::get('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@changePassword']);
+        Route::post('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@updatePassword']);
     });
 });
