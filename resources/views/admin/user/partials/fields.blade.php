@@ -14,6 +14,7 @@
         <label for="email">{{ trans('general.label.email') }}:</label>
         <input name="email" id="email" type="text" class="form-control" value="{{ $user->email }}">
     </div>
+    @if( currentUser()->isAdmin() || currentUser()->isSecretary() )
     <!-- password -->
     <div class="form-group">
         <label for="password">{{ trans('general.label.password') }}:</label>
@@ -24,6 +25,7 @@
         <label for="password_confirmation">{{ trans('general.label.password_confirmation') }}:</label>
         <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" value="{{-- $user->password --}}">
     </div>
+    @endif
     <!-- phone -->
     <div class="form-group">
         <label for="phone">{{ trans('general.label.phone') }}:</label>
@@ -42,6 +44,7 @@
         <input name="dni" id="dni" type="text" class="form-control" value="{{ $user->dni }}">
     </div>
 
+    @if( currentUser()->isAdmin() )
     <!-- role -->
     @include('controls.select', [
         'title' => trans('general.label.role'),
@@ -53,6 +56,7 @@
         'field_value' => 'name',
         'trans' => trans('general.roles'),
     ])
+    @endif
 
     <!-- city -->
     @include('controls.select', [

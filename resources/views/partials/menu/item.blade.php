@@ -8,6 +8,6 @@
 >
     <a href="{{ $route }}">
         <i class="fa {{ $icon }}"></i>
-        <span class="nav-label">{{ $text }}</span>
+        {{ $text }}
     </a>
 </li>
