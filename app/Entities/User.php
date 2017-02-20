@@ -50,8 +50,35 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
     public function courses() {
         return $this->belongsToMany(Course::getClass());
     }
-    
+
     public function role() {
         return $this->belongsTo(Role::getClass());
+    }
+
+    /**
+     * User Authorization Level - Roles Methods
+     */
+    public function isAdmin() {
+        return $this->role->name == 'admin';
+    }
+
+    public function isSecretary() {
+        return $this->role->name == 'secretary';
+    }
+
+    public function isPreceptor() {
+        return $this->role->name == 'preceptor';
+    }
+
+    public function isTutor() {
+        return $this->role->name == 'tutor';
+    }
+
+    public function isStudent() {
+        return $this->role->name == 'student';
+    }
+
+    public function isProfessor() {
+        return $this->role->name == 'professor';
     }
 }

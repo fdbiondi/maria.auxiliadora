@@ -32,7 +32,7 @@ class RolesTableSeeder extends Seeder
         ]);
 
         factory(App\Entities\Role::class)->create([
-            'name' => 'super_admin',
+            'name' => 'admin',
         ]);
     }
 }

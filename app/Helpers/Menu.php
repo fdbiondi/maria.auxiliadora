@@ -37,6 +37,7 @@ class Menu
             if($active != "")
                 return $active;
         }
+        
         return "";
     }
 }

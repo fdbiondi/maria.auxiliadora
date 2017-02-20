@@ -10,13 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('/', function () {
-    if(Auth::check())
-        route('home');
-    else
-        route('login');
-});
-
 //Home Route
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
@@ -40,12 +33,15 @@ Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPa
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
 
 /**
- * Admin Routes
+ * Logged Users Routes
  */
-Route::group(['middleware'=> 'auth'], function() {
+Route::group(['middleware'=> ['auth', 'revalidate']], function() {
+    /**
+     * Administration Routes - (For administrative matters, not admin user)
+     */
     Route::group(['namespace' => 'Admin'], function () {
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
-        Route::group(['prefix' => 'subjects'], function () {
+        Route::group(['middleware' => 'admin', 'prefix' => 'subjects'], function () {
             // Matches The "/admin/subjects" URL
             Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectController@index']);
             Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectController@create']);
@@ -55,7 +51,7 @@ Route::group(['middleware'=> 'auth'], function() {
             Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectController@delete']);
         });
 
-        Route::group(['prefix' => 'users'], function () {
+        Route::group(['middleware' => 'admin', 'prefix' => 'users'], function () {
             // Matches The "/admin/users" URL
             Route::get('list', ['as' => 'user.list', 'uses' => 'UserController@index']);
             Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
@@ -64,8 +60,8 @@ Route::group(['middleware'=> 'auth'], function() {
             Route::post('update/{id}', ['as' => 'user.update', 'uses' => 'UserController@update']);
             Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
         });
-        // Controllers Within The "App\Http\Controllers\Admin" Namespace
-        Route::group(['prefix' => 'courses'], function () {
+        
+        Route::group(['middleware' => 'admin', 'prefix' => 'courses'], function () {
             // Matches The "/admin/courses" URL
             Route::get('list', ['as' => 'course.list', 'uses' => 'CourseController@index']);
             Route::get('create', ['as' => 'course.create', 'uses' => 'CourseController@create']);
@@ -74,5 +70,13 @@ Route::group(['middleware'=> 'auth'], function() {
             Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
         });
+    });
+
+    Route::group(['prefix' => 'profile'], function () {
+        // Matches The "/profile" URL
+        Route::get('view', ['as' => 'profile.view', 'uses' => 'ProfileController@view']);
+        Route::post('update', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+        Route::get('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@changePassword']);
+        Route::post('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@updatePassword']);
     });
 });

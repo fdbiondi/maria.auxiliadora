@@ -93,6 +93,13 @@ return [
         'year' => 'Año',
     ],
     'language' => 'es', //TODO=> implementar cambio de lenguaje
+    'levels' => [
+        '1' => '1ro',
+        '2' => '2do',
+        '3' => '3ro',
+        '4' => '4to',
+        '5' => '5to',
+    ],
     'message' => [
         'save'=>array(
             'fail_form' => 'Por favor revise el formulario.',
@@ -113,14 +120,7 @@ return [
         'professor' => 'Profesor',
         'secretary' => 'Secretario',
         'tutor' => 'Tutor',
-        'super_admin' => 'Super Administrador',
-    ],
-    'levels' => [
-        '1' => '1ro',
-        '2' => '2do',
-        '3' => '3ro',
-        '4' => '4to',
-        '5' => '5to',
+        'admin' => 'Super Administrador',
     ],
     'title' => 'Colegio María Auxiliadora - Sistema de Gestión',
 ];
