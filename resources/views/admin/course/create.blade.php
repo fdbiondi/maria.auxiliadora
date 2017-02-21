@@ -4,8 +4,8 @@
 @parent
     <!-- BOOTSTRAP SELECT -->
     {!! Html::style('assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css') !!}
-    <!-- DATE PICKER -->
-    {!! Html::style('assets/template/css/plugins/datapicker/datepicker3.css') !!}
+    <!-- DATETIME PICKER -->
+    {!! Html::style('assets/template/css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') !!}
 @endsection
 
 @section('content-header')
@@ -26,10 +26,10 @@
                         'title'=> trans('admin.course.create.subtitle')])
                     <div class="ibox-content">
                         {!! Form::open(['id' => 'admin_form', 'route' => 'course.store', 'method' => 'POST']) !!}
-                        @include('admin.course.partials.fields')
-                        <div class="form-group">
-                            @include('admin.partials.save_button')
-                        </div>
+                            @include('admin.course.partials.fields')
+                            <div class="form-group">
+                                @include('admin.partials.save_button')
+                            </div>
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -42,22 +42,23 @@
     @parent
     <!-- BOOTSTRAP SELECT -->
     {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}
-    <!-- DATE PICKER -->
-    {!! Html::script('assets/template/js/plugins/datapicker/bootstrap-datepicker.js') !!}
-    {!! Html::script('assets/template/js/plugins/datapicker/datepicker.'. getAppLanguage() .'.js') !!}
+    <!-- MOMENT JS-->
+    {!! Html::script('assets/template/js/plugins/moment/moment.min.js') !!}
+    {!! Html::script('assets/template/js/plugins/moment/locale.'. getAppLanguage() .'.js') !!}
+    <!-- DATETIME PICKER -->
+    {!! Html::script('assets/template/js/plugins/datetimepicker/bootstrap-datetimepicker.min.js') !!}
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
 
     <script type="text/javascript">
         ACTION_URL = "{{ route('course.create') }}";
 
-        $('.date').datepicker({
-            format: "dd/mm/yyyy",
-            language: "es",
-            autoclose: true,
-            todayHighlight: true
-        }).on('changeDate', function(e) {
-            var date = new Date(e.date);
+        $(function () {
+            $('.date').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY',
+                locale: LANG
+            });
         });
     </script>
 @stop

@@ -48,11 +48,14 @@ return [
     ],
     'label' => [
         'active' => 'Activar',
+        'act_number' => 'Número de Acta',
         'address' => 'Dirección',
 
         'city' => 'Ciudad',
+        'classroom' => 'Salón de Clase',
 
         'date' => 'Fecha',
+        'date_time' => 'Fecha y Hora',
         'days' => 'Días',
         'days_times' => 'Días y Horarios',
         'deactivate' => 'Desactivar',
@@ -62,6 +65,9 @@ return [
         'dni' => 'Número de Documento',
 
         'email' => 'Email',
+        'exam_instance' => 'Mesa de Exámen',
+
+        'from' => 'Desde',
 
         'images' => 'Imágenes',
 
@@ -82,15 +88,20 @@ return [
 
         'select_city' => 'Seleccione Ciudad',
         'select_division' => 'Seleccione División',
+        'select_exam_instance' => 'Seleccione Mesa de Exámen',
         'select_level' => 'Seleccione Nivel',
         'select_role' => 'Seleccione Rol',
+        'select_subject' => 'Seleccione Materia',
         'select_year' => 'Seleccione Año',
+        'subject' => 'Materia',
 
+        'to' => 'Hasta',
         'type' => 'Tipo',
 
         'user_profile' => 'Perfil de Usuario',
 
         'year' => 'Año',
+        'year_of_study' => 'Año de Cursado',
     ],
     'language' => 'es', //TODO=> implementar cambio de lenguaje
     'levels' => [

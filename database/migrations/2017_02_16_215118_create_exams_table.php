@@ -15,7 +15,7 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade'); //TODO ver si la nota la guardamos aca o en la tabla de notas
+            $table->integer('mark'); //TODO ver si la nota la guardamos aca o en la tabla de notas
             $table->boolean('attended')->default(false);
             $table->unsignedInteger('exam_act_id');
             $table->unsignedInteger('course_user_subject_id');

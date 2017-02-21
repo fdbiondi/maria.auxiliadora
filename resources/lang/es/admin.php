@@ -108,7 +108,7 @@ return [
                 'header' => [
                     'level' => 'Año',
                     'division' => 'División',
-                    'date' => 'Fecha',
+                    'year' => 'Año de Cursado',
                     'actions' => 'Acciones',
                 ],
             ],
@@ -145,9 +145,107 @@ return [
             'delete' => 'Desea dar de baja el Curso :name.',
         ],
     ],
-    'profile' => [
+    'exam_instance' => [
+        'list' => [
+            'title' => 'Mesas de Exámen',
+            'table' => [
+                'title' => 'Listado de Mesas de Exámenes',
+                'add' => 'Agregar Nueva Mesa de Exámen',
+                'header' => [
+                    'name' => 'Nombre',
+                    'from' => 'Desde',
+                    'to' => 'Hasta',
+                    'actions' => 'Acciones',
+                    //'relation' => ''
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+        'create' => [
+            'title' => 'Nueva Mesa de Exámen',
+            'subtitle' => 'Datos de la Mesa de Exámen',
+            'message' => [
+                'success' => 'Se ha creado la Mesa de Exámen :name satisfactoriamente.',
+                'error' => 'No se guardaron los datos de la Mesa de Exámen.',
+            ],
+            'back' => 'Volver a Mesa de Exámenes',
+        ],
         'edit' => [
-            'title' => 'Perfil',
+            'title' => 'Editar Mesa de Exámen',
+            'message' => [
+                'success' => 'Se ha actualizado la Mesa de Exámen :name satisfactoriamente.',
+                'error' => 'No se pudieron actualizar los datos de la Mesa de Exámen.',
+            ],
+        ],
+        'delete' => [
+            'title' => 'Baja de Mesa de Exámen',
+            'message' => [
+                'success' => 'Se ha dado de baja la Mesa de Exámen :name satisfactoriamente.',
+                'error' => 'No se pudo dar de baja la Mesa de Exámen :name.',
+                'has_relation' => 'No se pudo dar de baja la mesa de exámen porque posee examenes asignados.'
+            ],
+        ],
+        'field' => [
+
+        ],
+        'question' => [
+            'delete' => 'Desea dar de baja la Mesa de Exámen :name.',
+        ],
+    ],
+    'exam_act' => [
+        'list' => [
+            'title' => 'Exámenes',
+            'table' => [
+                'title' => 'Listado de Exámenes',
+                'add' => 'Agregar Exámen',
+                'header' => [
+                    'act_number' => 'Número de Acta',
+                    'classroom' => 'Salón de Clase',
+                    'date_time' => 'Fecha y Hora',
+                    'exam_instance' => 'Mesa de Exámen',
+                    'subject' => 'Materia',
+                    'actions' => 'Acciones',
+                    //'relation' => ''
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+        'create' => [
+            'title' => 'Nuevo Exámen',
+            'subtitle' => 'Datos del Exámen',
+            'message' => [
+                'success' => 'Se ha creado el Exámen :name satisfactoriamente.',
+                'error' => 'No se guardaron los datos del Exámen.',
+            ],
+            'back' => 'Volver a Exámenes',
+        ],
+        'edit' => [
+            'title' => 'Editar Exámen',
+            'message' => [
+                'success' => 'Se ha actualizado el Exámen :name satisfactoriamente.',
+                'error' => 'No se pudieron actualizar los datos del Exámen.',
+            ],
+        ],
+        'delete' => [
+            'title' => 'Baja del Exámen',
+            'message' => [
+                'success' => 'Se ha dado de baja el Exámen :name satisfactoriamente.',
+                'error' => 'No se pudo dar de baja el Exámen :name.',
+                'has_relation' => 'No se pudo dar de baja el exámen porque posee inscriptos.'
+            ],
+        ],
+        'field' => [
+
+        ],
+        'question' => [
+            'delete' => 'Desea dar de baja el Exámen :name.',
+        ],
+    ],
+    'profile' => [
+        'title' => 'Perfíl',
+        'subtitle' => 'Datos del perfil',
+        'back' => 'Volver al Inicio',
+        'update' => [
             'message' => [
                 'success' => 'Se han actualizado sus datos.',
                 'error' => 'No se pudieron actualizar sus datos.',

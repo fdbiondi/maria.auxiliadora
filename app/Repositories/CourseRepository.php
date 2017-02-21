@@ -3,12 +3,11 @@
 namespace App\Repositories;
 
 use App\Entities\Course;
-use Carbon\Carbon;
 
 class CourseRepository extends BaseRepository
 {
     protected $table = "courses";
-    protected $column = "date";
+    protected $column = "year";
 
     /**
      * @return \App\Entities\Entity
@@ -20,30 +19,24 @@ class CourseRepository extends BaseRepository
 
     public function create(Array $data)
     {
-        return $this->getModel()->create($this->prepareDataToSave($data));
+        return $this->getModel()->create([
+            'year' => $data["year"],
+            'level_id' => $data["level_id"],
+            'division_id'=> $data["division_id"],
+        ]);
     }
 
     public function update($id, $data)
     {
-        $subject = $this->findOrFail($id);
+        $course = $this->findOrFail($id);
 
-        $subject->fill($data);
+        $course->fill($data);
 
-        return $subject->save();
+        return $course->save();
     }
 
     public function delete($id)
     {
         return true;
     }
-
-    public function prepareDataToSave(Array $data) {
-        return [
-            'date' => $data["date"], //Carbon::now()->format('Y-m-d H:i:s');
-            'level_id' => $data["level_id"],
-            'division_id'=> $data["division_id"],
-        ];
-    }
-
-    
 }

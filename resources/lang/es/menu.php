@@ -20,7 +20,8 @@ return [
                 'route' => 'course.list',
                 'text' => 'Cursos',
             ],
-            /*'countries' => [ 
+            /*
+            'countries' => [ 
                 'icon'=>'fa-globe',
                 'route' => 'countries.list',
                 'text' => 'Países', 
@@ -37,7 +38,34 @@ return [
         ],
     ],
     'secretary' => [
-
+        'title' => 'Exámenes',
+        'icon' => 'fa-cogs',
+        'items' => [
+            /*'inscription' => [
+                'icon'=>'fa-building',
+                'route' => 'course.list',
+                'text' => 'Inscribir a Curso',
+                'sections' => [
+                    '' => '',
+                ],
+            ],*/
+            'exam_instance' => [
+                'icon'=>'fa-building',
+                'route' => 'exam_instance.list',
+                'text' => 'Mesas de Exámen',
+            ],
+            'exam_act' => [
+                'icon'=>'fa-building',
+                'route' => 'exam_act.list',
+                'text' => 'Exámenes',
+            ],
+        ],
+        'sections' => [
+            'list' => '.list',
+            'create' => '.create',
+            'edit' => '.edit',
+        ],
+        
     ],
     'student' => [
 

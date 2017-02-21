@@ -25,12 +25,12 @@
                     <div class="ibox-content">
                         <div class="row">
                             {!! Form::open(['id' => 'admin_form', 'route' => 'user.store', 'method' => 'POST']) !!}
-                            @include('admin.user.partials.fields')
-                            <div class="col-sm-4 col-sm-offset-8">
-                                <div class="form-group">
-                                    @include('admin.partials.save_button')
+                                @include('admin.user.partials.fields')
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @include('admin.partials.save_button')
+                                    </div>
                                 </div>
-                            </div>
                             {!! Form::close() !!}
                         </div>
                     </div>

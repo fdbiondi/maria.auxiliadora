@@ -1,12 +1,12 @@
 <?php 
 
 namespace App\Helpers;
-
-//helper to show datetimes, pass from and to unix format
-//tips
-    //Times => use UTC time
-//DateTimes => use Without UTC
-
+/**
+ * Helper to show datetimes, pass from and to unix format
+ * Tips
+ * Times => use UTC time
+ * DateTimes => use Without UTC
+ */
 use Carbon\Carbon;
 
 class DateTimeUtils
@@ -23,8 +23,7 @@ class DateTimeUtils
                 var_dump(Carbon::WEDNESDAY);                       // int(3)        3
                 var_dump(Carbon::THURSDAY);                        // int(4)        4
                 var_dump(Carbon::FRIDAY);                          // int(5)        5
-                var_dump(Carbon::SATURDAY);                        // int(6)        6
-        */
+                var_dump(Carbon::SATURDAY);                        // int(6)        6*/
         switch(self::datetimeForDatetime($unixDate)->dayOfWeek)
         {
             case Carbon::SUNDAY:    return 7; break;
@@ -80,7 +79,7 @@ class DateTimeUtils
     }
 
     /**
-     * return dd/mm/yyy HH:ii
+     * return dd/mm/yyyy HH:ii
      */
     public static function getDateTimeFormatted($unixDate, $format = ""){
         $date = DateTimeUtils::datetimeForTime($unixDate);
@@ -148,7 +147,6 @@ class DateTimeUtils
     }
 
     private static function unixForDatetime($datetime, $format=""){
-
         if($format=="")
             $format = config('constants.DATETIME_FORMAT');
 

@@ -142,6 +142,14 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+        'role_id'               => 'rol',
+        'from'                  => 'desde',
+        'to'                    => 'hasta',
+        'act_number'            => 'número de acta',
+        'classroom'             => 'salón de clase',
+        'date_time'             => 'fecha y hora',
+        'exam_instance_id'         => 'mesa de exámen',
+        'subject_id'            => 'materia',
     ],
 
 ];

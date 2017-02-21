@@ -12,7 +12,7 @@ class Exam extends Entity
      * @var array
      */
     protected $fillable = [
-        'grade', 'exam_act_id', 'course_user_subject_id', 'attended'
+        'mark', 'exam_act_id', 'course_user_subject_id', 'attended'
     ];
 
     /**

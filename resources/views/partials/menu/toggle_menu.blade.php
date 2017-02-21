@@ -15,7 +15,7 @@
                 'icon' => $content['icon'],
                 'text' => $content['text'],
                 'subitems' => isset($content['subitems']) ? $content['subitems']: []
-                ])
+            ])
         @endforeach
     </ul>
 </li>

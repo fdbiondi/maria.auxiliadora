@@ -25,7 +25,10 @@ class Menu
     public static function isActive($items, $sections)
     {
         foreach ($items as $item => $content) {
-            $active = Menu::isSelectRoute($item, $sections);
+            if(isset($content['sections']))
+                $active = Menu::isSelectRoute($item, $content['sections']);
+            else
+                $active = Menu::isSelectRoute($item, $sections);
 
             if($active != "")
                 return $active;

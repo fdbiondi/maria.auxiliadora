@@ -48,7 +48,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'date' => 'required|date|date_format:d/m/Y',
+            'year' => 'required|date_format:Y',
             'level_id' => 'required',
             'division_id' => 'required',
         ]);
@@ -72,7 +72,7 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'date' => 'required|date|date_format:d/m/Y',
+            'year' => 'required|date_format:Y',
             'level_id' => 'required',
             'division_id' => 'required',
         ]);

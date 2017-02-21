@@ -79,7 +79,22 @@ function getDateForSet($value) {
 
 function getDateForGet($value){
     if($value=="0000-00-00" || $value==null || $value=="")
-        return null;
+        return "";
     else
         return Carbon::parse($value)->format('d/m/Y');
+}
+
+//Datetime
+function getDateTimeForSet($value) {
+    if($value=="" || $value==null)
+        return null;
+    else
+        return Carbon::createFromFormat('d/m/Y H:i',$value);
+}
+
+function getDateTimeForGet($value){
+    if($value=="0000-00-00" || $value==null || $value=="")
+        return "";
+    else
+        return Carbon::parse($value)->format('d/m/Y H:i');
 }

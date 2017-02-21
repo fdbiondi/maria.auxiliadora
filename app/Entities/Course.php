@@ -12,7 +12,7 @@ class Course extends Entity
      * @var array
      */
     protected $fillable = [
-        'date', 'level_id', 'division_id'
+        'year', 'level_id', 'division_id'
     ];
 
     /**
@@ -33,11 +33,4 @@ class Course extends Entity
     /**
      * Methods
      */
-    public function getDateAttribute($attr) {
-        return getDateForGet($attr);
-    }
-
-    public function setDateAttribute($value) {
-        $this->attributes['date'] = getDateForSet($value);
-    }
 }

@@ -23,9 +23,17 @@ class UserRepository extends BaseRepository
      */
     public function create(Array $data)
     {
-        return $this->getModel()->create(
-            $this->prepareDataToSave($data)
-        );
+        return $this->getModel()->create([
+            'name' => $data["name"],
+            'last_name' => $data["last_name"],
+            'email' => $data["email"],
+            'password' => bcrypt($data["password"]),
+            'dni' => $data["dni"],
+            'address' => $data["address"],
+            'phone' => $data["phone"],
+            'city_id' => $data["city_id"],
+            'role_id' => $data["role_id"],
+        ]);
     }
 
     /**
@@ -37,12 +45,13 @@ class UserRepository extends BaseRepository
     {
         $user = $this->findOrFail($id);
 
-        $user->fill(
-            $this->prepareDataToSave($data)
-        );
+        $user->fill($data);
 
-        if(trim($data["password"]) != "")
-            $user->password = bcrypt(trim($data["password"]));
+        if(isset($data["password"]) && $data["password"] != "")
+            $user->password = $data["password"];
+
+        if(isset($data["role_id"]))
+            $user->role_id = $data["role_id"];
 
         return $user->save();
     }
@@ -51,19 +60,4 @@ class UserRepository extends BaseRepository
     {
         return true;
     }
-
-    public function prepareDataToSave(Array $data) {
-        return [
-            'name' => trim($data["name"]),
-            'last_name' => trim($data["last_name"]),
-            'email' => trim($data["email"]),
-            'password' => bcrypt(trim($data["password"])),
-            'dni' => trim($data["dni"]),
-            'address' => trim($data["address"]),
-            'phone' => trim($data["phone"]),
-            'city_id' => $data["city_id"],
-            'role_id'=> $data["role_id"],
-        ];
-    }
-
 }

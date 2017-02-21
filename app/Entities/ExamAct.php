@@ -27,4 +27,15 @@ class ExamAct extends Entity
     {
         return $this->belongsTo(ExamInstance::getClass());
     }
+    
+    /**
+     * Methods
+     */
+    public function getDateTimeAttribute($attr) {
+        return getDateTimeForGet($attr);
+    }
+
+    public function setDateTimeAttribute($value) {
+        $this->attributes['date_time'] = getDateTimeForSet($value);
+    }
 }

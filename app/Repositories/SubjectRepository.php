@@ -19,8 +19,8 @@ class SubjectRepository extends BaseRepository
     public function create($name, $description)
     {
         return $this->getModel()->create([
-            'name' => trim($name),
-            'description' => trim($description),
+            'name' => $name,
+            'description' => $description,
         ]);
     }
 

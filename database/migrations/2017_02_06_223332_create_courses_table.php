@@ -15,7 +15,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date'); //fecha o año del curso en el que se asiste, year (promocion)
+            $table->integer('year'); //fecha o año del curso en el que se asiste, year (promocion)
             $table->unsignedInteger('level_id');
             $table->unsignedInteger('division_id');
             

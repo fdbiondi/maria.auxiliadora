@@ -17,7 +17,7 @@ class CreateExamInstancesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('from');
-            $table->date('to');    
+            $table->date('to');
             $table->timestamps();
         });
     }

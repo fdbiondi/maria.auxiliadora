@@ -37,7 +37,7 @@
                                     <tr class="gradeX">
                                         <td>{{ trans('general.levels.'.$course->level->name) }}</td>
                                         <td>{{ $course->division->name }}</td>
-                                        <td>{{ getDateForGet($course->date) }}</td>
+                                        <td>{{ $course->year }}</td>
                                         <td>
                                             @include('admin.partials.action_buttons', [
                                                 'url' => [
@@ -70,7 +70,7 @@
         var QUESTION_DELETE = "{{ trans('admin.course.question.delete') }}" ;
         ACTION_URL = "{{ route('course.list') }}";
 
-        $order = [[ 0, "asc" ]];
+        $order = [[ 2, "desc" ]];
         $fileToExportName = "Courses";
     </script>
 @stop

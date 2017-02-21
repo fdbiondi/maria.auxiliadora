@@ -1,7 +1,8 @@
+<!-- year_of_study -->
 <div class="form-group">
-    <label>{{ trans('general.label.date') }}:</label>
+    <label for="year">{{ trans('general.label.year_of_study') }}:</label>
     <div class="input-group date">
-        <input type="text" id="date" name="date" class="form-control date" value="{{ $course->date }}">
+        <input type="text" id="year" name="year" class="form-control date" value="{{ $course->year }}">
         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
     </div>
 </div>

@@ -46,14 +46,4 @@ abstract class BaseRepository
     {
         return $this->selectAll($columns)->get();
     }
-
-    public function getAllWith($relation)
-    {
-        return $this->selectAll()->with($relation)->get();
-    }
-
-    public function getById($id, $columns = ['*'])
-    {
-        return $this->getModel()->find($id, $columns);
-    }
 }

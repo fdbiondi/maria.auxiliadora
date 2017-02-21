@@ -42,7 +42,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
     Route::group(['namespace' => 'Admin'], function () {
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
         Route::group(['middleware' => 'admin', 'prefix' => 'subjects'], function () {
-            // Matches The "/admin/subjects" URL
+            // Matches The "/subjects" URL
             Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectController@index']);
             Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectController@create']);
             Route::post('store', ['as' => 'subject.store', 'uses' => 'SubjectController@store']);
@@ -52,7 +52,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
         });
 
         Route::group(['middleware' => 'admin', 'prefix' => 'users'], function () {
-            // Matches The "/admin/users" URL
+            // Matches The "/users" URL
             Route::get('list', ['as' => 'user.list', 'uses' => 'UserController@index']);
             Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
             Route::post('store', ['as' => 'user.store', 'uses' => 'UserController@store']);
@@ -62,13 +62,36 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
         });
         
         Route::group(['middleware' => 'admin', 'prefix' => 'courses'], function () {
-            // Matches The "/admin/courses" URL
+            // Matches The "/courses" URL
             Route::get('list', ['as' => 'course.list', 'uses' => 'CourseController@index']);
             Route::get('create', ['as' => 'course.create', 'uses' => 'CourseController@create']);
             Route::post('store', ['as' => 'course.store', 'uses' => 'CourseController@store']);
             Route::get('edit/{id}', ['as' => 'course.edit', 'uses' => 'CourseController@edit']);
             Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
+        });
+
+        Route::group(['middleware' => 'secretary', 'prefix' => 'exams'], function () {
+            Route::group(['prefix' => 'instances'], function () {
+                // Matches The "/exams/instances" URL
+                Route::get('list', ['as' => 'exam_instance.list', 'uses' => 'ExamInstanceController@index']);
+                Route::get('create', ['as' => 'exam_instance.create', 'uses' => 'ExamInstanceController@create']);
+                Route::post('store', ['as' => 'exam_instance.store', 'uses' => 'ExamInstanceController@store']);
+                Route::get('edit/{id}', ['as' => 'exam_instance.edit', 'uses' => 'ExamInstanceController@edit']);
+                Route::post('update/{id}', ['as' => 'exam_instance.update', 'uses' => 'ExamInstanceController@update']);
+                Route::delete('delete', ['as' => 'exam_instance.delete', 'uses' => 'ExamInstanceController@delete']);
+            });
+
+            Route::group(['prefix' => 'acts'], function () {
+                // Matches The "/exams/acts" URL
+                Route::get('list', ['as' => 'exam_act.list', 'uses' => 'ExamActController@index']);
+                Route::get('create', ['as' => 'exam_act.create', 'uses' => 'ExamActController@create']);
+                Route::post('store', ['as' => 'exam_act.store', 'uses' => 'ExamActController@store']);
+                Route::get('edit/{id}', ['as' => 'exam_act.edit', 'uses' => 'ExamActController@edit']);
+                Route::post('update/{id}', ['as' => 'exam_act.update', 'uses' => 'ExamActController@update']);
+                Route::delete('delete', ['as' => 'exam_act.delete', 'uses' => 'ExamActController@delete']);
+            });
+
         });
     });
 

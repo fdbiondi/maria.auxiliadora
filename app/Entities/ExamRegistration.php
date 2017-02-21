@@ -2,9 +2,9 @@
 
 namespace App\Entities;
 
-class ExamInscription extends Entity
+class ExamRegistration extends Entity
 {
-    protected $table = 'exam_inscriptions';
+    protected $table = 'exams_registration';
 
     /**
      * The attributes that are mass assignable.

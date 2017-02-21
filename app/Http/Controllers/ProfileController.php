@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         $user = currentUser();
         $cities = $this->cityRepository->getAll();
-        return view('admin.user.edit', compact('user', 'cities'));
+        return view('profile.view', compact('user', 'cities'));
     }
 
     public function update(Request $request)
@@ -37,11 +37,11 @@ class ProfileController extends Controller
         $user = $this->userRepository->update(currentUser()->id, $request->all());
 
         if ($user){
-            $response['message'] = trans('admin.profile.edit.message.success');
+            $response['message'] = trans('admin.profile.update.message.success');
             $response['error'] = false;
         }
         else{
-            $response['message'] = trans('admin.profile.edit.message.error');
+            $response['message'] = trans('admin.profile.update.message.error');
             $response['error'] = true;
         }
 

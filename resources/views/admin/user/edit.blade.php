@@ -23,15 +23,16 @@
                     @include('admin.partials.title', [
                         'title'=> trans('admin.user.create.subtitle')])
                     <div class="ibox-content">
-                        {!! Form::open(['id' => 'admin_form', 'route' => ['user.update', $user], 'method' => 'POST']) !!}
-                        @include('admin.user.partials.fields')
-                        <div class="form-group">
-                            {{ Form::button(trans('general.button.save'), [
-                                'class' => 'ladda-button ladda-button-demo btn btn-primary btn-block',
-                                'id' => 'btn_save',
-                                'data-style' =>'zoom-in'])}}
+                        <div class="row">
+                            {!! Form::open(['id' => 'admin_form', 'route' => ['user.update', $user], 'method' => 'POST']) !!}
+                                @include('admin.user.partials.fields')
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @include('admin.partials.save_button')
+                                    </div>
+                                </div>
+                            {!! Form::close() !!}
                         </div>
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

@@ -22,4 +22,23 @@ class ExamInstance extends Entity
     {
         return $this->hasMany(ExamAct::getClass());
     }
+
+    /**
+     * Methods
+     */
+    public function getFromAttribute($attr) {
+        return getDateForGet($attr);
+    }
+
+    public function setFromAttribute($value) {
+        $this->attributes['from'] = getDateForSet($value);
+    }
+
+    public function getToAttribute($attr) {
+        return getDateForGet($attr);
+    }
+
+    public function setToAttribute($value) {
+        $this->attributes['to'] = getDateForSet($value);
+    }
 }

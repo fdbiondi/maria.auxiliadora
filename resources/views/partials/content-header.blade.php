@@ -1,4 +1,9 @@
-{{-- $title = string, $subtitle = string, $breadcrumbs = array(), $previous_url = url, $previous_text = string --}}
+{{--
+    $title = string,
+    $subtitle = string,
+    $breadcrumbs = array(),
+    $previous_url = url,
+    $previous_text = string --}}
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2><strong>{{ $title }}</strong>
