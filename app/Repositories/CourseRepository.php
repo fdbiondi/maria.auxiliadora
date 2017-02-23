@@ -37,6 +37,20 @@ class CourseRepository extends BaseRepository
 
     public function delete($id)
     {
-        return true;
+        $course = $this->findOrFail($id);
+
+        if ((count($course->users) > 0)) {
+            return [
+                'deleted' => false,
+                'has_relation' => true,
+            ];
+        }
+        else {
+            return [
+                'has_relation' => false,
+                'name' => "{$course->level->name}° {$course->division->name} - {$course->year}",
+                'deleted' => $course->delete(),
+            ];
+        }
     }
 }

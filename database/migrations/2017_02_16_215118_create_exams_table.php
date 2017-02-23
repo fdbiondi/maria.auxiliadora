@@ -21,7 +21,7 @@ class CreateExamsTable extends Migration
             $table->unsignedInteger('course_user_subject_id');
 
             $table->foreign('exam_act_id')->references('id')->on('exam_acts');
-            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subjects');
+            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subject');
 
             $table->timestamps();
         });

@@ -60,4 +60,50 @@ class UserRepository extends BaseRepository
     {
         return true;
     }
+
+
+    /**
+     * @param String $role
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getWhereRole($role) {
+        return $this->getModel()->selectRaw("users.*")
+            ->join('roles', function ($join) use ($role) {
+                $join->on('users.role_id', '=', 'roles.id')
+                    ->where('roles.name', "$role");
+                })
+            ->get();
+    }
+
+    public function getStudentsWithOutRegister($year) {
+        $students = $this->getModel()->selectRaw("users.*")
+            ->join('roles', function ($join) {
+                $join->on('users.role_id', '=', 'roles.id')
+                    ->where('roles.name', 'student');
+            })
+            ->with('courses')
+            ->get();
+        
+        $studentsWithOutRegister = [];
+
+        foreach ($students as $student) {
+            $register = true;
+
+            if(isset($student->courses)) {
+                foreach ($student->courses as $r) {
+                    if ($r->year == $year) {
+                        $register = false;
+                        break;
+                    }
+                }
+            }
+
+            if ($register)
+                $studentsWithOutRegister[] = $student;
+        }
+
+        return $studentsWithOutRegister;
+    }
+
+
 }

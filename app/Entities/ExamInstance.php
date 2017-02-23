@@ -18,7 +18,7 @@ class ExamInstance extends Entity
     /**
      * Relationships
      */
-    public function exam_acts()
+    public function acts()
     {
         return $this->hasMany(ExamAct::getClass());
     }

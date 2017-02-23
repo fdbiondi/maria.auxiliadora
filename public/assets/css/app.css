@@ -1,6 +1,6 @@
-/*---
--Control para poner detras del spinner para simular carga de pagina
----*/
+/*
+ * Control para poner detras del spinner para simular carga de pagina
+ */
 .overlay{
     position: fixed;
     display: flex;
@@ -36,4 +36,21 @@ input.loading {
 
 .logo-image {
     width:60px;
+}
+
+
+/* Checkbox Control */
+
+.checkbox-table {
+    overflow-y:scroll;
+    height:400px;
+}
+
+/* Select Control */
+.btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus,
+.btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled],
+.btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled]:active,
+.btn-default.active[disabled], fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover,
+fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
+    color: #757575;
 }

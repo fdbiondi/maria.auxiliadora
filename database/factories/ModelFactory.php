@@ -20,6 +20,7 @@ $factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'file_number' => $faker->unique()->numberBetween(0,100000),
         'dni' => $faker->randomNumber(8),
         'city_id' => 1,
         'role_id' => 2,

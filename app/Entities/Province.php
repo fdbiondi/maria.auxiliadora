@@ -22,4 +22,8 @@ class Province extends Entity
     {
         return $this->belongsTo(Country::getClass());
     }
+    
+    public function cities() {
+        return $this->hasMany(City::getClass());
+    }
 }

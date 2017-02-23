@@ -70,6 +70,10 @@ function getDateFormatted($unixDate)
         return DateTimeUtils::getDateFormatted($unixDate);
 }
 
+function getDateNow() {
+    return DateTimeUtils::getUnixDateNow();
+}
+
 function getDateForSet($value) {
     if($value=="" || $value==null)
         return null;

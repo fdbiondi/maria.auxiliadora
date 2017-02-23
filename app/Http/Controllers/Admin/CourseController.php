@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Course;
 use App\Http\Controllers\Controller;
 use App\Repositories\CourseRepository;
+use App\Repositories\CourseUserRepository;
 use App\Repositories\DivisionRepository;
 use App\Repositories\LevelRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,14 +16,20 @@ class CourseController extends Controller
     protected $courseRepository;
     protected $levelRepository;
     protected $divisionRepository;
+    protected $userRepository;
+    protected $courseUserRepository;
 
     public function __construct(CourseRepository $courseRepository,
                                 LevelRepository $levelRepository,
-                                DivisionRepository $divisionRepository)
+                                DivisionRepository $divisionRepository,
+                                UserRepository $userRepository,
+                                CourseUserRepository $courseUserRepository)
     {
         $this->courseRepository = $courseRepository;
         $this->levelRepository = $levelRepository;
         $this->divisionRepository = $divisionRepository;
+        $this->userRepository = $userRepository;
+        $this->courseUserRepository = $courseUserRepository;
     }
 
     public function index()
@@ -34,7 +43,8 @@ class CourseController extends Controller
         $course = $this->courseRepository->getModel();
         $levels = $this->levelRepository->getAll();
         $divisions = $this->divisionRepository->getAll();
-        return view('admin.course.create', compact('course', 'levels', 'divisions'));
+        $students = $this->userRepository->getStudentsWithOutRegister(getDateNow()->year);
+        return view('admin.course.create', compact('course', 'levels', 'divisions', 'students'));
     }
 
     public function edit($id)
@@ -42,7 +52,8 @@ class CourseController extends Controller
         $course = $this->courseRepository->findOrFail($id);
         $levels = $this->levelRepository->getAll();
         $divisions = $this->divisionRepository->getAll();
-        return view('admin.course.edit', compact('course', 'levels', 'divisions'));
+        $students = $this->userRepository->getStudentsWithOutRegister($course->year);
+        return view('admin.course.edit', compact('course', 'levels', 'divisions', 'students'));
     }
 
     public function store(Request $request)
@@ -52,8 +63,11 @@ class CourseController extends Controller
             'level_id' => 'required',
             'division_id' => 'required',
         ]);
-
+        
+        /** @var Course $course */
         $course = $this->courseRepository->create($request->all());
+
+        $this->courseUserRepository->registerStudents($request->all(), $course->id);
 
         if ($course->save()){
             $response['message'] = trans('admin.course.create.message.success', ['name' => $request->get("level") . " " . $request->get("division")]);
@@ -95,6 +109,25 @@ class CourseController extends Controller
 
     public function delete(Request $request)
     {
+        $id = json_decode($request->get('data'));
 
+        $response = $this->courseRepository->delete($id);
+        
+        if($response["has_relation"]) {
+            $response['message'] = trans('admin.course.delete.message.has_relation');
+            $response['error'] = true;
+        } else if($response["deleted"]) {
+            $response['message'] = trans('admin.course.delete.message.success', ['name' => $response["name"]]);
+            $response['error'] = false;
+        } else {
+            $response['message'] = trans('admin.course.delete.message.error');
+            $response['error'] = true;
+        }
+
+        return $response;
+
+        if ($request->ajax()) {
+            return response()->json($response);
+        }
     }
 }

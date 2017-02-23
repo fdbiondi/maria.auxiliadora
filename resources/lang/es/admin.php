@@ -35,16 +35,16 @@ return [
         'delete' => [
             'title' => 'Baja de Materia',
             'message' => [
-                'success' => 'Se ha dado de baja la Materia :name satisfactoriamente.',
-                'error' => 'No se pudo dar de baja la Materia :name.',
-                'has_relation' => 'No se pudo dar de baja la materia porque se encuentra asignada a un curso actual.'
+                'success' => 'Se ha eliminado la Materia :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar la Materia :name.',
+                'has_relation' => 'No se pudo eliminar la materia porque se encuentra asignada a un curso actual.'
             ],
         ],
         'field' => [
 
         ],
         'question' => [
-            'delete' => 'Desea dar de baja la Materia :name.',
+            'delete' => 'Desea eliminar la Materia :name.',
         ],
     ],
     'user' => [
@@ -87,16 +87,16 @@ return [
         'delete' => [
             'title' => 'Baja de Usuario',
             'message' => [
-                'success' => 'Se ha dado de baja el Usuario :name satisfactoriamente.',
-                'error' => 'No se pudo dar de baja el Usuario :name.',
-                'has_relation' => 'No se pudo dar de baja el usuario porque se encuentra asignado a un curso actualmente.'
+                'success' => 'Se ha eliminado el Usuario :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar el Usuario :name.',
+                'has_relation' => 'No se pudo eliminar el usuario porque se encuentra asignado a un curso actualmente.'
             ],
         ],
         'field' => [
 
         ],
         'question' => [
-            'delete' => 'Desea dar de baja el Usuario :name.',
+            'delete' => 'Desea eliminar el Usuario :name.',
         ],
     ],
     'course' => [
@@ -133,16 +133,16 @@ return [
         'delete' => [
             'title' => 'Baja de Curso',
             'message' => [
-                'success' => 'Se ha dado de baja el Curso :name satisfactoriamente.',
-                'error' => 'No se pudo dar de baja el Curso :name.',
-                'has_relation' => 'No se pudo dar de baja el usuario porque se encuentra asignado a un curso actualmente.'
+                'success' => 'Se ha eliminado el Curso :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar el Curso.',
+                'has_relation' => 'No se pudo eliminar el curso porque tiene alumnos asignados.'
             ],
         ],
         'field' => [
 
         ],
         'question' => [
-            'delete' => 'Desea dar de baja el Curso :name.',
+            'delete' => 'Desea eliminar el Curso :name.',
         ],
     ],
     'exam_instance' => [
@@ -180,16 +180,16 @@ return [
         'delete' => [
             'title' => 'Baja de Mesa de Exámen',
             'message' => [
-                'success' => 'Se ha dado de baja la Mesa de Exámen :name satisfactoriamente.',
-                'error' => 'No se pudo dar de baja la Mesa de Exámen :name.',
-                'has_relation' => 'No se pudo dar de baja la mesa de exámen porque posee examenes asignados.'
+                'success' => 'Se ha eliminado la Mesa de Exámen :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar la Mesa de Exámen :name.',
+                'has_relation' => 'No se pudo eliminar la mesa de exámen porque posee examenes asignados.'
             ],
         ],
         'field' => [
 
         ],
         'question' => [
-            'delete' => 'Desea dar de baja la Mesa de Exámen :name.',
+            'delete' => 'Desea eliminar la Mesa de Exámen :name.',
         ],
     ],
     'exam_act' => [
@@ -229,16 +229,16 @@ return [
         'delete' => [
             'title' => 'Baja del Exámen',
             'message' => [
-                'success' => 'Se ha dado de baja el Exámen :name satisfactoriamente.',
-                'error' => 'No se pudo dar de baja el Exámen :name.',
-                'has_relation' => 'No se pudo dar de baja el exámen porque posee inscriptos.'
+                'success' => 'Se ha eliminado el Exámen :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar el Exámen :name.',
+                'has_relation' => 'No se pudo eliminar el exámen porque posee inscriptos.'
             ],
         ],
         'field' => [
 
         ],
         'question' => [
-            'delete' => 'Desea dar de baja el Exámen :name.',
+            'delete' => 'Desea eliminar el Exámen :name.',
         ],
     ],
     'profile' => [

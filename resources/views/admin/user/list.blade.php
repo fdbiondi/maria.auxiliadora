@@ -73,7 +73,7 @@
 
     <script type="text/javascript">
         var QUESTION_DELETE = "{{ trans('admin.user.question.delete') }}" ;
-        ACTION_URL = "{{ route('user.list') }}";
+        ACTION_URL = "{{ url()->current() }}";
 
         $order = [[ 1, "asc" ]];
         $fileToExportName = "Users";

@@ -21,4 +21,8 @@ class Level extends Entity
     public function plans() {
         return $this->belongsToMany(Plan::getClass());
     }
+    
+    public function course() {
+        return $this->hasMany(Course::getClass());
+    }
 }

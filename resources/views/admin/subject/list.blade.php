@@ -67,7 +67,7 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
         var QUESTION_DELETE = "{{ trans('admin.subject.question.delete') }}" ;
-        ACTION_URL = "{{ route('subject.list') }}";
+        ACTION_URL = "{{ url()->current() }}";
 
         $order = [[ 0, "asc" ]];
         $fileToExportName = "Subjects";

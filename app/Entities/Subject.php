@@ -21,4 +21,9 @@ class Subject extends Entity
     public function plans() {
         return $this->belongsToMany(Plan::getClass());
     }
+
+    public function exam_acts()
+    {
+        return $this->hasMany(ExamAct::getClass());
+    }
 }

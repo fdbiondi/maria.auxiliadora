@@ -18,7 +18,7 @@ class Exam extends Entity
     /**
      * Relationships
      */
-    public function exam_act()
+    public function act()
     {
         return $this->belongsTo(ExamAct::getClass());
     }

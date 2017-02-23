@@ -12,7 +12,7 @@ class Grade extends Entity
      * @var array
      */
     protected $fillable = [
-
+        'mark', 'description', 'course_user_subject_id'
     ];
 
     /**

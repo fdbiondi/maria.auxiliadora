@@ -33,22 +33,30 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getfileNumberAndNameAttribute() {
+        return "{$this->file_number} - {$this->name} {$this->last_name}";
+    }
     
     /** 
      * Relationships 
      */
+    public function courses() {
+        return $this->belongsToMany(Course::getClass());
+    }
+
+    public function exams_registrations() {
+        return $this->hasMany(ExamRegistration::getClass());
+    }
+
     public function tutors()
     {
         return $this->belongsToMany(User::getClass());
     }
 
-    public function resume() 
+    public function resume()
     {
         return $this->hasMany(Resume::getClass());
-    }
-
-    public function courses() {
-        return $this->belongsToMany(Course::getClass());
     }
 
     public function role() {

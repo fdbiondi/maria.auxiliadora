@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class PlanSubject extends Entity
 {
-    //protected $table = 'plan_subject';
+    protected $table = 'plan_subject';
 
     /**
      * The attributes that are mass assignable.

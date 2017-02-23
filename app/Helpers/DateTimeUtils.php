@@ -16,14 +16,6 @@ class DateTimeUtils
      * return day of week id for database
      */
     public static function getDayOfWeekFromUnix($unixDate){
-        /*CARBON CONSTANTS                                                      
-                var_dump(Carbon::SUNDAY);                          // int(0)        7
-                var_dump(Carbon::MONDAY);                          // int(1)        1
-                var_dump(Carbon::TUESDAY);                         // int(2)        2
-                var_dump(Carbon::WEDNESDAY);                       // int(3)        3
-                var_dump(Carbon::THURSDAY);                        // int(4)        4
-                var_dump(Carbon::FRIDAY);                          // int(5)        5
-                var_dump(Carbon::SATURDAY);                        // int(6)        6*/
         switch(self::datetimeForDatetime($unixDate)->dayOfWeek)
         {
             case Carbon::SUNDAY:    return 7; break;
@@ -40,7 +32,6 @@ class DateTimeUtils
      * return 00:00
      */
     public static function intTimeToStringTime($intTime){
-        //change => 8 to '08:00'
         return sprintf("%'.02d:00", $intTime);
     }
 
@@ -56,7 +47,7 @@ class DateTimeUtils
      * return int value in minutes from unix
      */
     public static function getMinutesFromUnixTime($unixTime){
-        return $unixTime / 60;//60 == 1 unix minute
+        return $unixTime / 60; //60 == 1 unix minute
     }
 
     /**
@@ -79,7 +70,7 @@ class DateTimeUtils
     }
 
     /**
-     * return dd/mm/yyyy HH:ii
+     * return dd/mm/yyyy H:i
      */
     public static function getDateTimeFormatted($unixDate, $format = ""){
         $date = DateTimeUtils::datetimeForTime($unixDate);

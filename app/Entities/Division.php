@@ -18,4 +18,7 @@ class Division extends Entity
     /**
      * Relationships
      */
+    public function courses() {
+        return $this->hasMany(Course::getClass());
+    }
 }

@@ -68,7 +68,7 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
         var QUESTION_DELETE = "{{ trans('admin.course.question.delete') }}" ;
-        ACTION_URL = "{{ route('course.list') }}";
+        ACTION_URL = "{{ url()->current() }}";
 
         $order = [[ 2, "desc" ]];
         $fileToExportName = "Courses";

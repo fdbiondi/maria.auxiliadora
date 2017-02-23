@@ -36,7 +36,7 @@
         'title' => trans('general.label.city'),
         'placeholder' => trans('general.label.select_city'),
         'selected_id' => $user->city_id,
-        'models'=> $cities,
+        'collection'=> $cities,
         'control_id'=> 'city_id',
         'field_id' => 'id',
         'field_value' => 'name',

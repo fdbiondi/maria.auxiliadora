@@ -18,5 +18,7 @@ class Country extends Entity
     /**
      * Relationships
      */
-    
+    public function provinces() {
+        return $this->hasMany(Province::getClass());
+    }
 }

@@ -84,6 +84,7 @@ return [
         'phone' => 'Teléfono',
         'profile' => 'Perfil',
 
+        'register_students' => 'Alumnos inscriptos',
         'role' => 'Rol',
 
         'select_city' => 'Seleccione Ciudad',
@@ -93,6 +94,7 @@ return [
         'select_role' => 'Seleccione Rol',
         'select_subject' => 'Seleccione Materia',
         'select_year' => 'Seleccione Año',
+        'students' => 'Alumnos',
         'subject' => 'Materia',
 
         'to' => 'Hasta',

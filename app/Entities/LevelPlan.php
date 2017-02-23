@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class LevelPlan extends Entity
 {
-    //protected $table = 'level_plan';
+    protected $table = 'level_plan';
 
     /**
      * The attributes that are mass assignable.
