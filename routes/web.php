@@ -70,7 +70,10 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
         });
+    });
 
+    Route::group(['namespace' => 'Exam'], function() {
+        // Controllers Within The "App\Http\Controllers\Exam" Namespace
         Route::group(['middleware' => 'secretary', 'prefix' => 'exams'], function () {
             Route::group(['prefix' => 'instances'], function () {
                 // Matches The "/exams/instances" URL
@@ -92,6 +95,18 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
                 Route::delete('delete', ['as' => 'exam_act.delete', 'uses' => 'ExamActController@delete']);
             });
 
+            Route::group(['prefix' => 'register'], function() {
+                // Matches The "/exams/register" URL
+                Route::get('students', ['as' => 'exam_register.view', 'uses' => 'ExamRegistrationController@students']);
+                Route::get('subjects/{id}', ['as' => 'exam_register.subjects', 'uses' => 'ExamRegistrationController@subjects']);
+            });
+        });
+
+        Route::group(['middleware' => 'student', 'prefix' => 'exam'], function () {
+            Route::group(['prefix' => 'register'], function() {
+                // Matches The "/exam/register" URL
+                Route::get('subjects', ['as' => 'exam_register.view', 'uses' => 'ExamRegistrationController@subjects']);
+            });
         });
     });
 

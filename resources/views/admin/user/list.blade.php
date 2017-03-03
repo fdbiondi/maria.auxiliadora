@@ -43,7 +43,7 @@
                                         <td>{{ $user->dni }}</td>
                                         <td>{{ trans('general.roles.'.$user->role->name) }}</td>
                                         <td>
-                                            @include('admin.partials.action_buttons', [
+                                            @include('admin.partials.button.actions', [
                                                 'url' => [
                                                     'edit' => route('user.edit', ['id' => $user->id]),
                                                     'delete' => route('user.delete')],

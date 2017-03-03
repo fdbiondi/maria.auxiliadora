@@ -41,7 +41,7 @@
                                         <td>{{ $examAct->exam_instance->name }}</td>
                                         <td>{{ $examAct->subject->name }}</td>
                                         <td>
-                                            @include('admin.partials.action_buttons', [
+                                            @include('admin.partials.button.actions', [
                                                 'url' => [
                                                     'edit' => route('exam_act.edit', ['id' => $examAct->id]),
                                                     'delete' => route('exam_act.delete')],

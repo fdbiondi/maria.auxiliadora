@@ -3,10 +3,11 @@ $(function () {
     // Bind normal buttons
     setToastConfiguration();
 });
-//***************************************************
-//** SERIALIZE FORMS ********************************
-$.fn.serializeObject = function()
-{
+
+/**
+ * SERIALIZE FORMS
+ */
+$.fn.serializeObject = function() {
     var o = {};
     var a = this.find(':input:not(.not_included)').serializeArray();
     $.each(a, function() {
@@ -19,10 +20,23 @@ $.fn.serializeObject = function()
             o[this.name] = this.value || '';
         }
     });
+
     return o;
 };
-//***************************************************
-//***** TOASTR **************************************
+
+$.fn.serializeDisabled = function () {
+    var o = {};
+
+    $(':disabled[name]', this).each(function () {
+        o[this.name] = $(this).val();
+    });
+
+    return o;
+};
+
+/**
+ * TOASTR
+ */
 function setToastConfiguration(){
     toastr.options = {
         "closeButton": true,
@@ -41,13 +55,11 @@ function setToastConfiguration(){
         "hideMethod": "fadeOut"
     }
 }
-//***************************************************
-//***************************************************
 
-//***************************************************
-//***** LOADING BUTONS ******************************
+/**
+ * LOADING BUTTONS
+ */
 function startLoadingButton(button){
-    //LOADING BUTTONS
     if(l!= null) {
         l = $( button ).ladda();
         l.ladda('start');
@@ -58,11 +70,10 @@ function stopLoadingButton(){
     if(l!= null)
         l.ladda('stop');
 }
-//***************************************************
-//***************************************************
 
-//***************************************************
-//***** AJAX PROMISE ********************************
+/**
+ * AJAX PROMISE
+ */
 function ajaxPromise(url,type,dataType,data,button_loading){
     return $.ajax({
         url: url,
@@ -89,30 +100,30 @@ function ajaxPromiseFail(jqXHR, textStatus, errorThrown) {
     }
 }
 
-function ajaxPromiseAllways() {
+function ajaxPromiseAlways() {
     if(l != null)
         stopLoadingButton();
     else
         spinnerHide();
 }
 
-//***************************************************
-//****FUNCTION THAT HANDLE THE AJAX RESPONSE*********
-
+/**
+ * FUNCTION THAT HANDLE THE AJAX RESPONSE
+ */
 function sendAjaxPromise(URL, type, dataType, data, button_loading) {
     ajaxPromise(URL,type,dataType,data,button_loading)
         .done(function(data){
-            ajaxSuccess(data);
+            ajaxSuccess(data); //define this in the js file to get the response and handle
         }).fail(function(jqXHR, textStatus, errorThrown){
             ajaxPromiseFail(jqXHR, textStatus, errorThrown);
         }).always(function(){
-            ajaxPromiseAllways();
+            ajaxPromiseAlways();
         });
 }
 
-//***************************************************
-//***************SHOW FORM ERRORS********************
-
+/**
+ * SHOW FORM ERRORS
+ */
 function fieldErrors(status, errors) {
     var errorMessage = "";
 
@@ -128,52 +139,51 @@ function fieldErrors(status, errors) {
     return false;
 }
 
-//***************************************************
-//***** SPINNER *************************************
+/**
+ * SPINNER
+ */
 var spinner = null;
 var spinner_div = 0;
-function spinnerShow()
-{
+function spinnerShow() {
     $('.overlay').show();
 }
 
-function spinnerHide()
-{
+function spinnerHide() {
     $('.overlay').hide();
 }
 
-function showSpinnerBeforeSend()
-{
+function showSpinnerBeforeSend() {
     spinnerShow();
     return true;
 }
-//***************************************************
-//***************************************************
 
-//***************************************************
-//***** FUNCTIONS ***********************************
+/**
+ * HELPER FUNCTIONS
+ */
 function scrollToTop(){
     $('html, body').animate({scrollTop: 0}, 2000);
 }
+
 function putErrorClassOnFormElement(element){
     element.closest('.form-group').addClass('has-error');
 }
+
 function quitErrorClassOnFormElement(element){
     element.closest('.form-group').removeClass('has-error');
 }
+
 function validateURL(url){
     var myRegExp =/^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
     return myRegExp.test(url);
 }
+
 function redirect(url) {
     window.location = url;
 }
-//***************************************************
-//***************************************************
 
-//***************************************************
-//***** Sweet Alert *********************************
-
+/**
+ * SWEET ALERT
+ */
 function showOkAlert(title, text, actionCallback, actionCallbackParameters) {
     if(actionCallback == null)
         swal(title, text, "success");
@@ -186,6 +196,7 @@ function showOkAlert(title, text, actionCallback, actionCallbackParameters) {
 function showErrorAlert(title, text){
     swal(title, text, "warning");
 }
+
 function showQuestionAlert(title, text, type, confirmText, cancelText, confirmCallback, confirmCallbackParameters, cancelCallback, cancelCallbackParameters){
     //"warning", "error", "success" and "info"
     var confirmColor="#DD6B55";
@@ -209,10 +220,11 @@ function showQuestionAlert(title, text, type, confirmText, cancelText, confirmCa
             }
         });
 }
-//***************************************************
-//***************************************************
 
-var decodeEntities = (function() {
+/**
+ * DECODE ENTITIES
+ */
+ var decodeEntities = (function() {
     // this prevents any overhead from creating the object each time
     var element = document.createElement('div');
 

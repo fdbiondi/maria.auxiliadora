@@ -1,7 +1,6 @@
 <?php
 
 use App\Helpers\DateTimeUtils;
-use Carbon\Carbon;
 
 /**
  * @return \App\Entities\User|null
@@ -11,6 +10,9 @@ function currentUser()
     return auth()->user();
 }
 
+/**
+ * @return string containing the name and last name of the logged user
+ */
 function showLogUser() {
     return currentUser()->name . " " . currentUser()->last_name;
 }
@@ -45,23 +47,13 @@ function numberFormatted($number, $decimals = 2, $currencySymbol = false)
         return $number;
 }
 
-//Time
+//Time formatted
 function getTimeFormatted($unixTime)
 {
     return DateTimeUtils::getTimeFormatted($unixTime);
 }
 
-function getTimeInt($unixTime)
-{
-    return DateTimeUtils::getUnixTimeToIntTime($unixTime);
-}
-
-function getUnixFromTime($time)
-{
-    return DateTimeUtils::getUnixFromTime($time);
-}
-
-//Date
+//Date formatted
 function getDateFormatted($unixDate)
 {
     if ($unixDate == 0)
@@ -71,34 +63,23 @@ function getDateFormatted($unixDate)
 }
 
 function getDateNow() {
-    return DateTimeUtils::getUnixDateNow();
+    return DateTimeUtils::getDateNow();
 }
 
+//Date for set and get
 function getDateForSet($value) {
-    if($value=="" || $value==null)
-        return null;
-    else
-        return Carbon::createFromFormat('d/m/Y',$value);
+    return DateTimeUtils::createForSet(config('constants.DATE_FORMAT'),$value);
 }
 
 function getDateForGet($value){
-    if($value=="0000-00-00" || $value==null || $value=="")
-        return "";
-    else
-        return Carbon::parse($value)->format('d/m/Y');
+    return DateTimeUtils::getDateForGet($value);
 }
 
-//Datetime
+//Datetime for set and get
 function getDateTimeForSet($value) {
-    if($value=="" || $value==null)
-        return null;
-    else
-        return Carbon::createFromFormat('d/m/Y H:i',$value);
+    return DateTimeUtils::createForSet(config('constants.DATETIME_FORMAT'),$value);
 }
 
 function getDateTimeForGet($value){
-    if($value=="0000-00-00" || $value==null || $value=="")
-        return "";
-    else
-        return Carbon::parse($value)->format('d/m/Y H:i');
+    return DateTimeUtils::getDateForGet($value, config('constants.DATETIME_FORMAT'));
 }

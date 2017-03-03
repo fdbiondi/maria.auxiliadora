@@ -1,5 +1,5 @@
 {{-- Delete and Edit Buttons
-        para incluir los botones de accion => @include('admin.partials.action_buttons')
+        para incluir los botones de accion => @include('admin.partials.button.actions')
         - pasarle las url => $url = ['edit' => 'edit_route', 'delete' => 'delete_route']
         - pasarle el id y name del item a eliminar => $id, $name --}}
 <a href="{{ $url['edit'] }}" title="{{ trans('general.crud.edit') }}" class="btn btn-success btn-sm m-l-t-sm" type="button">

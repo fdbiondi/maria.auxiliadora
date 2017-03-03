@@ -9,8 +9,10 @@
         <a class="collapse-link">
             <i class="fa fa-chevron-up"></i>
         </a>
+        @if(isset($route))
         <a href="{{ $route }}" title="{{ $button }}" class="btn btn-md btn-primary">
             <i class="fa fa-file-text"></i>
         </a>
+        @endif
     </div>
 </div>

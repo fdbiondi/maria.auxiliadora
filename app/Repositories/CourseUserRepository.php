@@ -28,32 +28,11 @@ class CourseUserRepository extends BaseRepository
 
     public function update($id, $data)
     {
-        $courseUser = $this->findOrFail($id);
-
-        $courseUser->fill($data);
-
-        return $courseUser->save();
+        return true;
     }
 
     public function delete($id)
     {
         return true;
-    }
-    
-    public function registerStudents($data, $course_id) {
-        if(isset($data['users'])) {
-            DB::beginTransaction();
-
-            foreach ((array)$data['users'] as $user_id) {
-                $this->create([
-                    'course_id' => $course_id,
-                    'user_id' =>$user_id
-                ]);
-            }
-
-            return DB::commit();
-        }
-
-        return false;
     }
 }

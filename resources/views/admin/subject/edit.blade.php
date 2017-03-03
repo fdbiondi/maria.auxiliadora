@@ -20,7 +20,7 @@
                         {!! Form::open(['id' => 'admin_form', 'route' => ['subject.update', $subject], 'method' => 'POST']) !!}
                             @include('admin.subject.partials.fields')
                             <div class="form-group">
-                                @include('admin.partials.save_button')
+                                @include('admin.partials.button.save')
                             </div>
                         {!! Form::close() !!}
                     </div>

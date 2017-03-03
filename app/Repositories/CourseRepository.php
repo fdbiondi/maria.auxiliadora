@@ -3,11 +3,13 @@
 namespace App\Repositories;
 
 use App\Entities\Course;
+use Mockery\CountValidator\Exception;
 
 class CourseRepository extends BaseRepository
 {
     protected $table = "courses";
     protected $column = "year";
+    protected $order = "desc";
 
     /**
      * @return \App\Entities\Entity
@@ -32,25 +34,47 @@ class CourseRepository extends BaseRepository
 
         $course->fill($data);
 
-        return $course->save();
+        return $course;
     }
 
     public function delete($id)
     {
         $course = $this->findOrFail($id);
 
-        if ((count($course->users) > 0)) {
+        try {
+            if (($course->users->count() > 0)) {
+                return [
+                    'deleted' => false,
+                    'has_relation' => true,
+                ];
+            }
+            else {
+                return [
+                    'has_relation' => false,
+                    'name' => "{$course->level->name}° {$course->division->name} - {$course->year}",
+                    'deleted' => $course->delete(),
+                ];
+            }
+        }
+        catch (Exception $e) {
             return [
                 'deleted' => false,
-                'has_relation' => true,
-            ];
-        }
-        else {
-            return [
                 'has_relation' => false,
-                'name' => "{$course->level->name}° {$course->division->name} - {$course->year}",
-                'deleted' => $course->delete(),
             ];
         }
+    }
+
+    public function registerStudents(Course $course, Array $data) {
+        $course->users()->detach();
+
+        if(isset($data['users'])) {
+            foreach ((array)$data['users'] as $user_id) {
+                $course->users()->attach($user_id);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

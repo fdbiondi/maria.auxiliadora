@@ -1,6 +1,6 @@
 @include('partials.menu.toggle_menu',[
-    'title' => trans('menu.admin.title'),
-    'icon' => trans('menu.admin.icon'),
-    'items' => trans('menu.admin.items'),
-    'sections' => trans('menu.admin.sections')
+    'title' => trans('menu.administration.title'),
+    'icon' => trans('menu.administration.icon'),
+    'items' => trans('menu.administration.items'),
+    'sections' => trans('menu.administration.sections')
 ])

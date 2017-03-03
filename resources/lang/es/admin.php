@@ -241,6 +241,25 @@ return [
             'delete' => 'Desea eliminar el Exámen :name.',
         ],
     ],
+    'exam_registration' => [
+        'subjects' => [
+            'title' => 'Materias para rendir',
+            'table' => [
+                'title' => 'Listado de Materias disponibles',
+                'register' => 'Inscribirse',
+                'view_register' => 'Ver Inscripción',
+                'delete_register' => '',
+                'header' => [
+                    'subject' => 'Materia',
+                    'course' => 'Curso',
+                    'year' => 'Año',
+                    'actions' => 'Acciones',
+                    //'relation' => ''
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+    ],
     'profile' => [
         'title' => 'Perfíl',
         'subtitle' => 'Datos del perfil',

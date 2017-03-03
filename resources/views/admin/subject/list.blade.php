@@ -38,7 +38,7 @@
                                             <td>{{ $subject->name }}</td>
                                             <td>{{ $subject->description }}</td>
                                             <td>
-                                                @include('admin.partials.action_buttons', [
+                                                @include('admin.partials.button.actions', [
                                                     'url' => [
                                                         'edit' => route('subject.edit', ['id' => $subject->id]),
                                                         'delete' => route('subject.delete')],

@@ -7,7 +7,7 @@ $( document ).ready(function(){
         var $form = $("#admin_form");
         var url = $form.attr('action');
 
-        var data = $form.serializeObject();
+        var data = Object.assign($form.serializeObject(), $form.serializeDisabled());
         
         sendAjaxPromise(url, 'POST', 'json', data, null);
     });

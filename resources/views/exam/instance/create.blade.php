@@ -28,7 +28,7 @@
                         {!! Form::open(['id' => 'admin_form', 'route' => 'exam_instance.store', 'method' => 'POST']) !!}
                             @include('exam.instance.partials.fields')
                             <div class="form-group">
-                                @include('admin.partials.save_button')
+                                @include('admin.partials.button.save')
                             </div>
                         {!! Form::close() !!}
                     </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\Course;
 use App\Http\Controllers\Controller;
 use App\Repositories\CourseRepository;
-use App\Repositories\CourseUserRepository;
 use App\Repositories\DivisionRepository;
 use App\Repositories\LevelRepository;
 use App\Repositories\UserRepository;
@@ -17,19 +16,16 @@ class CourseController extends Controller
     protected $levelRepository;
     protected $divisionRepository;
     protected $userRepository;
-    protected $courseUserRepository;
 
     public function __construct(CourseRepository $courseRepository,
                                 LevelRepository $levelRepository,
                                 DivisionRepository $divisionRepository,
-                                UserRepository $userRepository,
-                                CourseUserRepository $courseUserRepository)
+                                UserRepository $userRepository)
     {
         $this->courseRepository = $courseRepository;
         $this->levelRepository = $levelRepository;
         $this->divisionRepository = $divisionRepository;
         $this->userRepository = $userRepository;
-        $this->courseUserRepository = $courseUserRepository;
     }
 
     public function index()
@@ -67,7 +63,7 @@ class CourseController extends Controller
         /** @var Course $course */
         $course = $this->courseRepository->create($request->all());
 
-        $this->courseUserRepository->registerStudents($request->all(), $course->id);
+        $this->courseRepository->registerStudents($course, $request->all());
 
         if ($course->save()){
             $response['message'] = trans('admin.course.create.message.success', ['name' => $request->get("level") . " " . $request->get("division")]);
@@ -91,9 +87,12 @@ class CourseController extends Controller
             'division_id' => 'required',
         ]);
 
+        /** @var Course $course */
         $course = $this->courseRepository->update($id, $request->all());
 
-        if ($course){
+        $this->courseRepository->registerStudents($course, $request->all());
+        
+        if ($course->save()){
             $response['message'] = trans('admin.course.edit.message.success', ['name' => $request->get('level') . " " .$request->get('division')]);
             $response['error'] = false;
         }
@@ -123,8 +122,6 @@ class CourseController extends Controller
             $response['message'] = trans('admin.course.delete.message.error');
             $response['error'] = true;
         }
-
-        return $response;
 
         if ($request->ajax()) {
             return response()->json($response);

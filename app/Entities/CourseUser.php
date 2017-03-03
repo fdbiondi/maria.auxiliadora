@@ -18,7 +18,6 @@ class CourseUser extends Entity
     /**
      * Relationships
      */
-
     public function user() {
         return $this->hasMany(User::getClass());
     }

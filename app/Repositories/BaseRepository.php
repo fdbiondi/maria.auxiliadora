@@ -5,6 +5,7 @@ namespace App\Repositories;
 abstract class BaseRepository 
 {
     protected $column = "name";
+    protected $order = "asc";
 
     /**
      * @return \App\Entities\Entity
@@ -39,7 +40,7 @@ abstract class BaseRepository
     {
         return $this->newQuery()
             ->selectRaw($columns)
-            ->orderBy($this->column);
+            ->orderBy($this->column, $this->order);
     }
     
     public function getAll($columns = '*')

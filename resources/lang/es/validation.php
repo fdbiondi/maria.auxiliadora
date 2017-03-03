@@ -148,7 +148,7 @@ return [
         'act_number'            => 'número de acta',
         'classroom'             => 'salón de clase',
         'date_time'             => 'fecha y hora',
-        'exam_instance_id'         => 'mesa de exámen',
+        'exam_instance_id'      => 'mesa de exámen',
         'subject_id'            => 'materia',
     ],
 

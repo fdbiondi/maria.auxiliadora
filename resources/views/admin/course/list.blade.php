@@ -39,7 +39,7 @@
                                         <td>{{ $course->division->name }}</td>
                                         <td>{{ $course->year }}</td>
                                         <td>
-                                            @include('admin.partials.action_buttons', [
+                                            @include('admin.partials.button.actions', [
                                                 'url' => [
                                                     'edit' => route('course.edit', ['id' => $course->id]),
                                                     'delete' => route('course.delete')],

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin' => [
+    'administration' => [
         'title' => 'Administración',
         'icon' => 'fa-cogs',
         'items' => [
@@ -37,7 +37,7 @@ return [
             'edit' => '.edit',
         ],
     ],
-    'secretary' => [
+    'exams' => [
         'title' => 'Exámenes',
         'icon' => 'fa-cogs',
         'items' => [
@@ -59,6 +59,12 @@ return [
                 'route' => 'exam_act.list',
                 'text' => 'Exámenes',
             ],
+            'exam_register' => [
+                'name' => 'exam_register',
+                'icon'=>'fa-user',
+                'route' => 'exam_register.view',
+                'text' => 'Inscripción a Examen',
+            ],
         ],
         'sections' => [
             'list' => '.list',
@@ -66,9 +72,6 @@ return [
             'edit' => '.edit',
         ],
         
-    ],
-    'student' => [
-
     ],
     'shared' => [
         'items' => [

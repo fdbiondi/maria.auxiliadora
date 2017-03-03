@@ -29,7 +29,7 @@
                                 @include('profile.partials.fields')
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        @include('admin.partials.save_button')
+                                        @include('admin.partials.button.save')
                                     </div>
                                 </div>
                             {!! Form::close() !!}
