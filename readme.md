@@ -1,3 +1,25 @@
+# Before pull changes from develop branch
+
+## When database tables was modified, run this commands:
+
+- #### `php artisan migrate:reset`
+
+- #### `php artisan cache:clear`
+
+- #### `php artisan config:clear`
+
+- #### `composer dump-autoload`
+
+- #### `git pull origin develop`
+
+- #### `php artisan migrate:refresh --seed`
+
+## Suggestions
+
+- #### Define Virtual Host ma.app
+
+- #### Install [git flow](https://danielkummer.github.io/git-flow-cheatsheet/) for branching
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
