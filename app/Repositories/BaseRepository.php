@@ -28,10 +28,10 @@ abstract class BaseRepository
         return $this->newQuery()->findOrFail($id);
     }
     
-    public function findBy($att, $condition, $column, $relation= [])
+    public function findBy($att, $condition, $value, $relation= [])
     {
         return $this->getModel()
-            ->where($att, $condition, $column)
+            ->where($att, $condition, $value)
             ->with($relation)
             ->get();
     }
