@@ -23,9 +23,9 @@ abstract class BaseRepository
      * @param integer $id
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrFail($id)
+    public function findOrFail($id, $relation = [])
     {
-        return $this->newQuery()->findOrFail($id);
+        return $this->newQuery()->with($relation)->findOrFail($id);
     }
     
     public function findBy($att, $condition, $value, $relation= [])
