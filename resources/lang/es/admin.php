@@ -114,6 +114,16 @@ return [
             ],
             'back' => 'Volver al Inicio',
         ],
+        'student' => [
+            'title' => 'Curso: ',
+            'list' => [
+                'title' => 'Listado de Alumnos',
+                'back' => 'Volver a Cursos'
+            ],
+            'action' => [
+                'view' => 'Ver Alumnos',
+            ],
+        ],
         'create' => [
             'title' => 'Nuevo Curso',
             'subtitle' => 'Datos del Curso',
@@ -143,6 +153,13 @@ return [
         ],
         'question' => [
             'delete' => 'Desea eliminar el Curso :name.',
+        ],
+    ],
+    'course_registration' => [
+        'index' => [
+            'title' => 'Registrar Alumnos a Curso',
+            'course' => 'Curso',
+            'back' => 'Volver al Inicio',
         ],
     ],
     'exam_instance' => [

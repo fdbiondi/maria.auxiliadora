@@ -127,4 +127,10 @@ class CourseController extends Controller
             return response()->json($response);
         }
     }
+    
+    public function students($id) {
+        $course = $this->courseRepository->findOrFail($id, ['students', 'level', 'division']);
+        $students = $course->students;
+        return view('admin.course.students', compact('course','students'));
+    }
 }

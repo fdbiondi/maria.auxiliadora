@@ -22,6 +22,10 @@ class Course extends Entity
         return $this->belongsToMany(User::getClass());
     }
 
+    public function students() {
+        return $this->belongsToMany(User::getClass());
+    }
+
     public function level() {
         return $this->belongsTo(Level::getClass());
     }

@@ -25,15 +25,12 @@ return [
                 'route' => 'course_registration.index',
                 'text' => 'Inscripción a cursado'
             ],
-            /*
-            'countries' => [ 
+            /*'country' => [            // example
                 'icon'=>'fa-globe',
-                'route' => 'countries.list',
-                'text' => 'Países', 
-                'subitems' => [
-                    'states' => 'states',
-                    'cities' => 'cities',
-                ],
+                'route' => 'country.index',
+                'text' => 'Países',
+                'subitems' => [ 'state' => 'state' ],
+                'sections' => [ 'view' => '.view' ],
             ],*/
         ],
         'sections' => [
@@ -41,6 +38,7 @@ return [
             'list' => '.list',
             'create' => '.create',
             'edit' => '.edit',
+            'students' => '.students'
         ],
     ],
     'exams' => [

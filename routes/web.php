@@ -71,10 +71,15 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
 
             Route::group(['prefix' => 'registrations'], function () {
-                // Matches The "/registrations" URL
+                // Matches The "/courses/registrations" URL
                 Route::get('index', ['as' => 'course_registration.index', 'uses' => 'CourseRegistrationController@index']);
             });
+
+            Route::get('{course_id}/students', ['as' => 'course.students', 'uses' => 'CourseController@students']);
+            Route::post('{course_id}/students', ['as' => 'course.students', 'uses' => 'CourseController@students']);
+            Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
+        
     });
 
     Route::group(['namespace' => 'Exam'], function() {
