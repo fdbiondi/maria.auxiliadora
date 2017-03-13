@@ -20,6 +20,11 @@ return [
                 'route' => 'course.list',
                 'text' => 'Cursos',
             ],
+            'course_registration' => [
+                'icon'=>'fa-building',
+                'route' => 'course_registration.index',
+                'text' => 'Inscripción a cursado'
+            ],
             /*
             'countries' => [ 
                 'icon'=>'fa-globe',
@@ -32,6 +37,7 @@ return [
             ],*/
         ],
         'sections' => [
+            'index' => '.index',
             'list' => '.list',
             'create' => '.create',
             'edit' => '.edit',

@@ -19,6 +19,12 @@ class CourseRepository extends BaseRepository
         return new Course();
     }
 
+    public function getCurrentCourses() {
+
+        return $this->findBy('year', '=', getDateNow()->year);
+    }
+
+
     public function create(Array $data)
     {
         return $this->getModel()->create([

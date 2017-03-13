@@ -33,4 +33,9 @@ class Course extends Entity
     /**
      * Methods
      */
+
+    public function getDescriptionAttribute()
+    {
+        return $this->level->name . "° " .$this->division->name;
+    }
 }

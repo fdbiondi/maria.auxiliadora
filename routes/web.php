@@ -69,6 +69,11 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::get('edit/{id}', ['as' => 'course.edit', 'uses' => 'CourseController@edit']);
             Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
+
+            Route::group(['prefix' => 'registrations'], function () {
+                // Matches The "/registrations" URL
+                Route::get('index', ['as' => 'course_registration.index', 'uses' => 'CourseRegistrationController@index']);
+            });
         });
     });
 
