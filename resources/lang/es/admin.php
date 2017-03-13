@@ -118,6 +118,7 @@ return [
             'title' => 'Curso: ',
             'list' => [
                 'title' => 'Listado de Alumnos',
+                'add' => 'Agregar Alumnos',
                 'back' => 'Volver a Cursos'
             ],
             'action' => [
@@ -157,7 +158,8 @@ return [
     ],
     'course_registration' => [
         'index' => [
-            'title' => 'Registrar Alumnos a Curso',
+            'title' => 'Inscripción a Cursado',
+            'register' => 'Inscribir a curso',
             'course' => 'Curso',
             'back' => 'Volver al Inicio',
         ],

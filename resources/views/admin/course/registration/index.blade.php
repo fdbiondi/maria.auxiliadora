@@ -19,12 +19,12 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('admin.course_registration.index.table.title'),
+                        'title'=> trans('admin.course_registration.index.register'),
                     ])
                     <div class="ibox-content">
                         @include('controls.select', [
-                            'title' => trans('admin.course_registration.index.courses'),
-                            'placeholder' => trans('general.label.select_courses'),
+                            'title' => trans('admin.course_registration.index.course'),
+                            'placeholder' => trans('general.label.select_course'),
                             'selected_id' => $course->id,
                             'collection' => $courses,
                             'control_id' => 'course_id',

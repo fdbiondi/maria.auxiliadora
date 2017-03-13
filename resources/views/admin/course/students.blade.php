@@ -22,7 +22,7 @@
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.course.student.list.title'),
                         'route'=> route('course.create'),
-                        'button' => trans('admin.course.student.table.add')])
+                        'button' => trans('admin.course.student.list.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-list" >
