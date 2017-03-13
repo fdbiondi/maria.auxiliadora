@@ -13,14 +13,14 @@ return [
         'select' => 'Seleccionar',
         'filter'=>'Filtrar',
     ],
-    'crud' => array(
+    'crud' => [
         'list' => 'Listado',
         'create' => 'Crear',
         'new' => 'Nuevo',
         'add' => 'Agregar',
         'edit' => 'Editar',
         'delete' => 'Eliminar',
-    ),
+    ],
     'day' => [
         'monday'=>'Lunes',
         'tuesday'=>'Martes',
@@ -88,6 +88,7 @@ return [
         'role' => 'Rol',
 
         'select_city' => 'Seleccione Ciudad',
+        'select_course' => 'Seleccione Curso',
         'select_division' => 'Seleccione División',
         'select_exam_instance' => 'Seleccione Mesa de Exámen',
         'select_level' => 'Seleccione Nivel',

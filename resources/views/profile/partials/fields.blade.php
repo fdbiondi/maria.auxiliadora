@@ -40,5 +40,6 @@
         'control_id'=> 'city_id',
         'field_id' => 'id',
         'field_value' => 'name',
+        'disabled' => false
     ])
 </div>
