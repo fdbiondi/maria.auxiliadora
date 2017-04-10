@@ -96,9 +96,9 @@ class DateTimeUtils
         if($value=="0000-00-00" || $value == "0000-00-00 00:00" || $value==null || $value == "")
             return "";
         else if($format != "")
-            return self::getDateFormatted($value, $format);
+            return Carbon::parse($value)->format($format);
         else
-            return self::getDateFormatted($value);
+            return Carbon::parse($value)->format(config('constants.DATE_FORMAT'));
     }
 
     /**
