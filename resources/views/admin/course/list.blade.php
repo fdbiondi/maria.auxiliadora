@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('styles')
-        <!-- DATATABLES PLUGIN-->
-{!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
+    <!-- DATATABLES PLUGIN-->
+    {!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
 @endsection
 
 @section('content-header')

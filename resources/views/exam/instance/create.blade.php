@@ -10,10 +10,10 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.exam_instance.create.title'),
+        'title'=>trans('exam.instance.create.title'),
         'breadcrumbs' => [],
         'previous_url' => route('exam_instance.list'),
-        'previous_text' => trans('admin.exam_instance.create.back')])
+        'previous_text' => trans('exam.instance.create.back')])
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.title', [
-                        'title'=> trans('admin.exam_instance.create.subtitle')])
+                        'title'=> trans('exam.instance.create.subtitle')])
                     <div class="ibox-content">
                         {!! Form::open(['id' => 'admin_form', 'route' => 'exam_instance.store', 'method' => 'POST']) !!}
                             @include('exam.instance.partials.fields')

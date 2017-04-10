@@ -44,11 +44,11 @@ class ExamInstanceController extends Controller
         $examInstance = $this->examInstanceRepository->create($request->all());
 
         if ($examInstance->save()){
-            $response['message'] = trans('admin.exam_instance.create.message.success', ['name' => $request->get("name")]);
+            $response['message'] = trans('exam.instance.create.message.success', ['name' => $request->get("name")]);
             $response['error'] = false;
         }
         else{
-            $response['message'] = trans('admin.exam_instance.create.message.error');
+            $response['message'] = trans('exam.instance.create.message.error');
             $response['error'] = true;
         }
 
@@ -68,11 +68,11 @@ class ExamInstanceController extends Controller
         $examInstance = $this->examInstanceRepository->update($id, $request->all());
 
         if ($examInstance){
-            $response['message'] = trans('admin.exam_instance.edit.message.success', ['name' => $request->get('name')]);
+            $response['message'] = trans('exam.instance.edit.message.success', ['name' => $request->get('name')]);
             $response['error'] = false;
         }
         else{
-            $response['message'] = trans('admin.exam_instance.edit.message.error');
+            $response['message'] = trans('exam.instance.edit.message.error');
             $response['error'] = true;
         }
 
@@ -88,10 +88,10 @@ class ExamInstanceController extends Controller
         $response = $this->examInstanceRepository->delete($id);
 
         if($response['delete']){
-            $response['message'] = trans('admin.exam_instance.delete.message.success', ['name' => $response['subject_name']]);
+            $response['message'] = trans('exam.instance.delete.message.success', ['name' => $response['subject_name']]);
             $response['error'] = false;
         }else{
-            $response['message'] = trans('admin.exam_instance.delete.message.error');
+            $response['message'] = trans('exam.instance.delete.message.error');
             $response['error'] = true;
         }
 

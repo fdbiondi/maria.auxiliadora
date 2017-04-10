@@ -133,7 +133,7 @@ class DateTimeUtils
      * @param $unixTime
      * @return Carbon static
      */
-    private static function datetimeForTime($unixTime){
+    private static function datetimeForTime($unixTime) {
         return Carbon::createFromTimestampUTC($unixTime);
     }
 
@@ -143,7 +143,7 @@ class DateTimeUtils
      * @param $unixTime
      * @return Carbon static
      */
-    private static function datetimeForDatetime($unixTime){
+    private static function datetimeForDatetime($unixTime) {
         return Carbon::createFromTimestampUTC($unixTime);
     }
 }

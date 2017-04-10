@@ -39,8 +39,7 @@ class CourseController extends Controller
         $course = $this->courseRepository->getModel();
         $levels = $this->levelRepository->getAll();
         $divisions = $this->divisionRepository->getAll();
-        $students = $this->userRepository->getStudentsWithOutRegister(getDateNow()->year);
-        return view('admin.course.create', compact('course', 'levels', 'divisions', 'students'));
+        return view('admin.course.create', compact('course', 'levels', 'divisions'));
     }
 
     public function edit($id)
@@ -48,8 +47,7 @@ class CourseController extends Controller
         $course = $this->courseRepository->findOrFail($id);
         $levels = $this->levelRepository->getAll();
         $divisions = $this->divisionRepository->getAll();
-        $students = $this->userRepository->getStudentsWithOutRegister($course->year);
-        return view('admin.course.edit', compact('course', 'levels', 'divisions', 'students'));
+        return view('admin.course.edit', compact('course', 'levels', 'divisions'));
     }
 
     public function store(Request $request)
@@ -62,8 +60,6 @@ class CourseController extends Controller
         
         /** @var Course $course */
         $course = $this->courseRepository->create($request->all());
-
-        $this->courseRepository->registerStudents($course, $request->all());
 
         if ($course->save()){
             $response['message'] = trans('admin.course.create.message.success', ['name' => $request->get("level") . " " . $request->get("division")]);
@@ -89,8 +85,6 @@ class CourseController extends Controller
 
         /** @var Course $course */
         $course = $this->courseRepository->update($id, $request->all());
-
-        $this->courseRepository->registerStudents($course, $request->all());
         
         if ($course->save()){
             $response['message'] = trans('admin.course.edit.message.success', ['name' => $request->get('level') . " " .$request->get('division')]);
@@ -133,4 +127,5 @@ class CourseController extends Controller
         $students = $course->students;
         return view('admin.course.students', compact('course','students'));
     }
+        
 }

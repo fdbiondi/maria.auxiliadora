@@ -22,7 +22,7 @@ return [
             ],
             'course_registration' => [
                 'icon'=>'fa-building',
-                'route' => 'course_registration.index',
+                'route' => 'course_registration.list',
                 'text' => 'Inscripción a cursado'
             ],
             /*'country' => [            // example

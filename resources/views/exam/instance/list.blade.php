@@ -7,10 +7,10 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.exam_instance.list.title'),
+        'title'=>trans('exam.instance.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.exam_instance.list.back')])
+        'previous_text' => trans('exam.instance.list.back')])
 @endsection
 
 @section('content')
@@ -20,16 +20,16 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('admin.exam_instance.list.table.title'),
+                        'title'=> trans('exam.instance.list.table.title'),
                         'route'=> route('exam_instance.create'),
-                        'button' => trans('admin.exam_instance.list.table.add')])
+                        'button' => trans('exam.instance.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-list" >
                                 <thead>
                                 <tr>
                                     @include('admin.partials.table.header', [
-                                        'headers' => trans('admin.exam_instance.list.table.header')])
+                                        'headers' => trans('exam.instance.list.table.header')])
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +68,7 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
 
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.exam_instance.question.delete') }}" ;
+        var QUESTION_DELETE = "{{ trans('exam.instance.question.delete') }}" ;
         ACTION_URL = "{{ route('exam_instance.list') }}";
 
         $order = [[ 1, "asc" ]];

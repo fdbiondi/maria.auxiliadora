@@ -20,8 +20,8 @@
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
+        {!! Form::open(['id' => 'admin_form', 'route' => ['course.update', $course], 'method' => 'POST']) !!}
         <div class="row">
-            {!! Form::open(['id' => 'admin_form', 'route' => ['course.update', $course], 'method' => 'POST']) !!}
             @include('partials.errors')
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -31,40 +31,14 @@
                         <div class="row">
                             @include('admin.course.partials.fields')
                         </div>
+                        <div class="form-group">
+                            @include('admin.partials.button.save')
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- All Students -->
-            <div class="col-lg-6">
-                @include('controls.checkbox', [
-                    'title' => trans('general.label.students'),
-                    'control' => 'disallow',
-                    'filter' => true,
-                    'model' => $course,
-                    'collection' => $students,
-                    'relation' => 'users',
-                    'attribute' => 'fileNumberAndName'
-                    ])
-            </div>
-            <!-- Register Students -->
-            <div class="col-lg-6">
-                @include('controls.checkbox', [
-                    'title' => trans('general.label.register_students'),
-                    'control' => 'assign',
-                    'filter' => true,
-                    'model' => $course,
-                    'collection' => $course->users,
-                    'relation' => 'users',
-                    'attribute' => 'fileNumberAndName',
-                    ])
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group">
-                    @include('admin.partials.button.save')
-                </div>
-            </div>
-            {!! Form::close() !!}
         </div>
+        {!! Form::close() !!}
     </div>
 @endsection
 

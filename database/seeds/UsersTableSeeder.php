@@ -48,16 +48,12 @@ class UsersTableSeeder extends Seeder
             'role_id' => 6
         ]);
         
-        factory(App\Entities\User::class, 10)->create(
-            [
-                'password' => bcrypt('123123')
-            ]
-        );
-        factory(App\Entities\User::class, 2)->create(
-            [
-                'password' => bcrypt('123123'),
-                'role_id' => 4
-            ]
-        );
+        factory(App\Entities\User::class, 10)->create([
+            'password' => bcrypt('123123')
+        ]);
+        factory(App\Entities\User::class, 2)->create([
+            'password' => bcrypt('123123'),
+            'role_id' => 4
+        ]);
     }
 }

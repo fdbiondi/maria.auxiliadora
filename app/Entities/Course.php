@@ -40,6 +40,6 @@ class Course extends Entity
 
     public function getDescriptionAttribute()
     {
-        return $this->level->name . "° " .$this->division->name;
+        return "{$this->level->name}° {$this->division->name} - {$this->year}" ;
     }
 }

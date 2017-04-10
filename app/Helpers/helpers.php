@@ -71,7 +71,7 @@ function getDateForSet($value) {
     return DateTimeUtils::createForSet(config('constants.DATE_FORMAT'),$value);
 }
 
-function getDateForGet($value){
+function getDateForGet($value) {
     return DateTimeUtils::getDateForGet($value);
 }
 
@@ -80,6 +80,6 @@ function getDateTimeForSet($value) {
     return DateTimeUtils::createForSet(config('constants.DATETIME_FORMAT'),$value);
 }
 
-function getDateTimeForGet($value){
+function getDateTimeForGet($value) {
     return DateTimeUtils::getDateForGet($value, config('constants.DATETIME_FORMAT'));
 }

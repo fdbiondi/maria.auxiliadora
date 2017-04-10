@@ -70,13 +70,14 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
             Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
 
-            Route::group(['prefix' => 'registrations'], function () {
-                // Matches The "/courses/registrations" URL
-                Route::get('index', ['as' => 'course_registration.index', 'uses' => 'CourseRegistrationController@index']);
+            Route::group(['prefix' => 'registration'], function () {
+                // Matches The "/courses/registration" URL
+                Route::get('', ['as' => 'course_registration.list', 'uses' => 'CourseRegistrationController@index']);
+                Route::get('{course_id}/students', ['as' => 'course_registration.students', 'uses' => 'CourseRegistrationController@students']);
+                Route::post('{course_id}/store', ['as' => 'course_registration.store', 'uses' => 'CourseRegistrationController@store']);
             });
 
             Route::get('{course_id}/students', ['as' => 'course.students', 'uses' => 'CourseController@students']);
-            Route::post('{course_id}/students', ['as' => 'course.students', 'uses' => 'CourseController@students']);
             Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
         

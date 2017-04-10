@@ -58,11 +58,11 @@ class ExamActController extends Controller
         $examAct = $this->examActRepository->create($request->all());
 
         if ($examAct->save()){
-            $response['message'] = trans('admin.exam_act.create.message.success', ['name' => $request->get("act_number")]);
+            $response['message'] = trans('exam.act.create.message.success', ['name' => $request->get("act_number")]);
             $response['error'] = false;
         }
         else{
-            $response['message'] = trans('admin.exam_act.create.message.error');
+            $response['message'] = trans('exam.act.create.message.error');
             $response['error'] = true;
         }
 
@@ -84,11 +84,11 @@ class ExamActController extends Controller
         $examAct = $this->examActRepository->update($id, $request->all());
 
         if ($examAct){
-            $response['message'] = trans('admin.exam_act.edit.message.success', ['name' => $request->get('act_number')]);
+            $response['message'] = trans('exam.act.edit.message.success', ['name' => $request->get('act_number')]);
             $response['error'] = false;
         }
         else{
-            $response['message'] = trans('admin.exam_act.edit.message.error');
+            $response['message'] = trans('exam.act.edit.message.error');
             $response['error'] = true;
         }
 
@@ -104,10 +104,10 @@ class ExamActController extends Controller
         $response = $this->examActRepository->delete($id);
 
         if($response['delete']){
-            $response['message'] = trans('admin.exam_act.delete.message.success', ['name' => $response['act_number']]);
+            $response['message'] = trans('exam.act.delete.message.success', ['name' => $response['act_number']]);
             $response['error'] = false;
         }else{
-            $response['message'] = trans('admin.exam_act.delete.message.error');
+            $response['message'] = trans('exam.act.delete.message.error');
             $response['error'] = true;
         }
 

@@ -7,10 +7,10 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.exam_registration.list.title'),
+        'title'=>trans('exam.registration.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.exam_registration.list.back')])
+        'previous_text' => trans('exam.registration.list.back')])
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('admin.exam_registration.list.table.title'),
+                        'title'=> trans('exam.registration.list.table.title'),
                     ])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -28,7 +28,7 @@
                                 <thead>
                                 <tr>
                                     @include('admin.partials.table.header', [
-                                        'headers' => trans('admin.exam_registration.subjects.table.header')])
+                                        'headers' => trans('exam.registration.subjects.table.header')])
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,7 +61,7 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
 
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.exam_registration.question.delete') }}" ;
+        var QUESTION_DELETE = "{{ trans('exam.registration.question.delete') }}" ;
         ACTION_URL = "{{ url()->current() }}";
 
         $order = [[ 1, "asc" ]];

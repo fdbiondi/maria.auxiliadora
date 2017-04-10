@@ -20,8 +20,9 @@ abstract class BaseRepository
     }
 
     /**
-     * @param integer $id
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     * @param $id
+     * @param array $relation
+     * @return \App\Entities\Entity
      */
     public function findOrFail($id, $relation = [])
     {

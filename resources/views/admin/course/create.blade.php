@@ -20,30 +20,26 @@
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
+        {!! Form::open(['id' => 'admin_form', 'route' => 'course.store', 'method' => 'POST']) !!}
         <div class="row">
-            {!! Form::open(['id' => 'admin_form', 'route' => 'course.store', 'method' => 'POST']) !!}
-                @include('partials.errors')
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        @include('admin.partials.title', [
-                            'title'=> trans('admin.course.create.subtitle')])
-                        <div class="ibox-content">
-                            <div class="row">
-                                @include('admin.course.partials.fields')
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @include('admin.partials.button.save')
-                                    </div>
-                                </div>
-                            </div>
+            @include('partials.errors')
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    @include('admin.partials.title', [
+                        'title'=> trans('admin.course.create.subtitle')])
+                    <div class="ibox-content">
+                        <div class="row">
+                            @include('admin.course.partials.fields')
+                        </div>
+                        <div class="form-group">
+                            @include('admin.partials.button.save')
                         </div>
                     </div>
                 </div>
-                
-            {!! Form::close() !!}
+            </div>
         </div>
+        {!! Form::close() !!}
+
     </div>
 @endsection
 

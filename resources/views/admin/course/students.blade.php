@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.course.student.list.title'),
-                        'route'=> route('course.create'),
+                        'route'=> route('course_registration.students', $course),
                         'button' => trans('admin.course.student.list.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">

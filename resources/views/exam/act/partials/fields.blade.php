@@ -26,6 +26,7 @@
     'control_id'=> 'subject_id',
     'field_id' => 'id',
     'field_value' => 'name',
+    'disabled' => false
 ])
 
 <!-- exam_instance_id -->
@@ -37,4 +38,5 @@
     'control_id'=> 'exam_instance_id',
     'field_id' => 'id',
     'field_value' => 'name',
+    'disabled' => false
 ])
