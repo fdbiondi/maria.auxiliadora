@@ -95,10 +95,8 @@ class DateTimeUtils
     public static function getDateForGet($value, $format = "") {
         if($value=="0000-00-00" || $value == "0000-00-00 00:00" || $value==null || $value == "")
             return "";
-        else if($format != "")
-            return Carbon::parse($value)->format($format);
         else
-            return Carbon::parse($value)->format(config('constants.DATE_FORMAT'));
+            return self::getDateFormatted($value, $format);
     }
 
     /**
@@ -115,18 +113,18 @@ class DateTimeUtils
     /**
      * Get date formatted with format defined in constant file
      * 
-     * @param $unixDate
+     * @param string $datetime
      * @param string $format
      * @return string
      */
-    public static function getDateFormatted($unixDate, $format = ""){
-        $date = self::datetimeForTime($unixDate);
+    public static function getDateFormatted($datetime, $format = ""){
+        $date = self::getInstance($datetime);
         if($format=="")
             $format = config('constants.DATE_FORMAT');
 
         return $date->format($format);
     }
-    
+
     /**
      * Get datetime from UTC because is used for times
      *
@@ -139,11 +137,21 @@ class DateTimeUtils
 
     /**
      * Get datetime format from unix datetime
-     * 
+     *
      * @param $unixTime
      * @return Carbon static
      */
     private static function datetimeForDatetime($unixTime) {
         return Carbon::createFromTimestampUTC($unixTime);
+    }
+
+    /**
+     * Get Carbon instance from string datetime
+     *
+     * @param string $datetime
+     * @return static
+     */
+    private static function getInstance($datetime) {
+        return Carbon::parse($datetime);
     }
 }

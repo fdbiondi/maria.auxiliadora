@@ -54,12 +54,12 @@ function getTimeFormatted($unixTime)
 }
 
 //Date formatted
-function getDateFormatted($unixDate)
+function getDateFormatted($datetime)
 {
-    if ($unixDate == 0)
+    if ($datetime== 0)
         return "";
     else
-        return DateTimeUtils::getDateFormatted($unixDate);
+        return DateTimeUtils::getDateFormatted($datetime);
 }
 
 function getDateNow() {
