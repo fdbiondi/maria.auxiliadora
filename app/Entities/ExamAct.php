@@ -25,7 +25,7 @@ class ExamAct extends Entity
 
     public function instance()
     {
-        return $this->belongsTo(ExamInstance::getClass());
+        return $this->belongsTo(ExamInstance::getClass(), 'exam_instance_id');
     }
     
     public function registrations() {

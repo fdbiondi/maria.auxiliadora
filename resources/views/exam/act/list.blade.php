@@ -38,7 +38,7 @@
                                         <td>{{ $examAct->act_number }}</td>
                                         <td>{{ $examAct->classroom }}</td>
                                         <td>{{ $examAct->date_time }}</td>
-                                        <td>{{ $examAct->exam_instance->name }}</td>
+                                        <td>{{ $examAct->instance->name }}</td>
                                         <td>{{ $examAct->subject->name }}</td>
                                         <td>
                                             @include('admin.partials.button.actions', [
