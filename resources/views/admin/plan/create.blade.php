@@ -2,6 +2,8 @@
 
 @section('styles')
 @parent
+    <!-- Switchery -->
+    {!! Html::style('assets/template/css/plugins/switchery/switchery.css') !!}
     <!-- DATETIME PICKER -->
     {!! Html::style('assets/template/css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') !!}
 @endsection
@@ -43,6 +45,8 @@
     {!! Html::script('assets/template/js/plugins/moment/locale.'. getAppLanguage() .'.js') !!}
     <!-- DATETIME PICKER -->
     {!! Html::script('assets/template/js/plugins/datetimepicker/bootstrap-datetimepicker.min.js') !!}
+    <!-- Switchery -->
+    {!! Html::script('assets/template/js/plugins/switchery/switchery.js') !!}
 
     <script type="text/javascript">
         ACTION_URL = "{{ route('plan.create') }}";
@@ -51,6 +55,11 @@
                 viewMode: 'years',
                 format: 'DD/MM/YYYY'
             });
+
+            $('.checkbox-wrapper').popover();
+
+            const elem = document.querySelector('.js-switch');
+            const switchery = new Switchery(elem, { color: '#1AB394' });
         });
     </script>
     <!-- ADMIN VIEWS JS -->

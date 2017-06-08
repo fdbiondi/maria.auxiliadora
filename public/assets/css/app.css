@@ -54,3 +54,8 @@ input.loading {
 fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
     color: #757575;
 }
+
+.checkbox-wrapper {
+    height: 2.5em;
+    width: 2.5em;
+}

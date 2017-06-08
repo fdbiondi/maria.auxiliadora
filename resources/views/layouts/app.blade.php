@@ -4,23 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ trans('general.title') }}</title>
-                <!-- Bootstrap -->
+        <!-- Bootstrap -->
         {!! Html::style('assets/template/css/bootstrap.min.css') !!}
-                <!-- Font Awesome-->
+        <!-- Font Awesome-->
         {!! Html::style('assets/template/font-awesome/css/font-awesome.css') !!}
-                <!-- Ladda style -->
+        <!-- Ladda style -->
         {!! Html::style('assets/template/css/plugins/ladda/ladda-themeless.min.css') !!}
-                <!-- Toastr style -->
+        <!-- Toastr style -->
         {!! Html::style('assets/template/css/plugins/toastr/toastr.min.css') !!}
-                <!-- Sweet Alert -->
+        <!-- Sweet Alert -->
         {!! Html::style('assets/template/css/plugins/sweetalert/sweetalert.css') !!}
-                <!-- Inspinia Animations CSS -->
+        <!-- Inspinia Animations CSS -->
         {!! Html::style('assets/template/css/animate.css') !!}
 
         @yield('styles_before_custom_style')
-                <!-- Inspinia Styles CSS-->
+        <!-- Inspinia Styles CSS-->
         {!! Html::style('assets/template/css/style.css') !!}
-                <!-- App Styles -->
+        <!-- App Styles -->
         {!! Html::style('assets/css/app.css') !!}
 
         @yield('styles')
@@ -68,44 +68,44 @@
         {!! Html::script('assets/template/js/bootstrap.min.js') !!}
         {!! Html::script('assets/template/js/plugins/metisMenu/jquery.metisMenu.js') !!}
         {!! Html::script('assets/template/js/plugins/slimscroll/jquery.slimscroll.min.js') !!}
-                <!-- Custom and plugin javascript -->
+        <!-- Custom and plugin javascript -->
         {!! Html::script('assets/template/js/inspinia.js') !!}
         {!! Html::script('assets/template/js/plugins/pace/pace.min.js') !!}
-                <!-- App -->
+        <!-- App -->
         {!! Html::script('assets/js/app.js') !!}
         {!! Html::script('assets/js/app.validations.js') !!}
-                <!-- Ladda -->
+        <!-- Ladda -->
         {!! Html::script('assets/template/js/plugins/ladda/spin.min.js') !!}
         {!! Html::script('assets/template/js/plugins/ladda/ladda.min.js') !!}
         {!! Html::script('assets/template/js/plugins/ladda/ladda.jquery.min.js') !!}
-                <!-- Toastr script -->
+        <!-- Toastr script -->
         {!! Html::script('assets/template/js/plugins/toastr/toastr.min.js') !!}
-                <!-- Sweet alert -->
+        <!-- Sweet alert -->
         {!! Html::script('assets/template/js/plugins/sweetalert/sweetalert.min.js') !!}
         <script>
             //Action URL
-            var ACTION_URL = "{{ route('home') }}";
+            let ACTION_URL = "{{ route('home') }}";
             //token
-            var _TOKEN = "{{ csrf_token() }}";
+            let _TOKEN = "{{ csrf_token() }}";
             //Language
-            var LANG = "{{ $LANG = getAppLanguage() }}";
-            var SERVER_HOSTNAME = "{{ getServerHostName() }}";
+            let LANG = "{{ $LANG = getAppLanguage() }}";
+            const SERVER_HOSTNAME = "{{ getServerHostName() }}";
             //Language datatables
-            var LANG_DATA_TABLE_URL = "{{ asset('assets/template/js/plugins/dataTables/datatables.' . $LANG . '.json') }}";
+            const LANG_DATA_TABLE_URL = "{{ asset('assets/template/js/plugins/dataTables/datatables.' . $LANG . '.json') }}";
             //Messages
-            var TRY_AGAIN = "{{ trans('general.error.try_again') }}"
-            var ERROR_FORM_TITLE = "{{trans('general.error.title')}}";
-            var ERROR_FORM_SUBTITLE = "{{trans('general.error.subtitle')}}";
-            var OK_FORM_TITLE = "{{trans('general.message.save.ok')}}";
+            const TRY_AGAIN = "{{ trans('general.error.try_again') }}"
+            const ERROR_FORM_TITLE = "{{trans('general.error.title')}}";
+            const ERROR_FORM_SUBTITLE = "{{trans('general.error.subtitle')}}";
+            const OK_FORM_TITLE = "{{trans('general.message.save.ok')}}";
             //Texts for buttons
-            var CANCEL_BUTTON = "{{ trans('general.button.cancel') }}";
-            var DELETE_BUTTON = "{{ trans('general.button.delete') }}";
-            var CONFIRM_BUTTON = "{{ trans('general.button.confirm') }}";
-            var ADD_BUTTON = "{{ trans('general.button.add') }}";
-            var SAVE_BUTTON = "{{ trans('general.button.save') }}";
-            var BACK_BUTTON = "{{ trans('general.button.back') }}";
+            const CANCEL_BUTTON = "{{ trans('general.button.cancel') }}";
+            const DELETE_BUTTON = "{{ trans('general.button.delete') }}";
+            const CONFIRM_BUTTON = "{{ trans('general.button.confirm') }}";
+            const ADD_BUTTON = "{{ trans('general.button.add') }}";
+            const SAVE_BUTTON = "{{ trans('general.button.save') }}";
+            const BACK_BUTTON = "{{ trans('general.button.back') }}";
             //Questions
-            var ARE_YOU_SURE_QUESTION = "{{ trans('general.message.question.are_you_sure') }}";
+            const ARE_YOU_SURE_QUESTION = "{{ trans('general.message.question.are_you_sure') }}";
         </script>
         @yield('scripts')
     </body>

@@ -1,4 +1,4 @@
-var l = null;
+let l = null;
 $(function () {
     // Bind normal buttons
     setToastConfiguration();
@@ -8,8 +8,8 @@ $(function () {
  * SERIALIZE FORMS
  */
 $.fn.serializeObject = function() {
-    var o = {};
-    var a = this.find(':input:not(.not_included)').serializeArray();
+    let o = {};
+    let a = this.find(':input:not(.not_included)').serializeArray();
     $.each(a, function() {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
@@ -25,10 +25,20 @@ $.fn.serializeObject = function() {
 };
 
 $.fn.serializeDisabled = function () {
-    var o = {};
+    let o = {};
 
     $(':disabled[name]', this).each(function () {
         o[this.name] = $(this).val();
+    });
+
+    return o;
+};
+
+$.fn.serializeChecks = function () {
+    let o = {};
+
+    $(':checkbox[name]', this).each(function () {
+        o[this.name] = +this.checked;
     });
 
     return o;
@@ -60,15 +70,16 @@ function setToastConfiguration(){
  * LOADING BUTTONS
  */
 function startLoadingButton(button){
-    if(l!= null) {
+    if(l != null) {
         l = $( button ).ladda();
         l.ladda('start');
     }
 }
 
 function stopLoadingButton(){
-    if(l!= null)
+    if(l != null) {
         l.ladda('stop');
+    }
 }
 
 /**
@@ -91,20 +102,22 @@ function ajaxPromise(url,type,dataType,data,button_loading){
 }
 
 function ajaxPromiseFail(jqXHR, textStatus, errorThrown) {
-    if(textStatus == "error") {
+    if(textStatus == 'error') {
         if(!fieldErrors(jqXHR.status, jqXHR.responseJSON)) {
-            showErrorAlert("Error processing your request.", 'Server is not responding, please try again');
-            console.log("err. msj.: " + jqXHR.responseText);
-            console.log("errThrown: " + errorThrown);
+            showErrorAlert('Error processing your request.', 'Server is not responding, please try again');
+            console.log('err. msj.: ' + jqXHR.responseText);
+            console.log('errThrown: ' + errorThrown);
         }
     }
 }
 
 function ajaxPromiseAlways() {
-    if(l != null)
+    if(l != null) {
         stopLoadingButton();
-    else
+    }
+    else {
         spinnerHide();
+    }
 }
 
 /**
@@ -125,7 +138,7 @@ function sendAjaxPromise(URL, type, dataType, data, button_loading) {
  * SHOW FORM ERRORS
  */
 function fieldErrors(status, errors) {
-    var errorMessage = "";
+    let errorMessage = '';
 
     if(status == 422) {
         $.each(errors, function (i, message) {

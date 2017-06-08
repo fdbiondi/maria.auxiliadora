@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('styles')
-@parent
     <!-- iCHECK -->
     {!! Html::style('assets/template/css/plugins/iCheck/custom.css') !!}
 @endsection

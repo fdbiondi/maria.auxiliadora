@@ -36,7 +36,8 @@ class PlanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'date' => 'required|date_format:d/m/Y'
+            'date' => 'required|date_format:d/m/Y',
+            'code' => 'required'
         ]);
 
         $plan = $this->planRepository->create($request->all());

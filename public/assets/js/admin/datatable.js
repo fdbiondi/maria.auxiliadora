@@ -1,7 +1,7 @@
-var $info = false;
-var $order = [[ 0 , "asc" ]];
-var $paging = true;
-var $fileToExportName = "exportedFile";
+let $info = false;
+let $order = [[ 0 , 'asc' ]];
+let $paging = true;
+let $fileToExportName = 'exportedFile';
 
 $(function(){
     $('.dataTables-list').DataTable({

@@ -1,27 +1,32 @@
-$(function(){
+let action = '';
 
+$(function(){
     $('#btn_save').on('click', function(e){
         e.preventDefault();
-        action = "save";
+        action = 'save';
         //assemble the object with the data
-        var $form = $("#admin_form");
-        var url = $form.attr('action');
+        let $form = $('#admin_form');
+        const url = $form.attr('action');
 
-        var data = Object.assign($form.serializeObject(), $form.serializeDisabled());
+        const data = Object.assign(
+            $form.serializeObject(),
+            $form.serializeDisabled(),
+            $form.serializeChecks()
+        );
         
         sendAjaxPromise(url, 'POST', 'json', data, null);
     });
 
     $('.delete').on('click', function (e) {
         e.preventDefault();
-        action = "delete";
+        action = 'delete';
 
-        var id = $(this).data("id");
-        var name = $(this).data("name");
-        var url = $(this).attr("href");
-        var messageType = "warning";
+        const id = $(this).data('id');
+        const name = $(this).data('name');
+        const url = $(this).attr('href');
+        const messageType = 'warning';
 
-        var data = {'_token': _TOKEN , data: JSON.stringify(id)};
+        const data = {'_token': _TOKEN , data: JSON.stringify(id)};
 
         showQuestionAlert(ARE_YOU_SURE_QUESTION.toString(),
             QUESTION_DELETE.replace(':name', name),
@@ -34,19 +39,19 @@ $(function(){
     });
 });
 
-var action = "";
-
 function ajaxSuccess(data) {
     if(data.error) {
         showErrorAlert(TRY_AGAIN, data.message);
     }
     else{
-        var title = OK_FORM_TITLE, text = "";
+        let title = OK_FORM_TITLE;
+        let text = '';
 
-        if (action == "delete")
+        if (action === 'delete') {
             title = data.message;
-        else if (action == "save")
+        } else if (action === 'save') {
             text = data.message;
+        }
 
         showOkAlert(title, text, redirect, [ACTION_URL]);
     }

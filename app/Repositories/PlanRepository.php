@@ -31,7 +31,7 @@ class PlanRepository extends BaseRepository
             'name' => $data['name'],
             'date' => $data['date'],
             'code' => $data['code'],
-            'current' => 1,
+            'current' => $data['current'],
         ]);
     }
 }

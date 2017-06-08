@@ -8,20 +8,20 @@ $(function(){
 });
 
 function change_element_of_table($chk) {
-    var id = $chk.closest('tr').parent()[0].getAttribute('id');
+    const id = $chk.closest('tr').parent()[0].getAttribute('id');
 
-    var trow = $chk.closest('tr');
+    const trow = $chk.closest('tr');
 
-    if(id == "disallow_table") {
+    if(id === 'disallow_table') {
         $assign.append(trow);
     }
-    else if(id == "assign_table") {
+    else if(id === 'assign_table') {
         $disallow.append(trow);
     }
 }
 
 function searchInTable($input, $table) {
-    var that = $input || this;
+    const that = $input || this;
     $.each($($table + ' tr'),
         function(i, val) {
             if ($(val).text().indexOf($(that).val()) == -1) {

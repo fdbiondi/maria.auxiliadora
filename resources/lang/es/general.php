@@ -52,7 +52,9 @@ return [
         'address' => 'Dirección',
 
         'city' => 'Ciudad',
+        'code' => 'Código',
         'classroom' => 'Salón de Clase',
+        'current' => 'Actual',
 
         'date' => 'Fecha',
         'date_time' => 'Fecha y Hora',
@@ -102,6 +104,8 @@ return [
         'type' => 'Tipo',
 
         'user_profile' => 'Perfil de Usuario',
+
+        'validation' => 'Vigencia',
 
         'year' => 'Año',
         'year_of_study' => 'Año de Cursado',
