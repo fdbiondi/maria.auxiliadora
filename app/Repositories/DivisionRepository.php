@@ -17,6 +17,14 @@ class DivisionRepository extends BaseRepository
         return new Division();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create()
     {
 

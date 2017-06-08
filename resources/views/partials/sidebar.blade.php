@@ -3,19 +3,19 @@
         <ul class="nav metismenu" id="side-menu">
             @include('partials.menu.header')
 
-            @if ( currentUser()->isAdmin() )
+{{--            @if ( currentUser()->isAdmin() ) --}}
                 @include('navigation.admin')
-            @elseif( currentUser()->isSecretary() )
+{{--            @elseif( currentUser()->isSecretary() ) --}}
                 @include('navigation.secretary')
-            @elseif( currentUser()->isPreceptor() )
+{{--            @elseif( currentUser()->isPreceptor() ) --}}
                 @include('navigation.preceptor')
-            @elseif( currentUser()->isProfessor() )
+{{--            @elseif( currentUser()->isProfessor() ) --}}
                 @include('navigation.professor')
-            @elseif( currentUser()->isStudent() )
+{{--            @elseif( currentUser()->isStudent() ) --}}
                 @include('navigation.student')
-            @elseif( currentUser()->isTutor() )
+{{--            @elseif( currentUser()->isTutor() ) --}}
                 @include('navigation.tutor')
-            @endif
+{{--            @endif --}}
 
             @include('navigation.shared')
 

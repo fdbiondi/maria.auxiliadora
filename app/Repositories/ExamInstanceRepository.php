@@ -17,6 +17,14 @@ class ExamInstanceRepository extends BaseRepository
         return new ExamInstance();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create(Array $data)
     {
         return $this->getModel()->create([

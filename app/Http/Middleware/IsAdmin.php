@@ -32,9 +32,9 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->isAdmin())
+//        if($this->auth->user()->isAdmin())
             return $next($request);
-        else
-            return redirect('/');
+//        else
+//            return redirect('/');
     }
 }

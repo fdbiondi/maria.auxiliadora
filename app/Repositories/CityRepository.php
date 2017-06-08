@@ -17,6 +17,14 @@ class CityRepository extends BaseRepository
         return new City();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create()
     {
 

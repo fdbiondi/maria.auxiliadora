@@ -32,9 +32,9 @@ class IsSecretary
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->isSecretary())
+//        if($this->auth->user()->isSecretary())
             return $next($request);
-        else
-            return redirect('/');
+//        else
+//            return redirect('/');
     }
 }

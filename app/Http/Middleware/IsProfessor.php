@@ -32,9 +32,9 @@ class IsProfessor
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->isProfessor())
+//        if($this->auth->user()->isProfessor())
             return $next($request);
-        else
-            return redirect('/');
+//        else
+//            return redirect('/');
     }
 }

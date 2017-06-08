@@ -17,6 +17,14 @@ class CourseUserSubjectRepository extends BaseRepository
         return new CourseUserSubject();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create(Array $data)
     {
 

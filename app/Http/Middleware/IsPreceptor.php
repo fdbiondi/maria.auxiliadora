@@ -32,9 +32,9 @@ class IsPreceptor
      */
     public function handle($request, Closure $next)
     {
-        if($this->auth->user()->isPreceptor())
+//        if($this->auth->user()->isPreceptor())
             return $next($request);
-        else
-            return redirect('/');
+//        else
+//            return redirect('/');
     }
 }

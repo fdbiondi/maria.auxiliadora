@@ -17,6 +17,14 @@ class ExamActRepository extends BaseRepository
         return new ExamAct();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create(Array $data)
     {
         return $this->getModel()->create([

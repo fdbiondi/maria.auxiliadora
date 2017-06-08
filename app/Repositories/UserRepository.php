@@ -18,6 +18,14 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
+    /**
      * @param array $data
      * @return User
      */

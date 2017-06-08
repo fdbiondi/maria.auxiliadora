@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Entities\CourseUser;
-use Illuminate\Support\Facades\DB;
 
 class CourseUserRepository extends BaseRepository
 {
@@ -16,6 +15,14 @@ class CourseUserRepository extends BaseRepository
     public function getModel()
     {
         return new CourseUser();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
     }
 
     public function create(Array $data)

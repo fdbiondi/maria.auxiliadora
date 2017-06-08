@@ -34,52 +34,143 @@ function getServerHostName()
 }
 
 /**
- * @param $number
- * @param $decimals
- * @return string return formated number
+ * Datetime Helpers
  */
-function numberFormatted($number, $decimals = 2, $currencySymbol = false)
+
+/**
+ * Get the date from a passed value and gives format
+ *
+ * @param string $value
+ * @param string $format
+ * @return string
+ */
+function getDateFrom($value, $format = "")
 {
-    $number = number_format($number, $decimals, config('constants.DEC_POINT'), config('constants.THOUSANDS_SEP'));
-    if ($currencySymbol)
-        return config('constants.CURRENCY_SYMBOL') . $number;
-    else
-        return $number;
+    return DateTimeUtils::get($value, $format);
 }
 
-//Time formatted
-function getTimeFormatted($unixTime)
+/**
+ * Get the time from a passed value
+ *
+ * @param string $value
+ * @return string
+ */
+function getTimeFrom($value)
 {
-    return DateTimeUtils::getTimeFormatted($unixTime);
+    return DateTimeUtils::getTimeFormatted($value);
 }
 
-//Date formatted
-function getDateFormatted($datetime)
+/**
+ * Get actual Carbon date
+ *
+ * @return \Carbon\Carbon
+ */
+function getDateNow()
 {
-    if ($datetime== 0)
-        return "";
-    else
-        return DateTimeUtils::getDateFormatted($datetime);
-}
-
-function getDateNow() {
     return DateTimeUtils::getDateNow();
 }
 
-//Date for set and get
+/**
+ * Get actual date formatted
+ *
+ * @param string $format
+ * @return string
+ */
+function getDateNowFormatted($format) {
+    return DateTimeUtils::getDateNow()->format($format);
+}
+
+/**
+ * Create date from value
+ *
+ * @param $value
+ * @return \Carbon\Carbon
+ */
 function getDateForSet($value) {
-    return DateTimeUtils::createForSet(config('constants.DATE_FORMAT'),$value);
+    return DateTimeUtils::create($value, config('constants.DATE_FORMAT'));
 }
 
+/**
+ * Get date from value
+ *
+ * @param $value
+ * @return string
+ */
 function getDateForGet($value) {
-    return DateTimeUtils::getDateForGet($value);
+    return DateTimeUtils::get($value, config('constants.DATE_FORMAT'));
 }
 
-//Datetime for set and get
+/**
+ * Create datetime from value
+ *
+ * @param $value
+ * @return \Carbon\Carbon
+ */
 function getDateTimeForSet($value) {
-    return DateTimeUtils::createForSet(config('constants.DATETIME_FORMAT'),$value);
+    return DateTimeUtils::create($value, config('constants.DATETIME_FORMAT'));
 }
 
+/**
+ * Get datetime from value
+ *
+ * @param $value
+ * @return string
+ */
 function getDateTimeForGet($value) {
-    return DateTimeUtils::getDateForGet($value, config('constants.DATETIME_FORMAT'));
+    return DateTimeUtils::get($value, config('constants.DATETIME_FORMAT'));
+}
+
+/**
+ * String Manipulation Helpers
+ */
+
+/**
+ * Convert string to upper case
+ *
+ * @param $string
+ * @return string
+ */
+function upperCase($string) {
+    return mb_strtoupper($string, 'UTF-8');
+}
+
+/**
+ * Convert string to lower case
+ *
+ * @param $string
+ * @return string
+ */
+function lowerCase($string) {
+    return mb_strtolower($string, 'UTF-8');
+}
+
+/**
+ * Convert string first letters of words to upper case
+ *
+ * @param $string
+ * @return string
+ */
+function upperWords($string) {
+    return ucwords(lowerCase($string));
+}
+
+/**
+ * Arrays And Objects Helpers
+ */
+
+/**
+ * Converts an array to an object recursively
+ *
+ * @param array $array
+ * @return stdClass
+ */
+function toObject(Array $array) {
+    $object = new stdClass();
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            $value = toObject($value);
+        }
+        $object->$key = $value;
+    }
+    return $object;
 }

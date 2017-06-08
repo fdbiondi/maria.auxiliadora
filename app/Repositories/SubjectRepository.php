@@ -16,6 +16,14 @@ class SubjectRepository extends BaseRepository
         return new Subject();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create($name, $description)
     {
         return $this->getModel()->create([

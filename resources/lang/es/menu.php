@@ -5,16 +5,6 @@ return [
         'title' => 'Administración',
         'icon' => 'fa-cogs',
         'items' => [
-            'subject' => [
-                'icon' => 'fa-book',
-                'route' => 'subject.list',
-                'text' => 'Materias',
-            ],
-            'user' => [
-                'icon'=>'fa-users',
-                'route' => 'user.list',
-                'text' => 'Usuarios',
-            ],
             'course' => [
                 'icon'=>'fa-building',
                 'route' => 'course.list',
@@ -24,6 +14,21 @@ return [
                 'icon'=>'fa-building',
                 'route' => 'course_registration.list',
                 'text' => 'Inscripción a cursado'
+            ],
+            'subject' => [
+                'icon' => 'fa-book',
+                'route' => 'subject.list',
+                'text' => 'Materias',
+            ],
+            'plan' => [
+                'icon' => 'fa-book',
+                'route' => 'plan.list',
+                'text' => 'Planes',
+            ],
+            'user' => [
+                'icon'=>'fa-users',
+                'route' => 'user.list',
+                'text' => 'Usuarios',
             ],
             /*'country' => [            // example
                 'icon'=>'fa-globe',

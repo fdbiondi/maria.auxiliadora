@@ -81,6 +81,15 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
         
+        Route::group(['middleware' => 'admin', 'prefix' => 'plans'], function () {
+            // Matches The "/plans" URL
+            Route::get('list', ['as' => 'plan.list', 'uses' => 'PlanController@index']);
+            Route::get('create', ['as' => 'plan.create', 'uses' => 'PlanController@create']);
+            Route::post('store', ['as' => 'plan.store', 'uses' => 'PlanController@store']);
+            Route::get('edit/{id}', ['as' => 'plan.edit', 'uses' => 'PlanController@edit']);
+            Route::post('update/{id}', ['as' => 'plan.update', 'uses' => 'PlanController@update']);
+            Route::delete('delete', ['as' => 'plan.delete', 'uses' => 'PlanController@delete']);
+        });
     });
 
     Route::group(['namespace' => 'Exam'], function() {

@@ -17,6 +17,14 @@ class ExamRegistrationRepository extends BaseRepository
         return new ExamRegistration();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create(Array $data)
     {
 /*        return $this->getModel()->create([

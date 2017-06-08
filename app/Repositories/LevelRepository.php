@@ -17,6 +17,14 @@ class LevelRepository extends BaseRepository
         return new Level();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create()
     {
 

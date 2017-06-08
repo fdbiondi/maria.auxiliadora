@@ -17,6 +17,14 @@ class RoleRepository extends BaseRepository
         return new Role();
     }
 
+    /**
+     * @return array
+     */
+    protected function getRules()
+    {
+        return [];
+    }
+
     public function create()
     {
 

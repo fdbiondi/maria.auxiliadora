@@ -167,6 +167,45 @@ return [
             '' => '',
         ],
     ],
+    'plan' => [
+        'list' => [
+            'title' => 'Planes por Año',
+            'table' => [
+                'title' => 'Listado de Planes',
+                'add' => 'Agregar Nuevo Plan',
+                'header' => [
+                    'name' => 'Nombre',
+                    'date' => 'Fecha',
+                    'actions' => 'Acciones',
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+        'create' => [
+            'title' => 'Nuevo Plan',
+            'subtitle' => 'Datos del Plan',
+            'message' => [
+                'success' => 'Se ha creado el Plan :name satisfactoriamente.',
+                'error' => 'No se guardaron los datos del Plan.',
+            ],
+            'back' => 'Volver a Planes',
+        ],
+        'edit' => [
+            'title' => 'Editar Plan',
+            'message' => [
+                'success' => 'Se ha actualizado el Plan :name satisfactoriamente.',
+                'error' => 'No se pudieron actualizar los datos del Plan.',
+            ],
+        ],
+        'delete' => [
+            'title' => 'Baja de Plan',
+            'message' => [
+                'success' => 'Se ha eliminado el Plan :name satisfactoriamente.',
+                'error' => 'No se pudo eliminar el Plan.',
+                'has_relation' => 'No se pudo eliminar el curso porque tiene alumnos asignados.'
+            ],
+        ],
+    ],
     'profile' => [
         'title' => 'Perfíl',
         'subtitle' => 'Datos del perfil',

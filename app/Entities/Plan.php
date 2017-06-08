@@ -25,4 +25,15 @@ class Plan extends Entity
     public function levels() {
         return $this->belongsToMany(Level::getClass());
     }
+
+    /**
+     * Methods
+     */
+    public function getDateAttribute($value) {
+        return getDateForGet($value);
+    }
+
+    public function setDateAttribute($value) {
+        $this->attributes['date'] = getDateForSet($value);
+    }
 }
