@@ -23,6 +23,11 @@
                     ])
                     <div class="ibox-content">
                         <div class="row">
+                            @if($courses->count() == 0)
+                                <div class="col-md-12">
+                                    No existen cursos disponibles.
+                                </div>
+                            @else
                             <div class="col-md-12">
                                 @include('controls.select', [
                                     'title' => trans('admin.course_registration.index.course'),
@@ -35,12 +40,7 @@
                                     'disabled' => false,
                                 ])
                             </div>
-                            <div class="col-md-12">
-                                {{ Form::button(trans('general.button.select'), [
-                                    'class' => 'ladda-button btn btn-success btn-block',
-                                    'id' => 'btn_select',
-                                    'data-style' =>'zoom-in']) }}
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

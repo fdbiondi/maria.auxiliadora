@@ -1,8 +1,8 @@
 $(function(){
-    const $btn_select = $('#btn_select');
+    const $course_id = $('#course_id');
 
-    $btn_select.on('click', function () {
-        let courseId = $('#course_id').val();
-        window.location = REGISTER_STUDENTS_ROUTE.replace('ID', courseId);
+    $course_id.on('change', function () {
+        const courseId = $course_id.val();
+        Util.redirect(REGISTER_STUDENTS_ROUTE.replace('ID', courseId));
     });
 });

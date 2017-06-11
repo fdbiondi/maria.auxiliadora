@@ -1,4 +1,9 @@
 let action = '';
+const formConfig = {
+    object: true,
+    check: true,
+    disable: true
+};
 
 $(function(){
     $('#btn_save').on('click', function(e){
@@ -9,11 +14,9 @@ $(function(){
         let $form = $('#admin_form');
         const url = $form.attr('action');
 
-        const data = Object.assign(
-            $form.serializeObject(),
-            $form.serializeDisabled(),
-            $form.serializeChecks()
-        );
+        const f = new Form($form, formConfig);
+
+        const data = f.serialize();
         
         ajaxPromise(url, 'POST', 'json', data, null);
     });

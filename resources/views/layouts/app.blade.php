@@ -75,6 +75,7 @@
         {!! Html::script('assets/js/helpers/loading.class.js') !!}
         {!! Html::script('assets/js/helpers/message.class.js') !!}
         {!! Html::script('assets/js/helpers/util.class.js') !!}
+        {!! Html::script('assets/js/helpers/form.class.js') !!}
         {!! Html::script('assets/js/helpers/async.class.js') !!}
         {!! Html::script('assets/js/helpers/error.class.js') !!}
         <!-- App -->

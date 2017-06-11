@@ -35,4 +35,12 @@ class PlanRepository extends BaseRepository
             'level_id' => $data['level_id'],
         ]);
     }
+
+    public function update($id, $data) {
+        $plan = $this->findOrFail($id);
+
+        $plan->fill($data);
+
+        return $plan;
+    }
 }

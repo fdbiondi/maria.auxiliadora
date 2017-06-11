@@ -2,6 +2,8 @@
 
 @section('styles')
 @parent
+    <!-- BOOTSTRAP SELECT -->
+    {!! Html::style('assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css') !!}
     <!-- Switchery -->
     {!! Html::style('assets/template/css/plugins/switchery/switchery.css') !!}
     <!-- DATETIME PICKER -->
@@ -40,6 +42,8 @@
 
 @section('scripts')
     @parent
+    <!-- BOOTSTRAP SELECT -->
+    {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}
     <!-- MOMENT JS-->
     {!! Html::script('assets/template/js/plugins/moment/moment.min.js') !!}
     {!! Html::script('assets/template/js/plugins/moment/locale.'. getAppLanguage() .'.js') !!}

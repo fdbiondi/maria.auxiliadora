@@ -164,7 +164,7 @@ return [
             'back' => 'Volver al Inicio',
         ],
         'add' => [
-            '' => '',
+            'back' => 'Volver',
         ],
     ],
     'level' => [

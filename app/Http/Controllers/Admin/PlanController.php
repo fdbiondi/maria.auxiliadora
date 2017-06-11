@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\LevelRepository;
 use App\Repositories\PlanRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,10 +10,13 @@ use App\Http\Controllers\Controller;
 class PlanController extends Controller
 {
     protected $planRepository;
+    protected $levelRepository;
 
-    public function __construct(PlanRepository $planRepository)
+    public function __construct(PlanRepository $planRepository,
+                                LevelRepository $levelRepository)
     {
         $this->planRepository = $planRepository;
+        $this->levelRepository = $levelRepository;
     }
 
     public function index()
@@ -24,12 +28,15 @@ class PlanController extends Controller
     public function create()
     {
         $plan = $this->planRepository->getModel();
-        return view('admin.plan.create', compact('plan'));
+        $levels = $this->levelRepository->getAll();
+        return view('admin.plan.create', compact('plan', 'levels'));
     }
 
     public function edit($id)
     {
-
+        $plan = $this->planRepository->findOrFail($id);
+        $levels = $this->levelRepository->getAll();
+        return view('admin.plan.edit', compact('plan', 'levels'));
     }
 
     public function store(Request $request)
@@ -37,7 +44,8 @@ class PlanController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'date' => 'required|date_format:d/m/Y',
-            'code' => 'required'
+            'code' => 'required',
+            'level_id' => 'required|integer'
         ]);
 
         $plan = $this->planRepository->create($request->all());
@@ -58,7 +66,27 @@ class PlanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'date' => 'required|date_format:d/m/Y',
+            'code' => 'required',
+            'level_id' => 'required|integer'
+        ]);
 
+        $plan = $this->planRepository->update($id, $request->all());
+
+        if ($plan->save()){
+            $response['message'] = trans('admin.plan.edit.message.success', ['name' => $request->get("name")]);
+            $response['error'] = false;
+        }
+        else{
+            $response['message'] = trans('admin.plan.edit.message.error');
+            $response['error'] = true;
+        }
+
+        if ($request->ajax()) {
+            return response()->json($response);
+        }
     }
 
     public function delete(Request $request)

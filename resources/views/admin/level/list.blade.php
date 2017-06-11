@@ -36,14 +36,14 @@
                                 @foreach($levels as $level)
                                     <tr class="gradeX">
                                         <td>{{ $level->name }}</td>
-                                        <td>{{ $level->plan->name }}</td>
+                                        <td>{{ $level->plan }}</td>
                                         <td>
-                                            @include('admin.partials.button.actions', [
+                                            {{--@include('admin.partials.button.actions', [
                                                 'url' => [
                                                     'edit' => route('level.edit', ['id' => $level->id]),
                                                     'delete' => route('level.delete')],
                                                 'id' => $level->id,
-                                                'name' => $level->name])
+                                                'name' => $level->name])--}}
                                         </td>
                                     </tr>
                                 @endforeach
