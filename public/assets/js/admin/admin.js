@@ -4,6 +4,7 @@ $(function(){
     $('#btn_save').on('click', function(e){
         e.preventDefault();
         action = 'save';
+
         //assemble the object with the data
         let $form = $('#admin_form');
         const url = $form.attr('action');
@@ -14,7 +15,7 @@ $(function(){
             $form.serializeChecks()
         );
         
-        sendAjaxPromise(url, 'POST', 'json', data, null);
+        ajaxPromise(url, 'POST', 'json', data, null);
     });
 
     $('.delete').on('click', function (e) {
@@ -24,26 +25,25 @@ $(function(){
         const id = $(this).data('id');
         const name = $(this).data('name');
         const url = $(this).attr('href');
-        const messageType = 'warning';
 
         const data = {'_token': _TOKEN , data: JSON.stringify(id)};
 
-        showQuestionAlert(ARE_YOU_SURE_QUESTION.toString(),
-            QUESTION_DELETE.replace(':name', name),
-            messageType, 
-            DELETE_BUTTON,
-            CANCEL_BUTTON,
-            sendAjaxPromise,
-            [url, 'DELETE', 'json', data, null]
-        );
+        const params = [url, 'DELETE', 'json', data, null];
+
+        Message.question(ARE_YOU_SURE_QUESTION.toString(),
+                         QUESTION_DELETE.replace(':name', name),
+                         'warning',
+                         DELETE_BUTTON,
+                         CANCEL_BUTTON,
+                         ajaxPromise,
+                         params);
     });
 });
 
-function ajaxSuccess(data) {
+function successResponse(data) {
     if(data.error) {
-        showErrorAlert(TRY_AGAIN, data.message);
-    }
-    else{
+        Message.warning(TRY_AGAIN, data.message);
+    } else {
         let title = OK_FORM_TITLE;
         let text = '';
 
@@ -53,6 +53,6 @@ function ajaxSuccess(data) {
             text = data.message;
         }
 
-        showOkAlert(title, text, redirect, [ACTION_URL]);
+        Message.success(title, text, Util.redirect, [ACTION_URL]);
     }
 }

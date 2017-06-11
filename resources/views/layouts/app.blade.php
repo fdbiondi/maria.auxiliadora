@@ -71,6 +71,12 @@
         <!-- Custom and plugin javascript -->
         {!! Html::script('assets/template/js/inspinia.js') !!}
         {!! Html::script('assets/template/js/plugins/pace/pace.min.js') !!}
+        <!-- Custom Classes -->
+        {!! Html::script('assets/js/helpers/loading.class.js') !!}
+        {!! Html::script('assets/js/helpers/message.class.js') !!}
+        {!! Html::script('assets/js/helpers/util.class.js') !!}
+        {!! Html::script('assets/js/helpers/async.class.js') !!}
+        {!! Html::script('assets/js/helpers/error.class.js') !!}
         <!-- App -->
         {!! Html::script('assets/js/app.js') !!}
         {!! Html::script('assets/js/app.validations.js') !!}
@@ -82,6 +88,7 @@
         {!! Html::script('assets/template/js/plugins/toastr/toastr.min.js') !!}
         <!-- Sweet alert -->
         {!! Html::script('assets/template/js/plugins/sweetalert/sweetalert.min.js') !!}
+
         <script>
             //Action URL
             let ACTION_URL = "{{ route('home') }}";
