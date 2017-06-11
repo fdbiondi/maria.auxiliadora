@@ -167,6 +167,21 @@ return [
             '' => '',
         ],
     ],
+    'level' => [
+        'list' => [
+            'title' => 'Niveles',
+            'table' => [
+                'title' => 'Listado de Niveles',
+                'add' => 'Agregar Nuevo Nivel',
+                'header' => [
+                    'name' => 'Nombre',
+                    'plan' => 'Plan',
+                    'actions' => 'Acciones',
+                ],
+            ],
+            'back' => 'Volver al Inicio',
+        ],
+    ],
     'plan' => [
         'list' => [
             'title' => 'Planes por Año',
@@ -176,6 +191,7 @@ return [
                 'header' => [
                     'name' => 'Nombre',
                     'date' => 'Fecha',
+                    'level' => 'Año',
                     'actions' => 'Acciones',
                 ],
             ],

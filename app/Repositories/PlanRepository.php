@@ -32,6 +32,7 @@ class PlanRepository extends BaseRepository
             'date' => $data['date'],
             'code' => $data['code'],
             'current' => $data['current'],
+            'level_id' => $data['level_id'],
         ]);
     }
 }

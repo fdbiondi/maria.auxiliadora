@@ -28,7 +28,7 @@ $factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Entities\Subject::class, function (Faker\Generator $faker) {
-   return [
+    return [
         'name' => $faker->text(6),
         'description' => $faker->text(20),
     ];
@@ -74,16 +74,10 @@ $factory->define(App\Entities\Division::class, function (Faker\Generator $faker)
 
 $factory->define(App\Entities\Plan::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->text(10),
+        'name' => 'Plan ' . $faker->date('Y'),
         'code' => $faker->unique()->numberBetween(0,10),
-        'date' => $faker->date('Y-m-d'),
-    ];
-});
-
-$factory->define(App\Entities\LevelPlan::class, function (Faker\Generator $faker) {
-    return [
+        'date' => $faker->date('d/m/Y'),
         'level_id' => $faker->randomDigit,
-        'plan_id' => $faker->randomDigit,
     ];
 });
 

@@ -24,19 +24,4 @@ class RoleRepository extends BaseRepository
     {
         return [];
     }
-
-    public function create()
-    {
-
-    }
-
-    public function update($id, $data)
-    {
-
-    }
-
-    public function delete($id)
-    {
-
-    }
 }

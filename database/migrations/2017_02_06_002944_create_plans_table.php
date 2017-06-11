@@ -19,6 +19,9 @@ class CreatePlansTable extends Migration
             $table->string('code'); //TODO code puede que sea igual a name
             $table->date('date');
             $table->boolean('current')->default(true);
+            $table->unsignedInteger('level_id');
+            $table->foreign('level_id')->references('id')->on('levels');
+
             $table->timestamps();
         });
     }

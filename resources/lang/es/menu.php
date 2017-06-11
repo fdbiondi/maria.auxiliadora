@@ -20,6 +20,11 @@ return [
                 'route' => 'subject.list',
                 'text' => 'Materias',
             ],
+            'level' => [
+                'icon' => 'fa-book',
+                'route' => 'level.list',
+                'text' => 'Niveles',
+            ],
             'plan' => [
                 'icon' => 'fa-book',
                 'route' => 'plan.list',

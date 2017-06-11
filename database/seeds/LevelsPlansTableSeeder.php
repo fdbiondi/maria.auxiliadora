@@ -11,8 +11,12 @@ class LevelsPlansTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entities\Level::class, 5)->create()->each(function($level) {
-            $level->plans()->save(factory(App\Entities\Plan::class)->make());
-        });
+        factory(App\Entities\Level::class, 5)->create();
+
+        foreach (App\Entities\Level::all() as $level) {
+            factory(App\Entities\Plan::class)->create([
+                'level_id' => $level->id
+            ]);
+        }
     }
 }

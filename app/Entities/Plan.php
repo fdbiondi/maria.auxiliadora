@@ -12,7 +12,7 @@ class Plan extends Entity
      * @var array
      */
     protected $fillable = [
-        'name', 'code', 'date', 'current'
+        'name', 'code', 'date', 'current', 'level_id'
     ];
 
     /**
@@ -22,8 +22,8 @@ class Plan extends Entity
         return $this->belongsToMany(Subject::getClass());
     }
 
-    public function levels() {
-        return $this->belongsToMany(Level::getClass());
+    public function level() {
+        return $this->belongsTo(Level::getClass());
     }
 
     /**

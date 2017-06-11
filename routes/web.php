@@ -90,6 +90,16 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::post('update/{id}', ['as' => 'plan.update', 'uses' => 'PlanController@update']);
             Route::delete('delete', ['as' => 'plan.delete', 'uses' => 'PlanController@delete']);
         });
+
+        Route::group(['middleware' => 'admin', 'prefix' => 'levels'], function () {
+            // Matches The "/levels" URL
+            Route::get('list', ['as' => 'level.list', 'uses' => 'LevelController@index']);
+            Route::get('create', ['as' => 'level.create', 'uses' => 'LevelController@create']);
+            Route::post('store', ['as' => 'level.store', 'uses' => 'LevelController@store']);
+            Route::get('edit/{id}', ['as' => 'level.edit', 'uses' => 'LevelController@edit']);
+            Route::post('update/{id}', ['as' => 'level.update', 'uses' => 'LevelController@update']);
+            Route::delete('delete', ['as' => 'level.delete', 'uses' => 'LevelController@delete']);
+        });
     });
 
     Route::group(['namespace' => 'Exam'], function() {
