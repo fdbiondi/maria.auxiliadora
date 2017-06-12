@@ -45,6 +45,26 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
         return $this->belongsToMany(Course::getClass());
     }
 
+    public function getPendingSubjects()
+    {
+        // TODO validar que traiga las materias a las que no esté inscripto a rendir.
+        return $this->course_user_subjects()
+            ->where('status', 'pending')
+            ->with(['subject', 'course_user', 'course_user.course.level'])
+            ->get();
+    }
+
+    public function course_user_subjects()
+    {
+        return $this->hasManyThrough(CourseUserSubject::getClass(), CourseUser::getClass(), 'user_id', 'course_user_id', 'id');
+    }
+
+    public function currentCourse() 
+    {
+        //TODO hacer una validación o bandera para traer el curso acual.
+        return $this->courses->max('year')->description ?? 'No está inscripto';
+    }
+
     public function exams_registrations() {
         return $this->hasMany(ExamRegistration::getClass());
     }

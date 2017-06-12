@@ -19,10 +19,10 @@ class CourseUser extends Entity
      * Relationships
      */
     public function user() {
-        return $this->hasMany(User::getClass());
+        return $this->belongsTo(User::getClass());
     }
 
     public function course() {
-        return $this->hasMany(Course::getClass());
+        return $this->belongsTo(Course::getClass());
     }
 }
