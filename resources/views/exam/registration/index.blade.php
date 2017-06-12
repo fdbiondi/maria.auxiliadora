@@ -7,10 +7,10 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('exam.registration.list.title'),
+        'title'=>trans('exam.registration.index.title', ['subject' => $subject->name]),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('exam.registration.list.back')])
+        'previous_text' => trans('exam.registration.index.back')])
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('exam.registration.list.table.title'),
+                        'title'=> trans('exam.registration.index.table.title'),
                     ])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -28,20 +28,20 @@
                                 <thead>
                                 <tr>
                                     @include('admin.partials.table.header', [
-                                        'headers' => trans('exam.registration.subjects.table.header')])
+                                        'headers' => trans('exam.registration.index.table.header')])
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($subjects as $subject)
+                                @foreach($exams as $exam)
                                     <tr class="gradeX">
-                                        <td>{{ $subject->subject->name }}</td>
-                                        <td>{{ $subject->course_user->created_at->year }}</td>
-                                        <td>{{ $subject->course_user->course->level->name  }}</td>
-                                        <td><a href="{{ route('exam_registration.index', ['student_id' => $subject->course_user->user->id,
-                                            'subject_id' => $subject->subject->id
-                                        ]) }}" class="btn btn-link">
-                                                inscribir
-                                            </a></td>
+                                        <td>{{ $exam->instance->name }}</td>
+                                        <td>{{ $exam->date_time }}</td>
+                                        <td>{{ $exam->date_time }}</td>
+                                        <td>
+                                            <a href="" title="" class="btn btn-link register" data-exam="{{ $exam->instance->name.' '.$exam->date_time }}" data-id= "{{ $exam->id }}">
+                                                Registrar Inscripción
+                                            </a>
+                                        </td>
 
                                     </tr>
                                 @endforeach
@@ -65,10 +65,10 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
 
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('exam.registration.question.delete') }}" ;
-        ACTION_URL = "{{ url()->current() }}";
+        const CONFIRM_REGISTRATION = "{{ trans('exam.registration.question.confirm_registration', ['subject' => $subject->name]) }}" ;
+        const STUDENT_ID = {{ $student_id }};
+        ACTION_URL = "{{ route('exam_registration.subjects', ['id' => $student_id]) }}";
+        const STORE_URL = "{{ route('exam_registration.store') }}";
 
-        $order = [[ 1, "asc" ]];
-        $fileToExportName = "ExamSubjects";
-    </script>
+    </script> 
 @stop

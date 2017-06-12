@@ -106,10 +106,12 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
                 Route::delete('delete', ['as' => 'exam_act.delete', 'uses' => 'ExamActController@delete']);
             });
 
-            Route::group(['prefix' => 'register'], function() {
+            Route::group(['prefix' => 'registration'], function() {
                 // Matches The "/exams/register" URL
-                Route::get('students', ['as' => 'exam_register.view', 'uses' => 'ExamRegistrationController@students']);
-                Route::get('subjects/{id}', ['as' => 'exam_register.subjects', 'uses' => 'ExamRegistrationController@subjects']);
+                Route::get('search', ['as' => 'exam_registration.search', 'uses' => 'ExamRegistrationController@search']);
+                Route::get('student/{student_id}/subject/{subject}', ['as' => 'exam_registration.index', 'uses' => 'ExamRegistrationController@index']);
+                Route::get('subjects/{id?}', ['as' => 'exam_registration.subjects', 'uses' => 'ExamRegistrationController@subjects']);
+                Route::post('store', ['as' => 'exam_registration.store', 'uses' => 'ExamRegistrationController@store']);
             });
         });
 

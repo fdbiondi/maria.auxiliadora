@@ -15,8 +15,8 @@ class CreateCourseUserSubjectTable extends Migration
     {
         Schema::create('course_user_subject', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mark');
-            //todo can have a state field (libre cursando aprobada reprobada recupera)
+            $table->integer('mark')->nullable()->default(null);
+            $table->enum('status', ['pending', 'studying', 'approved'])->default('studying');
             $table->unsignedInteger('subject_id');
             $table->unsignedInteger('course_user_id');
             $table->foreign('subject_id')->references('id')->on('subjects');

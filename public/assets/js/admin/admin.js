@@ -12,6 +12,27 @@ $(function(){
         sendAjaxPromise(url, 'POST', 'json', data, null);
     });
 
+    $('.register').on('click', function (e) {
+        e.preventDefault();
+        action = "save";
+
+        const exam = $(this).data("exam");
+        const exam_act_id = $(this).data("id");
+        const messageType = "info";
+        const url = STORE_URL;
+
+        var data = {'_token': _TOKEN , data: JSON.stringify({exam_act_id: exam_act_id, user_id:STUDENT_ID})};
+
+        showQuestionAlert(ARE_YOU_SURE_QUESTION.toString(),
+            CONFIRM_REGISTRATION.replace(':exam', exam),
+            messageType, 
+            CONFIRM_BUTTON,
+            CANCEL_BUTTON,
+            sendAjaxPromise,
+            [url, 'POST', 'json', data, null]
+        );
+    });
+
     $('.delete').on('click', function (e) {
         e.preventDefault();
         action = "delete";

@@ -17,26 +17,13 @@ class ExamRegistrationRepository extends BaseRepository
         return new ExamRegistration();
     }
 
-    public function create(Array $data)
+    public function create($data)
     {
-/*        return $this->getModel()->create([
-            'name' => trim($data["name"]),
-            'from' => $data["from"],
-            'to' => $data["to"],
-        ]);*/
+        return $this->getModel()->create([
+            'exam_act_id' => $data->exam_act_id,
+            'user_id' => $data->user_id,
+            ]);
     }
 
-    public function update($id, $data)
-    {
-/*        $examInstance = $this->findOrFail($id);
 
-        $examInstance->fill($data);
-
-        return $examInstance->save();*/
-    }
-
-    public function delete($id)
-    {
-//        return true;
-    }
 }

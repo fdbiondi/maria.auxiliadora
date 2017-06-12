@@ -63,19 +63,33 @@ return [
                 'route' => 'exam_act.list',
                 'text' => 'Exámenes',
             ],
-            'exam_register' => [
-                'name' => 'exam_register',
+            'exam_registration' => [
+                'name' => 'exam_registration',
                 'icon'=>'fa-user',
-                'route' => 'exam_register.view',
+                'route' => 'exam_registration.search',
                 'text' => 'Inscripción a Examen',
             ],
         ],
         'sections' => [
             'list' => '.list',
+            'search' => '.search',
             'create' => '.create',
             'edit' => '.edit',
         ],
         
+    ],
+    'students' => [
+        'items' => [
+            'exam_registration' => [
+                'name' => 'exam_registration',
+                'icon'=>'fa-user',
+                'route' => 'exam_registration.subjects',
+                'text' => 'Inscripción a Examen',
+            ],
+        ],
+        'sections' => [
+            'subjects' => '.subjects'
+        ]
     ],
     'shared' => [
         'items' => [

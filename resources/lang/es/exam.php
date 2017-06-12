@@ -98,6 +98,38 @@ return [
         ],
     ],
     'registration' => [
+        'create' => [
+            'message' => [
+                'success' => 'Se ha registrado la inscripción.',
+                'error' =>  'No se ha podido registrar la inscripción.'
+            ]
+        ],
+        'search' => [
+            'title' =>  'Buscar alumno',
+            'table' => [
+                'title' => 'Alumnos',
+                'header' => [
+                    'name' => 'Nombre',
+                    'dni' =>  'DNI',
+                    'file_number' => 'legajo',
+                    'course' => 'Curso',
+                    'actions' => 'Acciones',
+                ]
+            ]
+        ],
+        'index' => [
+            'title' =>  'Inscribir a examen: :subject',
+            'table' => [
+                'title' => 'Fechas habilitadas',
+                'header' => [
+                    'name' => 'Mesa',
+                    'date' => 'fecha',
+                    'time' => 'Hora',
+                    'actions' => 'Acciones',
+                ]
+            ] 
+
+        ],
         'subjects' => [
             'title' => 'Materias para rendir',
             'table' => [
@@ -115,5 +147,8 @@ return [
             ],
             'back' => 'Volver al Inicio',
         ],
+        'question' => [
+            'confirm_registration' => 'Confirmar inscripcion para :subject en :exam'
+        ]
     ],
 ];
