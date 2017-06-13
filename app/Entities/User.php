@@ -62,7 +62,7 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
     public function currentCourse() 
     {
         //TODO hacer una validación o bandera para traer el curso acual.
-        return $this->courses->max('year')->description ?? 'No está inscripto';
+        return $this->courses()->with('level')->orderBy('year')->first()->description ?? 'No está inscripto';
     }
 
     public function exams_registrations() {
