@@ -88,3 +88,20 @@ $factory->define(App\Entities\PlanSubject::class, function (Faker\Generator $fak
     ];
 });
 
+$factory->define(App\Entities\CourseUser::class, function (Faker\Generator $faker) {
+    
+
+    return [
+        'course_id' => App\Entities\Course::get()->random()->id,
+        'user_id' => App\Entities\User::where('role_id', 2)->get()->random()->id,
+    ];
+});
+
+$factory->define(App\Entities\CourseUserSubject::class, function (Faker\Generator $faker) {
+    return [
+        'status' => 'pending',
+        'course_user_id' => App\Entities\CourseUser::get()->random()->id,
+        'subject_id' => App\Entities\Subject::get()->random()->id,
+    ];
+});
+

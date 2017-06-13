@@ -27,7 +27,7 @@ class ExamRegistrationController extends Controller
 
     public function subjects($id = null)
     {
-        if ($id == null) {
+        if ($id == null) { //TODO validar que si es un estudiante le muestre solo sus materias
             $user = currentUser();
         } else {
             $user = $this->userRepository->findOrFail($id);
