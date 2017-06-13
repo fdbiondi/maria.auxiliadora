@@ -15,7 +15,6 @@ return [
                     //'relation' => ''
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'create' => [
             'title' => 'Nueva Mesa de Exámen',
@@ -64,7 +63,6 @@ return [
                     //'relation' => ''
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'create' => [
             'title' => 'Nuevo Exámen',
@@ -145,7 +143,6 @@ return [
                     //'relation' => ''
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'question' => [
             'confirm_registration' => 'Confirmar inscripcion para :subject en :exam'

@@ -10,7 +10,7 @@
         'title'=>trans('admin.plan.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.plan.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -36,8 +36,9 @@
                                 @foreach($plans as $plan)
                                     <tr class="gradeX">
                                         <td>{{ $plan->name }}</td>
-                                        <td>{{ $plan->date}}</td>
-                                        <td>{{ $plan->level->name }}</td>
+                                        <td>{{ $plan->date }}</td>
+                                        <td>{{ trans("general.levels.{$plan->level->name}") }}</td>
+                                        <td>{{ $plan->current ? trans('general.label.valid') : trans('general.label.no_valid') }}</td>
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [
@@ -60,17 +61,17 @@
 
     @section('scripts')
     @parent
-            <!-- DATATABLES PLUGIN -->
+    <!-- DATATABLES PLUGIN -->
     {!! Html::script('assets/template/js/plugins/dataTables/datatables.min.js') !!}
-            <!-- DATATABLES IMPLEMENTATION JS -->
+    <!-- DATATABLES IMPLEMENTATION JS -->
     {!! Html::script('assets/js/admin/datatable.js') !!}
-            <!-- ADMIN VIEWS JS -->
+    <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.plan.question.delete') }}" ;
+        const QUESTION_DELETE = "{{ trans('admin.plan.question.delete') }}";
         ACTION_URL = "{{ url()->current() }}";
 
-        $order = [[ 0, "asc" ]];
+        $order = [[ 2, "asc" ]];
         $fileToExportName = "Plans";
     </script>
 @stop

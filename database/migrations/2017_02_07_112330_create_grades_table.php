@@ -17,9 +17,9 @@ class CreateGradesTable extends Migration
             $table->increments('id');
             $table->integer('mark');
             $table->string('description');
-            $table->unsignedInteger('course_user_subject_id');
+            $table->unsignedInteger('subject_registration_id');
             
-            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subject');
+            $table->foreign('subject_registration_id')->references('id')->on('subjects_registration');
             $table->timestamps();
         });
     }

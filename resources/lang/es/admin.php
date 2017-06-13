@@ -14,7 +14,6 @@ return [
                     //'relation' => ''
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'create' => [
             'title' => 'Nueva Materia',
@@ -66,7 +65,6 @@ return [
                     //'relation' => ''
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'create' => [
             'title' => 'Nuevo Usuario',
@@ -112,9 +110,8 @@ return [
                     'actions' => 'Acciones',
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
-        'student' => [
+        'show' => [
             'title' => 'Curso: ',
             'list' => [
                 'title' => 'Listado de Alumnos',
@@ -122,8 +119,22 @@ return [
                 'back' => 'Volver a Cursos'
             ],
             'action' => [
-                'view' => 'Ver Alumnos',
+                'detail' => 'Detalle',
+                'view' => 'Ver Informacion Curso',
             ],
+        ],
+        'registration' => [
+            'list' => [
+                'title' => 'Inscripción a Cursado',
+                'register' => 'Inscribir a curso',
+                'course' => 'Curso',
+            ],
+            'add' => [
+            ],
+            'message' => [
+                'no_available' => 'No existen cursos disponibles.',
+            ],
+
         ],
         'create' => [
             'title' => 'Nuevo Curso',
@@ -156,17 +167,6 @@ return [
             'delete' => 'Desea eliminar el Curso :name.',
         ],
     ],
-    'course_registration' => [
-        'index' => [
-            'title' => 'Inscripción a Cursado',
-            'register' => 'Inscribir a curso',
-            'course' => 'Curso',
-            'back' => 'Volver al Inicio',
-        ],
-        'add' => [
-            'back' => 'Volver',
-        ],
-    ],
     'level' => [
         'list' => [
             'title' => 'Niveles',
@@ -174,12 +174,10 @@ return [
                 'title' => 'Listado de Niveles',
                 'add' => 'Agregar Nuevo Nivel',
                 'header' => [
-                    'name' => 'Nombre',
+                    'name' => 'Año',
                     'plan' => 'Plan',
-                    'actions' => 'Acciones',
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
     ],
     'plan' => [
@@ -192,10 +190,10 @@ return [
                     'name' => 'Nombre',
                     'date' => 'Fecha',
                     'level' => 'Año',
+                    'validation' => 'Vigencia',
                     'actions' => 'Acciones',
                 ],
             ],
-            'back' => 'Volver al Inicio',
         ],
         'create' => [
             'title' => 'Nuevo Plan',
@@ -225,7 +223,6 @@ return [
     'profile' => [
         'title' => 'Perfíl',
         'subtitle' => 'Datos del perfil',
-        'back' => 'Volver al Inicio',
         'update' => [
             'message' => [
                 'success' => 'Se han actualizado sus datos.',

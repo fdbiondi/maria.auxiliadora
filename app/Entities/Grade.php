@@ -12,13 +12,13 @@ class Grade extends Entity
      * @var array
      */
     protected $fillable = [
-        'mark', 'description', 'course_user_subject_id'
+        'mark', 'description', 'subject_registration_id'
     ];
 
     /**
      * Relationships
      */
-    public function course_user_subject() {
-        return $this->belongsTo(CourseUserSubject::getClass());
+    public function subject_registration() {
+        return $this->belongsTo(SubjectRegistration::getClass());
     }
 }

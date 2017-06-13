@@ -18,10 +18,10 @@ class CreateExamsTable extends Migration
             $table->integer('mark'); //TODO ver si la nota la guardamos aca o en la tabla de notas
             $table->boolean('attended')->default(false);
             $table->unsignedInteger('exam_act_id');
-            $table->unsignedInteger('course_user_subject_id');
+            $table->unsignedInteger('subject_registration_id');
 
             $table->foreign('exam_act_id')->references('id')->on('exam_acts');
-            $table->foreign('course_user_subject_id')->references('id')->on('course_user_subject');
+            $table->foreign('subject_registration_id')->references('id')->on('subjects_registration');
 
             $table->timestamps();
         });

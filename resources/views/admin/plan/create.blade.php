@@ -15,7 +15,7 @@
         'title'=>trans('admin.plan.create.title'),
         'breadcrumbs' => [],
         'previous_url' => route('plan.list'),
-        'previous_text' => trans('admin.plan.create.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -54,17 +54,6 @@
 
     <script type="text/javascript">
         ACTION_URL = "{{ route('plan.create') }}";
-        $(function () {
-            $('.date').datetimepicker({
-                viewMode: 'years',
-                format: 'DD/MM/YYYY'
-            });
-
-            $('.checkbox-wrapper').popover();
-
-            const elem = document.querySelector('.js-switch');
-            const switchery = new Switchery(elem, { color: '#1AB394' });
-        });
     </script>
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}

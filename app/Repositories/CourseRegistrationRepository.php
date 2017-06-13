@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Entities\CourseUser;
+use App\Entities\CourseRegistration;
 
-class CourseUserRepository extends BaseRepository
+class CourseRegistrationRepository extends BaseRepository
 {
-    protected $table = "course_user";
-    protected $column = "year";
+    protected $table = 'courses_registration';
+    protected $column = 'year';
 
     /**
      * @return \App\Entities\Entity
      */
     public function getModel()
     {
-        return new CourseUser();
+        return new CourseRegistration();
     }
 
     /**

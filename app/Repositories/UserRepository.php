@@ -6,11 +6,11 @@ use App\Entities\User;
 
 class UserRepository extends BaseRepository
 {
-    protected $table = "users";
-    protected $column = "last_name";
+    protected $table = 'users';
+    protected $column = 'last_name';
 
     /**
-     * @return \App\Entities\Entity
+     * @return \App\Entities\User
      */
     public function getModel()
     {

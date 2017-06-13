@@ -10,7 +10,7 @@
         'title'=>trans('admin.level.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.level.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.level.list.table.title'),
-                        'route'=> route('level.create'),
+/*                        'route'=> route('level.create'),*/
                         'button' => trans('admin.level.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -35,16 +35,8 @@
                                 <tbody>
                                 @foreach($levels as $level)
                                     <tr class="gradeX">
-                                        <td>{{ $level->name }}</td>
+                                        <td>{{ trans("general.levels.{$level->name}") }}</td>
                                         <td>{{ $level->plan }}</td>
-                                        <td>
-                                            {{--@include('admin.partials.button.actions', [
-                                                'url' => [
-                                                    'edit' => route('level.edit', ['id' => $level->id]),
-                                                    'delete' => route('level.delete')],
-                                                'id' => $level->id,
-                                                'name' => $level->name])--}}
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

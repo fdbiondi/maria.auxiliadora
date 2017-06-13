@@ -10,7 +10,7 @@
         'title'=>trans('admin.course.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.course.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -45,8 +45,12 @@
                                                     'delete' => route('course.delete')],
                                                 'id' => $course->id,
                                                 'name' => $course->name])
-                                            <a href="{{ route('course.students', [ 'course_id' => $course->id ]) }}" title="{{ trans('admin.course.student.action.view') }}" class="btn btn-primary btn-sm m-l-t-sm" type="button">
-                                                <i class="fa fa-user"></i>
+                                            <a
+                                                href="{{ route('course.show', ['course_id'=>$course->id]) }}"
+                                                class="btn btn-primary btn-sm m-l-t-sm"
+                                                title="{{ trans('admin.course.show.action.detail') }}"
+                                                type="button">
+                                                <i class="fa fa-bars"></i>
                                             </a>
                                         </td>
                                     </tr>

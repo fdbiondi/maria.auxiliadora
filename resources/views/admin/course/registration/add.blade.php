@@ -10,7 +10,7 @@
         'title'=>trans('admin.course.student.title') . $course->description ,
         'breadcrumbs' => [],
         'previous_url' => URL::previous(),
-        'previous_text' => trans('admin.course_registration.add.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

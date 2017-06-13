@@ -19,7 +19,7 @@ class Course extends Entity
      * Relationships
      */
     public function users() {
-        return $this->belongsToMany(User::getClass());
+        return $this->belongsToMany(User::getClass(), 'courses_registration');
     }
 
     public function students() {
@@ -32,6 +32,10 @@ class Course extends Entity
 
     public function division() {
         return $this->belongsTo(Division::getClass());
+    }
+
+    public function course_registration() {
+        return $this->belongsToMany(CourseRegistration::getClass(), 'courses_registration');
     }
     
     /**

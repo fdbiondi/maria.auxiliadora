@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Exam;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\CourseUserSubjectRepository;
+use App\Repositories\SubjectRegistrationRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ExamRegistrationRepository;
 use Illuminate\Http\Request;
@@ -13,15 +13,15 @@ use App\Entities\Subject;
 class ExamRegistrationController extends Controller
 {
     protected $examRegistrationRepository;
-    protected $courseUserSubjectRepository;
+    protected $subjectRegistrationRepository;
     protected $userRepository;
 
     public function __construct(ExamRegistrationRepository $examRegistrationRepository,
-                                CourseUserSubjectRepository $courseUserSubjectRepository,
+                                SubjectRegistrationRepository $subjectRegistrationRepository,
                                 UserRepository $userRepository)
     {
         $this->examRegistrationRepository = $examRegistrationRepository;
-        $this->courseUserSubjectRepository = $courseUserSubjectRepository;
+        $this->subjectRegistrationRepository = $subjectRegistrationRepository;
         $this->userRepository = $userRepository;
     }
 

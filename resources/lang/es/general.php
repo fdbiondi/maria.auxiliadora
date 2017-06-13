@@ -106,6 +106,8 @@ return [
         'user_profile' => 'Perfil de Usuario',
 
         'validation' => 'Vigencia',
+        'valid' => 'Vigente',
+        'no_valid' => 'No Vigente',
 
         'year' => 'Año',
         'year_of_study' => 'Año de Cursado',

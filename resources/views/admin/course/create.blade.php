@@ -15,7 +15,7 @@
         'title'=>trans('admin.course.create.title'),
         'breadcrumbs' => [],
         'previous_url' => route('course.list'),
-        'previous_text' => trans('admin.course.create.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

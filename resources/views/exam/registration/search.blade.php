@@ -10,7 +10,7 @@
         'title'=>trans('exam.registration.search.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('exam.registration.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

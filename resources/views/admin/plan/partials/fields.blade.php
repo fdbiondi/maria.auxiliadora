@@ -1,9 +1,3 @@
-<!-- current -->
-<div class="form-group">
-    <div class="checkbox-wrapper" data-toggle="popover" title="{{ trans('general.label.validation') }}" data-content="Seleccione si el plan se encuentra activo">
-        <input title="{{ trans('general.label.validation') }}" name="current" id="current" type="checkbox" class="js-switch" value="{{ $plan->current }}" @if($plan->current == 1) checked @endif/>
-    </div>
-</div>
 <!-- name -->
 <div class="form-group">
     <label>{{ trans('general.label.name') }}:</label>
@@ -35,3 +29,33 @@
     'disabled' => false,
 ])
 
+<!-- current -->
+<div class="form-group">
+    <div class="form-group">
+        <input name="current" id="current" type="checkbox" class="js-switch" @if($plan->current) checked @endif/>
+        <label class="m-l-md check-label">@if($plan->current) {{ trans('general.label.valid') }} @else {{ trans('general.label.no_valid') }} @endif</label>
+    </div>
+</div>
+
+@section('scripts')
+    @parent
+    <script type="text/javascript">
+        const VALID = "{{ trans('general.label.valid') }}";
+        const NO_VALID = "{{ trans('general.label.no_valid') }}";
+
+        $(function () {
+            $('.date').datetimepicker({
+                viewMode: 'years',
+                format: 'DD/MM/YYYY'
+            });
+
+            const $booleanCheck = $('input[name=current]');
+            const elem = document.querySelector('.js-switch');
+            const switchery = new Switchery(elem, { color: '#1AB394' });
+
+            $booleanCheck.on('change', function() {
+                $('.check-label').text(this.checked ? VALID : NO_VALID);
+            });
+        });
+    </script>
+@stop

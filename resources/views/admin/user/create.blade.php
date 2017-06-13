@@ -11,7 +11,7 @@
         'title'=>trans('admin.user.create.title'),
         'breadcrumbs' => [],
         'previous_url' => route('user.list'),
-        'previous_text' => trans('admin.user.create.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

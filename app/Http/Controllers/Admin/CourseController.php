@@ -122,10 +122,15 @@ class CourseController extends Controller
         }
     }
     
-    public function students($id) {
-        $course = $this->courseRepository->findOrFail($id, ['students', 'level', 'division']);
+    public function show($id) {
+        $course = $this->courseRepository->findOrFail($id,
+            ['students', 'level', 'division',
+                'level.plans' => function($query) {
+                    $query->where('current', 1)->with('subjects');
+                }]);
         $students = $course->students;
-        return view('admin.course.students', compact('course','students'));
+        $subjects = $course->level->plans->first()->subjects;
+        return view('admin.course.show', compact('course','students'));
     }
         
 }

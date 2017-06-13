@@ -77,7 +77,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
                 Route::post('{course_id}/store', ['as' => 'course_registration.store', 'uses' => 'CourseRegistrationController@store']);
             });
 
-            Route::get('{course_id}/students', ['as' => 'course.students', 'uses' => 'CourseController@students']);
+            Route::get('{course_id}', ['as' => 'course.show', 'uses' => 'CourseController@show']);
             Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
         

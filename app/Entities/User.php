@@ -34,7 +34,7 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
         'password', 'remember_token',
     ];
 
-    public function getfileNumberAndNameAttribute() {
+    public function getFileNumberAndNameAttribute() {
         return "{$this->file_number} - {$this->name} {$this->last_name}";
     }
     
@@ -42,30 +42,15 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
      * Relationships 
      */
     public function courses() {
-        return $this->belongsToMany(Course::getClass());
+        return $this->belongsToMany(Course::getClass(), 'courses_registration');
     }
 
-    public function getPendingSubjects()
+    public function subjects()
     {
-        // TODO validar que traiga las materias a las que no esté inscripto a rendir.
-        return $this->course_user_subjects()
-            ->where('status', 'pending')
-            ->with(['subject', 'course_user', 'course_user.course.level'])
-            ->get();
+        return $this->hasManyThrough(SubjectRegistration::getClass(), CourseRegistration::getClass(), 'user_id', 'course_registration_id', 'id');
     }
 
-    public function course_user_subjects()
-    {
-        return $this->hasManyThrough(CourseUserSubject::getClass(), CourseUser::getClass(), 'user_id', 'course_user_id', 'id');
-    }
-
-    public function currentCourse() 
-    {
-        //TODO hacer una validación o bandera para traer el curso acual.
-        return $this->courses->max('year')->description ?? 'No está inscripto';
-    }
-
-    public function exams_registrations() {
+    public function exams_registration() {
         return $this->hasMany(ExamRegistration::getClass());
     }
 
@@ -84,29 +69,21 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
     }
 
     /**
-     * User Authorization Level - Roles Methods
+     * Methods
      */
-    public function isAdmin() {
-        return $this->role->name == 'admin';
+
+    public function currentCourse()
+    {
+        //TODO hacer una validación o bandera para traer el curso acual.
+        return $this->courses->max('year')->description ?? 'No está inscripto';
     }
 
-    public function isSecretary() {
-        return $this->role->name == 'secretary';
-    }
-
-    public function isPreceptor() {
-        return $this->role->name == 'preceptor';
-    }
-
-    public function isTutor() {
-        return $this->role->name == 'tutor';
-    }
-
-    public function isStudent() {
-        return $this->role->name == 'student';
-    }
-
-    public function isProfessor() {
-        return $this->role->name == 'professor';
+    public function getPendingSubjects()
+    {
+        // TODO validar que traiga las materias a las que no esté inscripto a rendir.
+        return $this->subjects()
+            ->where('status', 'pending')
+            ->with(['subject', 'course_registration', 'course_registration.course.level'])
+            ->get();
     }
 }

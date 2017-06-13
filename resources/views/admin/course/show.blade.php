@@ -10,7 +10,7 @@
         'title'=>trans('admin.course.student.title') . $course->description ,
         'breadcrumbs' => [],
         'previous_url' => route('course.list'),
-        'previous_text' => trans('admin.course.student.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -41,7 +41,7 @@
                                         <td>{{ $student->address }}</td>
                                         <td>{{ $student->phone }}</td>
                                         <td>{{ $student->dni }}</td>
-                                        <td>{{ trans('general.roles.'.$student->role->name) }}</td>
+                                        <td>{{ trans("general.roles.{$student->role->name}") }}</td>
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [

@@ -10,7 +10,7 @@
         'title'=>trans('admin.subject.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.subject.list.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

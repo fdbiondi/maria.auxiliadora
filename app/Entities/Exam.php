@@ -12,7 +12,7 @@ class Exam extends Entity
      * @var array
      */
     protected $fillable = [
-        'mark', 'exam_act_id', 'course_user_subject_id', 'attended'
+        'mark', 'exam_act_id', 'subject_registration_id', 'attended'
     ];
 
     /**
@@ -23,7 +23,7 @@ class Exam extends Entity
         return $this->belongsTo(ExamAct::getClass());
     }
 
-    public function course_user_subject(){
-        return $this->belongsTo(CourseUserSubject::getClass());
+    public function subject_registration(){
+        return $this->belongsTo(SubjectRegistration::getClass());
     }
 }

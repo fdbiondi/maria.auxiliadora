@@ -6,10 +6,10 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.course_registration.index.title'),
+        'title'=>trans('admin.course.registration.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.course_registration.index.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
@@ -19,18 +19,18 @@
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('admin.course_registration.index.register'),
+                        'title'=> trans('admin.course.registration.list.register'),
                     ])
                     <div class="ibox-content">
                         <div class="row">
                             @if($courses->count() == 0)
                                 <div class="col-md-12">
-                                    No existen cursos disponibles.
+                                    {{ trans('admin.course.registration.message.no_available') }}
                                 </div>
                             @else
                             <div class="col-md-12">
                                 @include('controls.select', [
-                                    'title' => trans('admin.course_registration.index.course'),
+                                    'title' => trans('admin.course.registration.list.course'),
                                     'placeholder' => trans('general.label.select_course'),
                                     'selected_id' => $course->id,
                                     'collection' => $courses,
@@ -56,7 +56,7 @@
     {!! Html::script('assets/js/admin/course/select.js') !!}
 
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.course_registration.question.delete') }}" ;
+        var QUESTION_DELETE = "{{ trans('admin.course.registration.question.delete') }}" ;
         ACTION_URL = "{{ url()->current() }}";
 
         const REGISTER_STUDENTS_ROUTE = "{{ route('course_registration.students', 'ID') }}";

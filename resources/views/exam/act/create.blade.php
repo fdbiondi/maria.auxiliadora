@@ -13,7 +13,7 @@
         'title'=>trans('exam.act.create.title'),
         'breadcrumbs' => [],
         'previous_url' => route('exam_act.list'),
-        'previous_text' => trans('exam.act.create.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

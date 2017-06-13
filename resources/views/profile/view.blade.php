@@ -11,7 +11,7 @@
         'title'=>trans('admin.profile.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
-        'previous_text' => trans('admin.profile.back')])
+        'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')

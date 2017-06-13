@@ -2,9 +2,9 @@
 
 namespace App\Entities;
 
-class CourseUserSubject extends Entity
+class SubjectRegistration extends Entity
 {
-    protected $table = 'course_user_subject';
+    protected $table = 'subjects_registration';
 
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class CourseUserSubject extends Entity
      * @var array
      */
     protected $fillable = [
-        'mark', 'subject_id', 'course_user_id'
+        'mark', 'subject_id', 'course_registration_id'
     ];
     
     /**
@@ -23,8 +23,8 @@ class CourseUserSubject extends Entity
         return $this->belongsTo(Subject::getClass());
     }
     
-    public function course_user() {
-        return $this->belongsTo(CourseUser::getClass());
+    public function course_registration() {
+        return $this->belongsTo(CourseRegistration::getClass());
     }
 
     public function exams() {
