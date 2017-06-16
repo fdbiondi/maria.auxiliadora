@@ -7,7 +7,7 @@ use App\Repositories\SubjectRegistrationRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ExamRegistrationRepository;
 use Illuminate\Http\Request;
-use App\Entities\ ExamAct;
+use App\Entities\ExamAct;
 use App\Entities\Subject;
 
 class ExamRegistrationController extends Controller
@@ -27,7 +27,7 @@ class ExamRegistrationController extends Controller
 
     public function subjects($id = null)
     {
-        if ($id == null) {
+        if ($id == null) { //TODO validar que si es un estudiante le muestre solo sus materias
             $user = currentUser();
         } else {
             $user = $this->userRepository->findOrFail($id);
@@ -50,7 +50,7 @@ class ExamRegistrationController extends Controller
         $exams = ExamAct::with(['instance'])
             ->where([
                 ['subject_id', $subject->id],
-                ['date_time','>', \Carbon\Carbon::now()]
+                ['date_time','>', getDateNow()]
             ])
             ->orderBy('date_time')
             ->get();

@@ -30,11 +30,11 @@ $(function(){
         const messageType = "info";
         const url = STORE_URL;
 
-        var data = {'_token': _TOKEN , data: JSON.stringify({exam_act_id: exam_act_id, user_id:STUDENT_ID})};
+        const data = {'_token': _TOKEN , data: JSON.stringify({exam_act_id: exam_act_id, user_id:STUDENT_ID})};
 
         Message.question(ARE_YOU_SURE_QUESTION.toString(),
             CONFIRM_REGISTRATION.replace(':exam', exam),
-            messageType, 
+            messageType,
             CONFIRM_BUTTON,
             CANCEL_BUTTON,
             ajaxPromise,
