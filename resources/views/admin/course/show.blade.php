@@ -7,7 +7,7 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.course.student.title') . $course->description ,
+        'title'=>trans('admin.course.show.title') . $course->description ,
         'breadcrumbs' => [],
         'previous_url' => route('course.list'),
         'previous_text' => trans('general.button.back')])
@@ -20,9 +20,9 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('admin.course.student.list.title'),
+                        'title'=> trans('admin.course.show.list.title'),
                         'route'=> route('course_registration.students', $course),
-                        'button' => trans('admin.course.student.list.add')])
+                        'button' => trans('admin.course.show.list.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-list" >
@@ -59,6 +59,35 @@
                             </table>
                         </div>
                     </div>
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover dataTables-list" >
+                                <thead>
+                                <tr>
+                                    @include('admin.partials.table.header', [
+                                        'headers' => trans('admin.subject.list.table.header')])
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($subjects as $subject)
+                                    <tr class="gradeX">
+                                        <td>{{ $subject->name }}</td>
+                                        <td>{{ $subject->description }}</td>
+                                        <td>
+                                            @include('admin.partials.button.actions', [
+                                                'url' => [
+                                                    'edit' => route('subject.edit', ['id' => $subject->id])
+                                                ],
+                                                'id' => $subject->id,
+                                                'name' => $subject->name,
+                                            ])
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +103,7 @@
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.course.student.question.delete') }}" ;
+        var QUESTION_DELETE = "{{ trans('admin.course.show.question.delete') }}" ;
         ACTION_URL = "{{ url()->current() }}";
 
         $order = [[ 1, "asc" ]];

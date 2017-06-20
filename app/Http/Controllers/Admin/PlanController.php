@@ -50,11 +50,10 @@ class PlanController extends Controller
 
         $plan = $this->planRepository->create($request->all());
 
-        if ($plan->save()){
+        if ($plan->save()) {
             $response['message'] = trans('admin.plan.create.message.success', ['name' => $request->get("name")]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.plan.create.message.error');
             $response['error'] = true;
         }
@@ -75,11 +74,10 @@ class PlanController extends Controller
 
         $plan = $this->planRepository->update($id, $request->all());
 
-        if ($plan->save()){
+        if ($plan->save()) {
             $response['message'] = trans('admin.plan.edit.message.success', ['name' => $request->get("name")]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.plan.edit.message.error');
             $response['error'] = true;
         }

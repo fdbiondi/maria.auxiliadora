@@ -8,7 +8,6 @@
                 <span class="block m-t-xs">
                     <strong class="font-bold"></strong>
                 </span>
-                <span class="text-muted text-xs block">{{ currentUser()->role->name /*TODO currentUser()->email*/ }}</span>
             </span>
         </a>
     </div>

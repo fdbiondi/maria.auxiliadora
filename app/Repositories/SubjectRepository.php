@@ -19,20 +19,23 @@ class SubjectRepository extends BaseRepository
     /**
      * @return array
      */
-    protected function getRules()
+    public function getRules()
     {
-        return [];
+        return [
+            'name' => 'required|max:100',
+            'description' => 'max:255'
+        ];
     }
 
-    public function create($name, $description)
+    public function create(array $data)
     {
         return $this->getModel()->create([
-            'name' => $name,
-            'description' => $description,
+            'name' => $data['name'],
+            'description' => $data['description'],
         ]);
     }
 
-    public function update($id, $data)
+    public function update($id, array $data)
     {
         $subject = $this->findOrFail($id);
 
@@ -44,6 +47,8 @@ class SubjectRepository extends BaseRepository
     public function delete($id)
     {
         $subject = $this->findOrFail($id);
+
+        //TODO validate relationships
         
         return [
             'delete' => $subject->delete(),

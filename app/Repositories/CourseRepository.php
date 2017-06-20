@@ -22,17 +22,32 @@ class CourseRepository extends BaseRepository
     /**
      * @return array
      */
-    protected function getRules()
+    public function getRules()
     {
-        return [];
+        return [
+            'year' => 'required|date_format:Y',
+            'level_id' => 'required',
+            'division_id' => 'required',
+        ];
     }
 
     public function getCurrentCourses()
     {
-        return $this->getBy('year', getDateNow()->year, '=');
+        return $this->getBy('year', getDateNow()->year);
     }
 
-    public function create(Array $data)
+    public function show($id)
+    {
+        return $this->getFirst('id', $id, [
+            'students',
+            'level',
+            'division',
+            'level.plans' => function($query) {
+                $query->where('current', 1)->with('subjects');
+        }]);
+    }
+
+    public function create(array $data)
     {
         return $this->getModel()->create([
             'year' => $data["year"],
@@ -54,30 +69,21 @@ class CourseRepository extends BaseRepository
     {
         $course = $this->findOrFail($id);
 
-        try {
-            if (($course->users->count() > 0)) {
-                return [
-                    'deleted' => false,
-                    'has_relation' => true,
-                ];
-            }
-            else {
-                return [
-                    'has_relation' => false,
-                    'name' => "{$course->level->name}° {$course->division->name} - {$course->year}",
-                    'deleted' => $course->delete(),
-                ];
-            }
-        }
-        catch (Exception $e) {
+        if (($course->users->count() > 0)) {
             return [
                 'deleted' => false,
+                'has_relation' => true,
+            ];
+        } else {
+            return [
                 'has_relation' => false,
+                'name' => "{$course->level->name}° {$course->division->name} - {$course->year}",
+                'deleted' => $course->delete(),
             ];
         }
     }
 
-    public function registerStudents(Course $course, Array $data) {
+    public function registerStudents(Course $course, array $data) {
         $course->users()->detach();
 
         if(isset($data['users'])) {

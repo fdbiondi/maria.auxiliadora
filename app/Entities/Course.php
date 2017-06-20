@@ -23,7 +23,7 @@ class Course extends Entity
     }
 
     public function students() {
-        return $this->belongsToMany(User::getClass());
+        return $this->belongsToMany(User::getClass(), 'courses_registration');
     }
 
     public function level() {

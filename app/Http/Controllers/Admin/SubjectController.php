@@ -36,21 +36,14 @@ class SubjectController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:100',
-            'description' => 'max:255'
-        ]);
+        $this->validate($request, $this->subjectRepository->getRules());
 
-        $subject = $this->subjectRepository->create(
-            $request->get("name"),
-            $request->get("description")
-        );
+        $subject = $this->subjectRepository->create($request->all());
 
-        if ($subject->save()){
+        if ($subject->save()) {
             $response['message'] = trans('admin.subject.create.message.success', ['name' => $request->get("name")]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.subject.create.message.error');
             $response['error'] = true;
         }
@@ -62,18 +55,14 @@ class SubjectController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|max:100',
-            'description' => 'max:255'
-        ]);
+        $this->validate($request, $this->subjectRepository->getRules());
 
         $subject = $this->subjectRepository->update($id, $request->all());
 
-        if ($subject){
+        if ($subject) {
             $response['message'] = trans('admin.subject.edit.message.success', ['name' => $request->get('name')]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.subject.edit.message.error');
             $response['error'] = true;
         }
@@ -89,10 +78,10 @@ class SubjectController extends Controller
 
         $response = $this->subjectRepository->delete($id);
 
-        if($response['delete']){
+        if ($response['delete']) {
             $response['message'] = trans('admin.subject.delete.message.success', ['name' => $response['subject_name']]);
             $response['error'] = false;
-        }else{
+        } else {
             $response['message'] = trans('admin.subject.delete.message.error');
             $response['error'] = true;
         }

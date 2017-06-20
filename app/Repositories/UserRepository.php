@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\User;
+use Dotenv\Exception\ValidationException;
 
 class UserRepository extends BaseRepository
 {
@@ -20,9 +21,17 @@ class UserRepository extends BaseRepository
     /**
      * @return array
      */
-    protected function getRules()
+    public function getRules()
     {
-        return [];
+        return [
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'sometimes|required|min:6|confirmed',
+            'dni' => 'required',
+            'role_id' => 'required',
+            'city_id' => 'required',
+        ];
     }
 
     /**
@@ -55,18 +64,20 @@ class UserRepository extends BaseRepository
 
         $user->fill($data);
 
-        if(isset($data["password"]) && $data["password"] != "")
+        if (isset($data["password"]) && $data["password"] != "") {
             $user->password = $data["password"];
+        }
 
-        if(isset($data["role_id"]))
+        if (isset($data["role_id"])) {
             $user->role_id = $data["role_id"];
+        }
 
         return $user->save();
     }
 
     public function delete($id)
     {
-        return true;
+        throw new ValidationException('NO IMPLEMENTADO', 422); //TODO
     }
 
 
@@ -112,6 +123,5 @@ class UserRepository extends BaseRepository
 
         return $studentsWithOutRegister;
     }
-
 
 }

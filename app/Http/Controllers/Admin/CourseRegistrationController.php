@@ -27,22 +27,21 @@ class CourseRegistrationController extends Controller
 
 
 	public function students($id) {
-		$course = $this->courseRepository->findOrFail($id, ['students', 'level', 'division']);
+		$course = $this->courseRepository->show($id); //TODO fix
 		$students = $this->userRepository->getStudentsWithOutRegister($course->year);
 		return view('admin.course.registration.add', compact('course', 'students'));
 	}
 
 	public function store(Request $request, $id) {
-		/** @var /App/Entities/Course $course */
-		$course = $this->courseRepository->findOrFail($id)/*->first()*/;
+	    /** @var \App\Entities\Course $course */
+		$course = $this->courseRepository->findOrFail($id);
 
 		$this->courseRepository->registerStudents($course, $request->all());
 
-		if ($course->save()){
+		if ($course->save()) {
 			$response['message'] = trans('admin.course.edit.message.success', ['name' => "{$course->level->name}° {$course->division->name}"]);
 			$response['error'] = false;
-		}
-		else{
+		} else {
 			$response['message'] = trans('admin.course.edit.message.error');
 			$response['error'] = true;
 		}

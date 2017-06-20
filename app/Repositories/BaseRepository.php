@@ -2,13 +2,17 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Repositories\Interfaces\RepositoryInterface;
+use App\Repositories\Traits\Database;
+use App\Repositories\Traits\Validator;
 
-abstract class BaseRepository 
+abstract class BaseRepository implements RepositoryInterface
 {
-    protected $column = "name";
+    use Database, Validator;
+
+    protected $column = "id";
     protected $order = "asc";
+    protected $direction = 'asc';
 
     /**
      * @return \App\Entities\Entity
@@ -23,24 +27,9 @@ abstract class BaseRepository
     /**
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function newQuery()
+    private function newQuery()
     {
         return $this->getModel()->newQuery();
-    }
-
-    protected function beginTransaction()
-    {
-        DB::beginTransaction();
-    }
-
-    protected function commit()
-    {
-        DB::commit();
-    }
-
-    protected function rollback()
-    {
-        DB::rollback();
     }
 
     /**
@@ -50,26 +39,28 @@ abstract class BaseRepository
      */
     private function selectAll($expression = '*', array $bindings = [])
     {
-        return $this->newQuery()->selectRaw($expression, $bindings);//->orderBy($this->column, $this->order);
+        return $this->newQuery()->selectRaw($expression, $bindings);
     }
 
     /**
-     * @param string $value
-     * @return \Illuminate\Database\Query\Expression
+     * @param string $expression
+     * @param $relation
+     * @param $has
+     * @return \Illuminate\Database\Query\Builder
      */
-    protected function query($value)
+    private function allBuilder($expression = '*', $relation = false, $has = false)
     {
-        return DB::raw($value);
-    }
+        $all = $this->all($expression);
 
-    /**
-     * @param \Illuminate\Database\Query\Expression $query
-     * @param array $bindings
-     * @return array|mixed
-     */
-    protected function select($query, $bindings = [])
-    {
-        return DB::select($query, $bindings);
+        if ($has) {
+            $all->has($has);
+        }
+
+        if ($relation) {
+            $all->with($relation);
+        }
+
+        return $all;
     }
 
     /**
@@ -83,95 +74,46 @@ abstract class BaseRepository
     }
 
     /**
-     * @param $id
-     * @param array $relation
-     * @param array $columns
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
-     */
-    public function findOrFail($id, $relation = [], $columns = ['*'])
-    {
-        return $this->newQuery()->with($relation)->findOrFail($id, $columns);
-    }
-
-    /**
+     * @param $att
+     * @param $value
+     * @param string|array $relation
      * @param string $expression
-     * @param $relation
-     * @param $has
+     * @param boolean $order
+     * @param string $condition
      * @return \Illuminate\Support\Collection
      */
-    public function getAll($expression = '*', $relation = false, $has = false)
+    protected function getBy($att, $value = [], $relation = null, $expression = '*', $order = false, $condition = '=')
     {
-        $all = $this->all($expression);
+        $all = $this->all($expression)
+            ->where($att, $condition, $value);
 
-        if ($has) {
-            $all->has($has);
+        if (!is_null($relation)) {
+            $all->with($relation);
         }
 
-        if ($relation) {
-            $all->with($relation);
+        if ($order) {
+            $all->orderBy($this->order, $this->direction);
         }
 
         return $all->get();
     }
 
     /**
-     * @param string $expression
-     * @param null $order
-     * @param null $direction
-     * @return \Illuminate\Support\Collection
-     */
-    public function getAllOrder($expression = '*', $order = null, $direction = null)
-    {
-        return $this->all($expression)
-            ->orderBy(
-                isset($order) ? $order : $this->order,
-                isset($direction) ? $direction :$this->direction
-            )->get();
-    }
-
-    /**
-     * @param $att
-     * @param $condition
-     * @param $value
-     * @param array $relation
-     * @param string $expression
-     * @return \Illuminate\Support\Collection
-     */
-    protected function getBy($att, $value, $condition, $relation = [], $expression = '*')
-    {
-        return $this->all($expression)
-            ->where($att, $condition, $value)
-            ->with($relation)
-            ->get();
-    }
-
-    /**
      * @param $att
      * @param $value
      * @param array $relation
-     * @param string $columns
+     * @param string $expression
      * @return mixed
      */
-    public function getOne($att, $value = [], $relation = [], $columns = '*')
+    protected function getFirst($att, $value = [], $relation = [], $expression = '*')
     {
-        return $this->getBy($att, $value, '=', $relation, $columns)->first();
-    }
-
-    /**
-     * @param $attributes
-     * @param $rules
-     * @return mixed
-     */
-    public function validate($attributes, $rules)
-    {
-        return Validator::make($attributes, $rules);
+        return $this->getBy($att, $value, $relation, $expression)->first();
     }
 
     /**
      * @param $data
      * @param $errorMessage
      * @param array|null $rules
-     * @throws StoreResourceFailedException
      * @return mixed
      */
     protected function validateData($data, $errorMessage, Array $rules = null)
@@ -183,9 +125,45 @@ abstract class BaseRepository
         $validator = $this->validate($data, $rules);
 
         if ($validator->fails()) {
-            throw new StoreResourceFailedException($errorMessage, $validator->errors());
+            $this->throwValidationException($validator, $errorMessage);
         }
 
         return $validator;
+    }
+
+    /**
+     * @param $id
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection
+     */
+    public function findOrFail($id, $columns = ['*'])
+    {
+        return $this->newQuery()->findOrFail($id, $columns);
+    }
+
+    /**
+     * @param string $expression
+     * @param $relation
+     * @param $has
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAll($expression = '*', $relation = false, $has = false)
+    {
+        return $this->allBuilder($expression, $relation, $has)->get();
+    }
+
+    /**
+     * @param string $expression
+     * @param string|null $order
+     * @param string|null $direction
+     * @return \Illuminate\Support\Collection
+     */
+    public function findAllOrder($expression = '*', $order = null, $direction = null)
+    {
+        return $this->allBuilder($expression)
+            ->orderBy(
+                is_null($order) ? $this->order : $order,
+                is_null($direction) ? $this->direction : $direction
+            )->get();
     }
 }

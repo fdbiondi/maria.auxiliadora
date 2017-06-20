@@ -26,9 +26,9 @@ class SubjectRegistrationRepository extends BaseRepository
     }
 
     public function getAllForStudent($id) {
-        return $this->newQuery()
-            ->selectRaw('*')
-            ->where('course_registration_id', $id)
+        return $this->all()
+            ->where('course_registration_id', $id, '=')
             ->orderBy($this->column, $this->order);
+//        $this->getBy('course_registration_id', $id, null, '*', true);
     }
 }

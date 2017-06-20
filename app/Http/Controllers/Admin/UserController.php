@@ -46,23 +46,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'dni' => 'required',
-            'role_id' => 'required',
-            'city_id' => 'required',
-        ]);
+        $this->validate($request, $this->userRepository->getRules());
         
         $user = $this->userRepository->create($request->all());
 
-        if ($user->save()){
+        if ($user->save()) {
             $response['message'] = trans('admin.user.create.message.success', ['name' => $request->get("name")]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.user.create.message.error');
             $response['error'] = true;
         }
@@ -74,23 +65,14 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'password' => 'min:6|confirmed',
-            'dni' => 'required',
-            'role_id' => 'required',
-            'city_id' => 'required',
-        ]);
+        $this->validate($request, $this->userRepository->getRules());
 
         $user = $this->userRepository->update($id, $request->all());
 
-        if ($user){
+        if ($user) {
             $response['message'] = trans('admin.user.edit.message.success', ['name' => $request->get('name')]);
             $response['error'] = false;
-        }
-        else{
+        } else {
             $response['message'] = trans('admin.user.edit.message.error');
             $response['error'] = true;
         }
@@ -106,10 +88,10 @@ class UserController extends Controller
 
         $response = $this->userRepository->delete($id);
 
-        if($response['delete']){
+        if ($response['delete']) {
             $response['message'] = trans('admin.user.delete.message.success', ['name' => $response['user_name']]);
             $response['error'] = false;
-        } else{
+        } else {
             $response['message'] = trans('admin.user.delete.message.error');
             $response['error'] = true;
         }
