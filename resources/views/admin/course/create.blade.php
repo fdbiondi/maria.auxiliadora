@@ -60,14 +60,14 @@
     {!! Html::script('assets/js/controls/multiples_checkbox.js') !!}
 
     <script type="text/javascript">
-        ACTION_URL = "{{ route('course.create') }}";
+        app.url.action = "{{ route('course.create') }}";
 
         /* DateTimePicker */
         $(function () {
             $('.date').datetimepicker({
                 viewMode: 'years',
                 format: 'YYYY',
-                locale: LANG
+                locale: app.lang.locale
             });
         });
     </script>

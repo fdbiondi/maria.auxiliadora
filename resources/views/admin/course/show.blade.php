@@ -103,10 +103,10 @@
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.course.show.question.delete') }}" ;
-        ACTION_URL = "{{ url()->current() }}";
+        app.question.delete = "{{ trans('admin.course.show.question.delete') }}" ;
+        app.url.action = "{{ url()->current() }}";
 
-        $order = [[ 1, "asc" ]];
-        $fileToExportName = "CoursesStudents";
+        dataTableConfig.order = [[ 1, 'asc' ]];
+        dataTableConfig.fileToExportName = 'CoursesStudents';
     </script>
 @stop

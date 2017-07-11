@@ -127,10 +127,11 @@ return [
             'ok' => 'Los datos se guardaron satisfactoriamente.',
         ),
         'question' => array(
-            'are_you_sure' => "Estás Seguro?",
+            'are_you_sure' => 'Estás Seguro?',
+            'delete' => 'Eliminar?',
         ),
         'error' => array(
-            'date_invalid' => "Formato de fecha incorrecto. Verifique.",
+            'date_invalid' => 'Formato de fecha incorrecto. Verifique.',
             'file' => 'Hubo un inconveniente al subir el archivo. Intente nuevamente.',
         ),
     ],

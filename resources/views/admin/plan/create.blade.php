@@ -53,7 +53,7 @@
     {!! Html::script('assets/template/js/plugins/switchery/switchery.js') !!}
 
     <script type="text/javascript">
-        ACTION_URL = "{{ route('plan.create') }}";
+        app.url.action = "{{ route('plan.create') }}";
     </script>
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}

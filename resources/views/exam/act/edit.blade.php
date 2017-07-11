@@ -50,7 +50,7 @@
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        ACTION_URL = "{{ route('exam_act.list') }}";
+        app.url.action = "{{ route('exam_act.list') }}";
         $(function () {
             $('.date').datetimepicker();
         });

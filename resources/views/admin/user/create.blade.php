@@ -43,7 +43,7 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        ACTION_URL = "{{ route('user.create') }}";
+        app.url.action = "{{ route('user.create') }}";
     </script>
     <!-- BOOTSTRAP SELECT -->
     {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}

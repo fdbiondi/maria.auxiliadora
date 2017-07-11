@@ -56,8 +56,8 @@
     {!! Html::script('assets/js/admin/course/select.js') !!}
 
     <script type="text/javascript">
-        var QUESTION_DELETE = "{{ trans('admin.course.registration.question.delete') }}" ;
-        ACTION_URL = "{{ url()->current() }}";
+        app.question.delete = "{{ trans('admin.course.registration.question.delete') }}" ;
+        app.url.action = "{{ url()->current() }}";
 
         const REGISTER_STUDENTS_ROUTE = "{{ route('course_registration.students', 'ID') }}";
     </script>

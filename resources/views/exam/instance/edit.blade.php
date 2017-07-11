@@ -50,14 +50,14 @@
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        ACTION_URL = "{{ route('exam_instance.list') }}";
+        app.url.action = "{{ route('exam_instance.list') }}";
         $(function () {
             $('#from').datetimepicker({
-                locale: LANG,
+                locale: app.lang.locale,
                 format: "DD/MM/YYYY",
             });
             $('#to').datetimepicker({
-                locale: LANG,
+                locale: app.lang.locale,
                 format: "DD/MM/YYYY",
                 useCurrent: false //Important! See issue #1075
             });

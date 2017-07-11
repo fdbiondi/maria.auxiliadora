@@ -7,7 +7,7 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('admin.course.student.title') . $course->description ,
+        'title'=> trans('admin.course.registration.list.title')." {$course->description}",
         'breadcrumbs' => [],
         'previous_url' => URL::previous(),
         'previous_text' => trans('general.button.back')])
@@ -62,7 +62,7 @@
     {!! Html::script('assets/js/controls/multiples_checkbox.js') !!}
 
     <script type="text/javascript">
-        ACTION_URL = "{{ url()->current() }}";
+        app.url.action = "{{ url()->current() }}";
 
         formConfig.check = false;
     </script>

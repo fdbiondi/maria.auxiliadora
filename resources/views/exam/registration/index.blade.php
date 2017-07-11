@@ -66,9 +66,9 @@
 
     <script type="text/javascript">
         const CONFIRM_REGISTRATION = "{{ trans('exam.registration.question.confirm_registration', ['subject' => $subject->name]) }}" ;
-        const STUDENT_ID = {{ $student_id }};
-        ACTION_URL = "{{ route('exam_registration.subjects', ['id' => $student_id]) }}";
-        const STORE_URL = "{{ route('exam_registration.store') }}";
+        const STUDENT_ID = "{{ $student_id }}";
+        app.url.action = "{{ route('exam_registration.subjects', ['id' => $student_id]) }}";
+        app.url.store = "{{ route('exam_registration.store') }}";
 
     </script> 
 @stop

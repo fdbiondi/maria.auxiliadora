@@ -91,29 +91,36 @@
         {!! Html::script('assets/template/js/plugins/sweetalert/sweetalert.min.js') !!}
 
         <script>
-            //Action URL
-            let ACTION_URL = "{{ route('home') }}";
-            //token
-            let _TOKEN = "{{ csrf_token() }}";
-            //Language
-            let LANG = "{{ $LANG = getAppLanguage() }}";
-            const SERVER_HOSTNAME = "{{ getServerHostName() }}";
-            //Language datatables
-            const LANG_DATA_TABLE_URL = "{{ asset('assets/template/js/plugins/dataTables/datatables.' . $LANG . '.json') }}";
-            //Messages
-            const TRY_AGAIN = "{{ trans('general.error.try_again') }}"
-            const ERROR_FORM_TITLE = "{{trans('general.error.title')}}";
-            const ERROR_FORM_SUBTITLE = "{{trans('general.error.subtitle')}}";
-            const OK_FORM_TITLE = "{{trans('general.message.save.ok')}}";
-            //Texts for buttons
-            const CANCEL_BUTTON = "{{ trans('general.button.cancel') }}";
-            const DELETE_BUTTON = "{{ trans('general.button.delete') }}";
-            const CONFIRM_BUTTON = "{{ trans('general.button.confirm') }}";
-            const ADD_BUTTON = "{{ trans('general.button.add') }}";
-            const SAVE_BUTTON = "{{ trans('general.button.save') }}";
-            const BACK_BUTTON = "{{ trans('general.button.back') }}";
-            //Questions
-            const ARE_YOU_SURE_QUESTION = "{{ trans('general.message.question.are_you_sure') }}";
+            const app = {
+                '_token': "{{ csrf_token() }}",
+                'server_hostname': "{{ getServerHostName() }}",
+                'lang': {
+                    'locale': "{{ $LANG = getAppLanguage() }}",
+                    'message': {
+                        'try_again': "{{ trans('general.error.try_again') }}",
+                        'error_form_title': "{{trans('general.error.title')}}",
+                        'error_form_subtitle': "{{trans('general.error.subtitle')}}",
+                        'ok_form_title': "{{trans('general.message.save.ok')}}",
+                    },
+                    'question': {
+                        'are_you_sure': "{{ trans('general.message.question.are_you_sure') }}",
+                        'delete': '',
+                    },
+                    'button': {
+                            'cancel': "{{ trans('general.button.cancel') }}",
+                            'delete': "{{ trans('general.button.delete') }}",
+                            'confirm': "{{ trans('general.button.confirm') }}",
+                            'add': "{{ trans('general.button.add') }}",
+                            'save': "{{ trans('general.button.save') }}",
+                            'back': "{{ trans('general.button.back') }}",
+                    }
+                },
+                'url': {
+                    'store': '',
+                    'action': "{{ route('home') }}",
+                    'data_table': "{{ asset('assets/template/js/plugins/dataTables/datatables.' . $LANG . '.json') }}",
+                },
+            };
         </script>
         @yield('scripts')
     </body>

@@ -33,7 +33,7 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        ACTION_URL = "{{ route('subject.create') }}";
+        app.url.action = "{{ route('subject.create') }}";
     </script>
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}

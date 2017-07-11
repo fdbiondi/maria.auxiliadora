@@ -45,7 +45,7 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        ACTION_URL = "{{ route('profile.view') }}";
+        app.url.action = "{{ route('profile.view') }}";
     </script>
     <!-- BOOTSTRAP SELECT -->
     {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}
