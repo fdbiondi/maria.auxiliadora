@@ -26,13 +26,7 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'dni' => 'required',
-            'city_id' => 'required',
-        ]);
+        $this->validate($request, $this->userRepository->getRules());
 
         $user = $this->userRepository->update(currentUser()->id, $request->all());
 

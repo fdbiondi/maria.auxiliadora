@@ -34,13 +34,17 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
         'password', 'remember_token',
     ];
 
+    /** Properties */
+
     public function getFileNumberAndNameAttribute() {
         return "{$this->file_number} - {$this->name} {$this->last_name}";
     }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
+    }
     
-    /** 
-     * Relationships 
-     */
+    /** Relationships */
     public function courses() {
         return $this->belongsToMany(Course::getClass(), 'courses_registration');
     }
@@ -68,10 +72,7 @@ class User extends Entity implements AuthenticatableContract, AuthorizableContra
         return $this->belongsTo(Role::getClass());
     }
 
-    /**
-     * Methods
-     */
-
+    /** Methods */
     public function currentCourse()
     {
         //TODO hacer una validación o bandera para traer el curso acual.

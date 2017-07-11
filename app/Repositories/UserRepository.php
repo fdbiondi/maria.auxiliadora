@@ -29,7 +29,7 @@ class UserRepository extends BaseRepository
             'email' => 'required',
             'password' => 'sometimes|required|min:6|confirmed',
             'dni' => 'required',
-            'role_id' => 'required',
+            'role_id' => 'sometimes|required',
             'city_id' => 'required',
         ];
     }
@@ -44,7 +44,7 @@ class UserRepository extends BaseRepository
             'name' => $data["name"],
             'last_name' => $data["last_name"],
             'email' => $data["email"],
-            'password' => bcrypt($data["password"]),
+            'password' => $data["password"],
             'dni' => $data["dni"],
             'address' => $data["address"],
             'phone' => $data["phone"],
@@ -58,7 +58,7 @@ class UserRepository extends BaseRepository
      * @param array $data
      * @return bool
      */
-    public function update($id, Array $data)
+    public function update($id, array $data)
     {
         $user = $this->findOrFail($id);
 
@@ -83,25 +83,22 @@ class UserRepository extends BaseRepository
 
     /**
      * @param String $role
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Support\Collection
      */
     public function getWhereRole($role) {
-        return $this->getModel()->selectRaw("users.*")
+        return $this->all("users.*")
             ->join('roles', function ($join) use ($role) {
                 $join->on('users.role_id', '=', 'roles.id')
                     ->where('roles.name', "$role");
-                })
-            ->get();
+                })->get();
     }
 
     public function getStudentsWithOutRegister($year) {
-        $students = $this->getModel()->selectRaw("users.*")
+        $students = $this->all("users.*")
             ->join('roles', function ($join) {
                 $join->on('users.role_id', '=', 'roles.id')
                     ->where('roles.name', 'student');
-            })
-            ->with('courses')
-            ->get();
+            })->with('courses')->get();
         
         $studentsWithOutRegister = [];
 
