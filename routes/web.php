@@ -41,7 +41,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
      */
     Route::group(['namespace' => 'Admin'], function () {
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
-        Route::group(['middleware' => 'admin', 'prefix' => 'subjects'], function () {
+        Route::group(['prefix' => 'subjects'], function () {
             // Matches The "/subjects" URL
             Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectController@index']);
             Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectController@create']);
@@ -51,7 +51,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectController@delete']);
         });
 
-        Route::group(['middleware' => 'admin', 'prefix' => 'users'], function () {
+        Route::group(['prefix' => 'users'], function () {
             // Matches The "/users" URL
             Route::get('list', ['as' => 'user.list', 'uses' => 'UserController@index']);
             Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
@@ -61,7 +61,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
         });
         
-        Route::group(['middleware' => 'admin', 'prefix' => 'courses'], function () {
+        Route::group(['prefix' => 'courses'], function () {
             // Matches The "/courses" URL
             Route::get('list', ['as' => 'course.list', 'uses' => 'CourseController@index']);
             Route::get('create', ['as' => 'course.create', 'uses' => 'CourseController@create']);
@@ -81,7 +81,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
         
-        Route::group(['middleware' => 'admin', 'prefix' => 'plans'], function () {
+        Route::group(['prefix' => 'plans'], function () {
             // Matches The "/plans" URL
             Route::get('list', ['as' => 'plan.list', 'uses' => 'PlanController@index']);
             Route::get('create', ['as' => 'plan.create', 'uses' => 'PlanController@create']);
@@ -91,7 +91,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             Route::delete('delete', ['as' => 'plan.delete', 'uses' => 'PlanController@delete']);
         });
 
-        Route::group(['middleware' => 'admin', 'prefix' => 'levels'], function () {
+        Route::group(['prefix' => 'levels'], function () {
             // Matches The "/levels" URL
             Route::get('list', ['as' => 'level.list', 'uses' => 'LevelController@index']);
             Route::get('create', ['as' => 'level.create', 'uses' => 'LevelController@create']);
@@ -104,7 +104,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
 
     Route::group(['namespace' => 'Exam'], function() {
         // Controllers Within The "App\Http\Controllers\Exam" Namespace
-        Route::group(['middleware' => 'secretary', 'prefix' => 'exams'], function () {
+        Route::group(['prefix' => 'exams'], function () {
             Route::group(['prefix' => 'instances'], function () {
                 // Matches The "/exams/instances" URL
                 Route::get('list', ['as' => 'exam_instance.list', 'uses' => 'ExamInstanceController@index']);
@@ -134,7 +134,7 @@ Route::group(['middleware'=> ['auth', 'revalidate']], function() {
             });
         });
 
-        Route::group(['middleware' => 'student', 'prefix' => 'exam'], function () {
+        Route::group(['prefix' => 'exam'], function () {
             Route::group(['prefix' => 'register'], function() {
                 // Matches The "/exam/register" URL
                 Route::get('subjects', ['as' => 'exam_register.view', 'uses' => 'ExamRegistrationController@subjects']);
