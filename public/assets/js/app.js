@@ -69,7 +69,7 @@ $.fn.serializeChecks = function () {
     return o;
 };
 
-/** ajax promise */
+/** ajax promise handle function */
 function ajaxPromise(URL, type, dataType, data, button_loading) {
     Async.ajax(URL,type,dataType,data,button_loading)
         .done((data) => {

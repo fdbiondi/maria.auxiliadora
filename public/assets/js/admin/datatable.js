@@ -1,7 +1,9 @@
-let $info = false;
-let $order = [[ 0 , 'asc' ]];
-let $paging = true;
-let $fileToExportName = 'exportedFile';
+const dataTableConfig = {
+    info: false,
+    order: [[ 0 , 'asc' ]],
+    paging: true,
+    fileToExportName: 'exportedFile',
+};
 
 $(function(){
     $('.dataTables-list').DataTable({
@@ -9,8 +11,8 @@ $(function(){
         buttons: [
             {extend: 'copy'},
             {extend: 'csv'},
-            {extend: 'excel', title: $fileToExportName},
-            {extend: 'pdf', title: $fileToExportName},
+            {extend: 'excel', title: dataTableConfig.fileToExportName},
+            {extend: 'pdf', title: dataTableConfig.fileToExportName},
             {extend: 'print',
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
@@ -23,10 +25,10 @@ $(function(){
             }
         ],
         language: {
-            url: LANG_DATA_TABLE_URL
+            url: app.url.data_table
         },
-        info: $info,
-        order: $order,
-        paging: $paging
+        info: dataTableConfig.info,
+        order: dataTableConfig.order,
+        paging: dataTableConfig.paging
     });
 });

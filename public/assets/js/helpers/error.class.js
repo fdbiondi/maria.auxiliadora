@@ -7,7 +7,7 @@ class Error {
                 errorMessage += message + "\n";
             });
 
-            Message.warning(ERROR_FORM_TITLE + " " + ERROR_FORM_SUBTITLE, errorMessage.toString());
+            Message.warning(`${app.lang.message.error_form_title} ${app.lang.message.error_form_subtitle}`, errorMessage.toString());
 
             return true;
         }
