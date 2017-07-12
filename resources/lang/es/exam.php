@@ -102,8 +102,8 @@ return [
                 'error' =>  'No se ha podido registrar la inscripción.'
             ]
         ],
-        'search' => [
-            'title' =>  'Buscar alumno',
+        'list' => [
+            'title' =>  'Inscripción a exámen',
             'table' => [
                 'title' => 'Alumnos',
                 'header' => [
@@ -115,8 +115,8 @@ return [
                 ]
             ]
         ],
-        'index' => [
-            'title' =>  'Inscribir a examen: :subject',
+        'show' => [
+            'title' =>  'Inscripción a exámen :subject',
             'table' => [
                 'title' => 'Fechas habilitadas',
                 'header' => [

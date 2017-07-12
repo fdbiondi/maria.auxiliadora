@@ -4,7 +4,7 @@
     @include('partials.content-header', [
         'title'=>trans('admin.subject.create.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('subject.list'),
+        'previous_url' => route('subjects.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -17,7 +17,7 @@
                     @include('admin.partials.title', [
                         'title'=> trans('admin.subject.create.subtitle')])
                     <div class="ibox-content">
-                        {!! Form::open(['id' => 'admin_form', 'route' => 'subject.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['id' => 'admin_form', 'route' => 'subjects.store', 'method' => 'POST']) !!}
                             @include('admin.subject.partials.fields')
                             <div class="form-group">
                                 @include('admin.partials.button.save')
@@ -33,7 +33,7 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        app.url.action = "{{ route('subject.create') }}";
+        app.url.action = "{{ route('subjects.create') }}";
     </script>
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}

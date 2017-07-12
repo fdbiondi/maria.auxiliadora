@@ -7,7 +7,7 @@
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('exam.registration.search.title'),
+        'title'=>trans('exam.registration.list.title'),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
         'previous_text' => trans('general.button.back')])
@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('exam.registration.search.table.title'),
+                        'title'=> trans('exam.registration.list.table.title'),
                     ])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -28,7 +28,7 @@
                                 <thead>
                                 <tr>
                                     @include('admin.partials.table.header', [
-                                        'headers' => trans('exam.registration.search.table.header')])
+                                        'headers' => trans('exam.registration.list.table.header')])
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('exam.act.list.table.title'),
-                        'route'=> route('exam_act.create'),
+                        'route'=> route('exam_acts.create'),
                         'button' => trans('exam.act.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -43,8 +43,8 @@
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [
-                                                    'edit' => route('exam_act.edit', ['id' => $examAct->id]),
-                                                    'delete' => route('exam_act.delete')],
+                                                    'edit' => route('exam_acts.edit', ['id' => $examAct->id]),
+                                                    'delete' => route('exam_acts.delete')],
                                                 'id' => $examAct->id,
                                                 'name' => $examAct->name])
                                         </td>
@@ -71,7 +71,7 @@
 
     <script type="text/javascript">
         app.question.delete = "{{ trans('exam.act.question.delete') }}" ;
-        app.url.action = "{{ route('exam_act.list') }}";
+        app.url.action = "{{ route('exam_acts.list') }}";
 
         dataTableConfig.order = [[ 1, 'asc' ]];
         dataTableConfig.fileToExportName = 'ExamActs';

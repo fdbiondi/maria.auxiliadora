@@ -10,143 +10,116 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-//Home Route
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+// Home Route
+Route::get('/', 'HomeController@index')->name('home');
 
-/**
- * Authentication Routes
- */
-// Login Routes...
-Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
-Route::post('login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
-//Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+// Login Routes
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-// Registration Routes...
-Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-Route::post('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
+// Registration Routes
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 
-// Password Reset Routes...
-Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
-Route::post('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@reset']);
-Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
-Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
+// Password Reset Routes
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
-/**
- * Logged Users Routes
- */
+// Logged Users Routes
 Route::group(['middleware'=> ['auth', 'revalidate']], function() {
-    /**
-     * Administration Routes - (For administrative matters, not admin user)
-     */
+    // Administration Routes - (For administrative matters, not admin user)
     Route::group(['namespace' => 'Admin'], function () {
-        // Controllers Within The "App\Http\Controllers\Admin" Namespace
         Route::group(['prefix' => 'subjects'], function () {
-            // Matches The "/subjects" URL
-            Route::get('list', ['as' => 'subject.list', 'uses' => 'SubjectController@index']);
-            Route::get('create', ['as' => 'subject.create', 'uses' => 'SubjectController@create']);
-            Route::post('store', ['as' => 'subject.store', 'uses' => 'SubjectController@store']);
-            Route::get('edit/{id}', ['as' => 'subject.edit', 'uses' => 'SubjectController@edit']);
-            Route::post('update/{id}', ['as' => 'subject.update', 'uses' => 'SubjectController@update']);
-            Route::delete('delete', ['as' => 'subject.delete', 'uses' => 'SubjectController@delete']);
+            Route::get('list', 'SubjectController@index')->name('subjects.list');
+            Route::get('create', 'SubjectController@create')->name('subjects.create');
+            Route::post('store', 'SubjectController@store')->name('subjects.store');
+            Route::get('edit/{id}', 'SubjectController@edit')->name('subjects.edit');
+            Route::post('update/{id}', 'SubjectController@update')->name('subjects.update');
+            Route::delete('delete', 'SubjectController@delete')->name('subjects.delete');
         });
 
         Route::group(['prefix' => 'users'], function () {
-            // Matches The "/users" URL
-            Route::get('list', ['as' => 'user.list', 'uses' => 'UserController@index']);
-            Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
-            Route::post('store', ['as' => 'user.store', 'uses' => 'UserController@store']);
-            Route::get('edit/{id}', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
-            Route::post('update/{id}', ['as' => 'user.update', 'uses' => 'UserController@update']);
-            Route::delete('delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
+            Route::get('list', 'UserController@index')->name('users.list');
+            Route::get('create', 'UserController@create')->name('users.create');
+            Route::post('store', 'UserController@store')->name('users.store');
+            Route::get('edit/{id}', 'UserController@edit')->name('users.edit');
+            Route::post('update/{id}', 'UserController@update')->name('users.update');
+            Route::delete('delete', 'UserController@delete')->name('users.delete');
         });
         
         Route::group(['prefix' => 'courses'], function () {
-            // Matches The "/courses" URL
-            Route::get('list', ['as' => 'course.list', 'uses' => 'CourseController@index']);
-            Route::get('create', ['as' => 'course.create', 'uses' => 'CourseController@create']);
-            Route::post('store', ['as' => 'course.store', 'uses' => 'CourseController@store']);
-            Route::get('edit/{id}', ['as' => 'course.edit', 'uses' => 'CourseController@edit']);
-            Route::post('update/{id}', ['as' => 'course.update', 'uses' => 'CourseController@update']);
-            Route::delete('delete', ['as' => 'course.delete', 'uses' => 'CourseController@delete']);
+            Route::get('list', 'CourseController@index')->name('courses.list');
+            Route::get('{id}', 'CourseController@show')->name('courses.show');
+            Route::get('create', 'CourseController@create')->name('courses.create');
+            Route::post('store', 'CourseController@store')->name('courses.store');
+            Route::get('edit/{id}', 'CourseController@edit')->name('courses.edit');
+            Route::post('update/{id}', 'CourseController@update')->name('courses.update');
+            Route::delete('delete', 'CourseController@delete')->name('courses.delete');
+            Route::delete('{id}/student/{student_id}', 'CourseController@deleteStudent')->name('courses.delete.student');
 
             Route::group(['prefix' => 'registration'], function () {
-                // Matches The "/courses/registration" URL
-                Route::get('', ['as' => 'course_registration.list', 'uses' => 'CourseRegistrationController@index']);
-                Route::get('{course_id}/students', ['as' => 'course_registration.students', 'uses' => 'CourseRegistrationController@students']);
-                Route::post('{course_id}/store', ['as' => 'course_registration.store', 'uses' => 'CourseRegistrationController@store']);
+                Route::get('', 'CourseRegistrationController@index')->name('courses_registration.list');
+                Route::get('{course_id}/students', 'CourseRegistrationController@students')->name('courses_registration.students');
+                Route::post('{course_id}/store', 'CourseRegistrationController@store')->name('courses_registration.store');
             });
-
-            Route::get('{course_id}', ['as' => 'course.show', 'uses' => 'CourseController@show']);
-            Route::delete('{course_id}/student/{student_id}', ['as' => 'course.student.delete', 'uses' => 'CourseController@deleteStudent']);
         });
         
         Route::group(['prefix' => 'plans'], function () {
-            // Matches The "/plans" URL
-            Route::get('list', ['as' => 'plan.list', 'uses' => 'PlanController@index']);
-            Route::get('create', ['as' => 'plan.create', 'uses' => 'PlanController@create']);
-            Route::post('store', ['as' => 'plan.store', 'uses' => 'PlanController@store']);
-            Route::get('edit/{id}', ['as' => 'plan.edit', 'uses' => 'PlanController@edit']);
-            Route::post('update/{id}', ['as' => 'plan.update', 'uses' => 'PlanController@update']);
-            Route::delete('delete', ['as' => 'plan.delete', 'uses' => 'PlanController@delete']);
+            Route::get('list', 'PlanController@index')->name('plans.list');
+            Route::get('create', 'PlanController@create')->name('plans.create');
+            Route::post('store', 'PlanController@store')->name('plans.store');
+            Route::get('edit/{id}', 'PlanController@edit')->name('plans.edit');
+            Route::post('update/{id}', 'PlanController@update')->name('plans.update');
+            Route::delete('delete', 'PlanController@delete')->name('plans.delete');
         });
 
         Route::group(['prefix' => 'levels'], function () {
-            // Matches The "/levels" URL
-            Route::get('list', ['as' => 'level.list', 'uses' => 'LevelController@index']);
-            Route::get('create', ['as' => 'level.create', 'uses' => 'LevelController@create']);
-            Route::post('store', ['as' => 'level.store', 'uses' => 'LevelController@store']);
-            Route::get('edit/{id}', ['as' => 'level.edit', 'uses' => 'LevelController@edit']);
-            Route::post('update/{id}', ['as' => 'level.update', 'uses' => 'LevelController@update']);
-            Route::delete('delete', ['as' => 'level.delete', 'uses' => 'LevelController@delete']);
+            Route::get('list', 'LevelController@index')->name('levels.list');
+            Route::get('create', 'LevelController@create')->name('levels.create');
+            Route::post('store', 'LevelController@store')->name('levels.store');
+            Route::get('edit/{id}', 'LevelController@edit')->name('levels.edit');
+            Route::post('update/{id}', 'LevelController@update')->name('levels.update');
+            Route::delete('delete', 'LevelController@delete')->name('levels.delete');
         });
     });
 
     Route::group(['namespace' => 'Exam'], function() {
-        // Controllers Within The "App\Http\Controllers\Exam" Namespace
-        Route::group(['prefix' => 'exams'], function () {
+        Route::group(['prefix' => 'exam'], function () {
             Route::group(['prefix' => 'instances'], function () {
-                // Matches The "/exams/instances" URL
-                Route::get('list', ['as' => 'exam_instance.list', 'uses' => 'ExamInstanceController@index']);
-                Route::get('create', ['as' => 'exam_instance.create', 'uses' => 'ExamInstanceController@create']);
-                Route::post('store', ['as' => 'exam_instance.store', 'uses' => 'ExamInstanceController@store']);
-                Route::get('edit/{id}', ['as' => 'exam_instance.edit', 'uses' => 'ExamInstanceController@edit']);
-                Route::post('update/{id}', ['as' => 'exam_instance.update', 'uses' => 'ExamInstanceController@update']);
-                Route::delete('delete', ['as' => 'exam_instance.delete', 'uses' => 'ExamInstanceController@delete']);
+                Route::get('list', 'ExamInstanceController@index')->name('exam_instances.list');
+                Route::get('create', 'ExamInstanceController@create')->name('exam_instances.create');
+                Route::post('store', 'ExamInstanceController@store')->name('exam_instances.store');
+                Route::get('edit/{id}', 'ExamInstanceController@edit')->name('exam_instances.edit');
+                Route::post('update/{id}', 'ExamInstanceController@update')->name('exam_instances.update');
+                Route::delete('delete', 'ExamInstanceController@delete')->name('exam_instances.delete');
             });
 
             Route::group(['prefix' => 'acts'], function () {
-                // Matches The "/exams/acts" URL
-                Route::get('list', ['as' => 'exam_act.list', 'uses' => 'ExamActController@index']);
-                Route::get('create', ['as' => 'exam_act.create', 'uses' => 'ExamActController@create']);
-                Route::post('store', ['as' => 'exam_act.store', 'uses' => 'ExamActController@store']);
-                Route::get('edit/{id}', ['as' => 'exam_act.edit', 'uses' => 'ExamActController@edit']);
-                Route::post('update/{id}', ['as' => 'exam_act.update', 'uses' => 'ExamActController@update']);
-                Route::delete('delete', ['as' => 'exam_act.delete', 'uses' => 'ExamActController@delete']);
+                Route::get('list', 'ExamActController@index')->name('exam_acts.list');
+                Route::get('create', 'ExamActController@create')->name('exam_acts.create');
+                Route::post('store', 'ExamActController@store')->name('exam_acts.store');
+                Route::get('edit/{id}', 'ExamActController@edit')->name('exam_acts.edit');
+                Route::post('update/{id}', 'ExamActController@update')->name('exam_acts.update');
+                Route::delete('delete', 'ExamActController@delete')->name('exam_acts.delete');
             });
 
             Route::group(['prefix' => 'registration'], function() {
-                // Matches The "/exams/register" URL
-                Route::get('search', ['as' => 'exam_registration.search', 'uses' => 'ExamRegistrationController@search']);
-                Route::get('student/{student_id}/subject/{subject}', ['as' => 'exam_registration.index', 'uses' => 'ExamRegistrationController@index']);
-                Route::get('subjects/{id?}', ['as' => 'exam_registration.subjects', 'uses' => 'ExamRegistrationController@subjects']);
-                Route::post('store', ['as' => 'exam_registration.store', 'uses' => 'ExamRegistrationController@store']);
-            });
-        });
-
-        Route::group(['prefix' => 'exam'], function () {
-            Route::group(['prefix' => 'register'], function() {
-                // Matches The "/exam/register" URL
-                Route::get('subjects', ['as' => 'exam_register.view', 'uses' => 'ExamRegistrationController@subjects']);
+                Route::get('list', 'ExamRegistrationController@index')->name('exam_registration.list');
+                Route::get('student/{student_id}/subject/{subject}', 'ExamRegistrationController@show')->name('exam_registration.show');
+                Route::get('subjects/{id?}', 'ExamRegistrationController@subjects')->name('exam_registration.subjects');
+                Route::post('store', 'ExamRegistrationController@store')->name('exam_registration.store');
             });
         });
     });
 
-    Route::group(['prefix' => 'profile'], function () {
+    Route::group(['prefix' => 'profiles'], function () {
         // Matches The "/profile" URL
-        Route::get('view', ['as' => 'profile.view', 'uses' => 'ProfileController@view']);
-        Route::post('update', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-        Route::get('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@changePassword']);
-        Route::post('change/password', ['as' => 'profile.change_password', 'uses' => 'ProfileController@updatePassword']);
+        Route::get('view', ['as' => 'profiles.view', 'uses' => 'ProfileController@view']);
+        Route::post('update', ['as' => 'profiles.update', 'uses' => 'ProfileController@update']);
+        Route::get('change/password', ['as' => 'profiles.change_password', 'uses' => 'ProfileController@changePassword']);
+        Route::post('change/password', ['as' => 'profiles.change_password', 'uses' => 'ProfileController@updatePassword']);
     });
 });

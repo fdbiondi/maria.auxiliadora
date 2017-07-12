@@ -14,7 +14,7 @@
     @include('partials.content-header', [
         'title'=>trans('admin.plan.create.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('plan.list'),
+        'previous_url' => route('plans.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -27,7 +27,7 @@
                     @include('admin.partials.title', [
                         'title'=> trans('admin.plan.create.subtitle')])
                     <div class="ibox-content">
-                        {!! Form::open(['id' => 'admin_form', 'route' => 'plan.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['id' => 'admin_form', 'route' => 'plans.store', 'method' => 'POST']) !!}
                         @include('admin.plan.partials.fields')
                         <div class="form-group">
                             @include('admin.partials.button.save')
@@ -53,7 +53,7 @@
     {!! Html::script('assets/template/js/plugins/switchery/switchery.js') !!}
 
     <script type="text/javascript">
-        app.url.action = "{{ route('plan.create') }}";
+        app.url.action = "{{ route('plans.create') }}";
     </script>
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}

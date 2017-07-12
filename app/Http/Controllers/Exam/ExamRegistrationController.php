@@ -25,6 +25,12 @@ class ExamRegistrationController extends Controller
         $this->userRepository = $userRepository;
     }
 
+    public function index()
+    {
+        $students = $this->userRepository->getWhereRole('student');
+        return view('exam.registration.list', compact('students'));
+    }
+
     public function subjects($id = null)
     {
         if ($id == null) { //TODO validar que si es un estudiante le muestre solo sus materias
@@ -32,19 +38,13 @@ class ExamRegistrationController extends Controller
         } else {
             $user = $this->userRepository->findOrFail($id);
         }
-        
+
         $subjects = $user->getPendingSubjects();
-                            
+
         return view('exam.registration.subjects', compact('subjects'));
     }
 
-    public function search()
-    {
-        $students = $this->userRepository->getWhereRole('student');
-        return view('exam.registration.search', compact('students'));
-    }
-
-    public function index($student_id, Subject $subject) 
+    public function show($student_id, Subject $subject)
     {
         //TODO emprolijar código y validar que no se haya inscripto.
         $exams = ExamAct::with(['instance'])
@@ -55,7 +55,7 @@ class ExamRegistrationController extends Controller
             ->orderBy('date_time')
             ->get();
 
-        return view('exam.registration.index', compact('exams', 'student_id', 'subject'));
+        return view('exam.registration.show', compact('exams', 'student_id', 'subject'));
     }
 
     public function store(Request $request)

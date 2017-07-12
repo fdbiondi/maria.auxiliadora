@@ -59,6 +59,6 @@
         app.question.delete = "{{ trans('admin.course.registration.question.delete') }}" ;
         app.url.action = "{{ url()->current() }}";
 
-        const REGISTER_STUDENTS_ROUTE = "{{ route('course_registration.students', 'ID') }}";
+        const REGISTER_STUDENTS_ROUTE = "{{ route('courses_registration.students', 'ID') }}";
     </script>
 @stop

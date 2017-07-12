@@ -16,7 +16,7 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            {!! Form::open(['id' => 'admin_form', 'route' => ['course_registration.store', $course], 'method' => 'POST']) !!}
+            {!! Form::open(['id' => 'admin_form', 'route' => ['courses_registration.store', $course], 'method' => 'POST']) !!}
             @include('partials.errors')
             <!-- All Students -->
             <div class="col-lg-6">

@@ -2,7 +2,7 @@
 
 @section('styles')
         <!-- DATATABLES PLUGIN-->
-{!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
+    {!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
 @endsection
 
 @section('content-header')
@@ -37,12 +37,10 @@
                                         <td>{{ $subject->subject->name }}</td>
                                         <td>{{ $subject->course_user->created_at->year }}</td>
                                         <td>{{ $subject->course_user->course->level->name  }}</td>
-                                        <td><a href="{{ route('exam_registration.index', ['student_id' => $subject->course_user->user->id,
+                                        <td><a href="{{ route('exam_registration.show', [
+                                            'student_id' => $subject->course_user->user->id,
                                             'subject_id' => $subject->subject->id
-                                        ]) }}" class="btn btn-link">
-                                                inscribir
-                                            </a></td>
-
+                                        ]) }}" class="btn btn-link">Inscribir</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

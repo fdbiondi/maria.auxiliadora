@@ -14,13 +14,13 @@
     @include('partials.content-header', [
         'title'=>trans('admin.course.edit.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('course.list'),
+        'previous_url' => route('courses.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
-        {!! Form::open(['id' => 'admin_form', 'route' => ['course.update', $course], 'method' => 'POST']) !!}
+        {!! Form::open(['id' => 'admin_form', 'route' => ['courses.update', $course], 'method' => 'POST']) !!}
         <div class="row">
             @include('partials.errors')
             <div class="col-lg-12">
@@ -59,7 +59,7 @@
     {!! Html::script('assets/js/controls/multiples_checkbox.js') !!}
 
     <script type="text/javascript">
-        app.url.action = "{{ route('course.list') }}";
+        app.url.action = "{{ route('courses.list') }}";
 
         /* DateTimePicker */
         $(function () {

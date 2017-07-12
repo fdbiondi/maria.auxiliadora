@@ -42,6 +42,14 @@ class CourseController extends Controller
         return view('admin.course.create', compact('course', 'levels', 'divisions'));
     }
 
+    public function show($id) {
+        $course = $this->courseRepository->show($id); //TODO fix
+
+        $students = $course->students;
+        $subjects = $course->level->plans->first()->subjects;
+        return view('admin.course.show', compact('course','students','subjects'));
+    }
+
     public function edit($id)
     {
         $course = $this->courseRepository->findOrFail($id);
@@ -100,13 +108,5 @@ class CourseController extends Controller
             return response()->json($response);
         }
     }
-    
-    public function show($id) {
-        $course = $this->courseRepository->show($id); //TODO fix
 
-        $students = $course->students;
-        $subjects = $course->level->plans->first()->subjects;
-        return view('admin.course.show', compact('course','students','subjects'));
-    }
-        
 }

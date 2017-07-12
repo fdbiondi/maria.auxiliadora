@@ -25,7 +25,7 @@
 
                     <div class="ibox-content">
                         <div class="row">
-                            {!! Form::open(['id' => 'admin_form', 'route' => ['profile.update'], 'method' => 'POST']) !!}
+                            {!! Form::open(['id' => 'admin_form', 'route' => ['profiles.update'], 'method' => 'POST']) !!}
                                 @include('profile.partials.fields')
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -37,7 +37,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
@@ -45,10 +44,10 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        app.url.action = "{{ route('profile.view') }}";
+        app.url.action = "{{ route('profiles.view') }}";
     </script>
     <!-- BOOTSTRAP SELECT -->
     {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}
-            <!-- ADMIN VIEWS JS -->
+    <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
 @stop

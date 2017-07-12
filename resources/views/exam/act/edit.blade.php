@@ -12,7 +12,7 @@
     @include('partials.content-header', [
         'title'=>trans('exam.act.edit.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('exam_act.list'),
+        'previous_url' => route('exam_acts.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -25,7 +25,7 @@
                     @include('admin.partials.title', [
                         'title'=> trans('exam.act.create.subtitle')])
                     <div class="ibox-content">
-                        {!! Form::open(['id' => 'admin_form', 'route' => ['exam_act.update', $examAct], 'method' => 'POST']) !!}
+                        {!! Form::open(['id' => 'admin_form', 'route' => ['exam_acts.update', $examAct], 'method' => 'POST']) !!}
                             @include('exam.act.partials.fields')
                             <div class="form-group">
                                 @include('admin.partials.button.save')
@@ -50,7 +50,7 @@
     <!-- ADMIN VIEWS JS -->
     {!! Html::script('assets/js/admin/admin.js') !!}
     <script type="text/javascript">
-        app.url.action = "{{ route('exam_act.list') }}";
+        app.url.action = "{{ route('exam_acts.list') }}";
         $(function () {
             $('.date').datetimepicker();
         });

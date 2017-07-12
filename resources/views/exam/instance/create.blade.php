@@ -12,7 +12,7 @@
     @include('partials.content-header', [
         'title'=>trans('exam.instance.create.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('exam_instance.list'),
+        'previous_url' => route('exam_instances.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -25,7 +25,7 @@
                     @include('admin.partials.title', [
                         'title'=> trans('exam.instance.create.subtitle')])
                     <div class="ibox-content">
-                        {!! Form::open(['id' => 'admin_form', 'route' => 'exam_instance.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['id' => 'admin_form', 'route' => 'exam_instances.store', 'method' => 'POST']) !!}
                             @include('exam.instance.partials.fields')
                             <div class="form-group">
                                 @include('admin.partials.button.save')
@@ -51,7 +51,7 @@
     {!! Html::script('assets/js/admin/admin.js') !!}
 
     <script type="text/javascript">
-        app.url.action = "{{ route('exam_instance.create') }}";
+        app.url.action = "{{ route('exam_instances.create') }}";
         $(function () {
             $('#from').datetimepicker({
                 locale: app.lang.locale,

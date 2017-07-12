@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('styles')
-        <!-- DATATABLES PLUGIN-->
-{!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
+    <!-- DATATABLES PLUGIN-->
+    {!! Html::style('assets/template/css/plugins/dataTables/datatables.min.css') !!}
 @endsection
 
 @section('content-header')
     @include('partials.content-header', [
-        'title'=>trans('exam.registration.index.title', ['subject' => $subject->name]),
+        'title'=>trans('exam.registration.show.title', ['subject' => $subject->name]),
         'breadcrumbs' => [],
         'previous_url' => route('home'),
         'previous_text' => trans('general.button.back')])
@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
-                        'title'=> trans('exam.registration.index.table.title'),
+                        'title'=> trans('exam.registration.show.table.title'),
                     ])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -28,7 +28,7 @@
                                 <thead>
                                 <tr>
                                     @include('admin.partials.table.header', [
-                                        'headers' => trans('exam.registration.index.table.header')])
+                                        'headers' => trans('exam.registration.show.table.header')])
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,8 +67,8 @@
     <script type="text/javascript">
         const CONFIRM_REGISTRATION = "{{ trans('exam.registration.question.confirm_registration', ['subject' => $subject->name]) }}" ;
         const STUDENT_ID = "{{ $student_id }}";
+
         app.url.action = "{{ route('exam_registration.subjects', ['id' => $student_id]) }}";
         app.url.store = "{{ route('exam_registration.store') }}";
-
-    </script> 
+    </script>
 @stop

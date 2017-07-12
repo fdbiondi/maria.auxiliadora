@@ -9,7 +9,7 @@
     @include('partials.content-header', [
         'title'=>trans('admin.course.show.title') . $course->description ,
         'breadcrumbs' => [],
-        'previous_url' => route('course.list'),
+        'previous_url' => route('courses.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.course.show.list.title'),
-                        'route'=> route('course_registration.students', $course),
+                        'route'=> route('courses_registration.students', $course),
                         'button' => trans('admin.course.show.list.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -45,8 +45,8 @@
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [
-                                                    'edit' => route('user.edit', ['id' => $student->id]),
-                                                    'delete' => route('course.student.delete', [
+                                                    'edit' => route('users.edit', ['id' => $student->id]),
+                                                    'delete' => route('courses.delete.student', [
                                                         'course_id' => Route::input('course_id'),
                                                         'student_id'=> $student->id
                                                     ])],
@@ -76,7 +76,7 @@
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [
-                                                    'edit' => route('subject.edit', ['id' => $subject->id])
+                                                    'edit' => route('subjects.edit', ['id' => $subject->id])
                                                 ],
                                                 'id' => $subject->id,
                                                 'name' => $subject->name,

@@ -10,7 +10,7 @@
     @include('partials.content-header', [
         'title'=>trans('admin.user.create.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('user.list'),
+        'previous_url' => route('users.list'),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -24,7 +24,7 @@
                         'title'=> trans('admin.user.create.subtitle')])
                     <div class="ibox-content">
                         <div class="row">
-                            {!! Form::open(['id' => 'admin_form', 'route' => 'user.store', 'method' => 'POST']) !!}
+                            {!! Form::open(['id' => 'admin_form', 'route' => 'users.store', 'method' => 'POST']) !!}
                                 @include('admin.user.partials.fields')
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -43,7 +43,7 @@
 @section('scripts')
     @parent
     <script type="text/javascript">
-        app.url.action = "{{ route('user.create') }}";
+        app.url.action = "{{ route('users.create') }}";
     </script>
     <!-- BOOTSTRAP SELECT -->
     {!! Html::script('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js') !!}

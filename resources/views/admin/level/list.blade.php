@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.level.list.table.title'),
-/*                        'route'=> route('level.create'),*/
+/*                        'route'=> route('levels.create'),*/
                         'button' => trans('admin.level.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">

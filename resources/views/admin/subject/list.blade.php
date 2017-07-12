@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.subject.list.table.title'),
-                        'route'=> route('subject.create'),
+                        'route'=> route('subjects.create'),
                         'button' => trans('admin.subject.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -40,8 +40,8 @@
                                             <td>
                                                 @include('admin.partials.button.actions', [
                                                     'url' => [
-                                                        'edit' => route('subject.edit', ['id' => $subject->id]),
-                                                        'delete' => route('subject.delete')],
+                                                        'edit' => route('subjects.edit', ['id' => $subject->id]),
+                                                        'delete' => route('subjects.delete')],
                                                     'id' => $subject->id,
                                                     'name' => $subject->name])
                                             </td>

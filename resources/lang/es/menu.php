@@ -5,34 +5,34 @@ return [
         'title' => 'Administración',
         'icon' => 'fa-cogs',
         'items' => [
-            'course' => [
+            'courses' => [
                 'icon'=>'fa-building',
-                'route' => 'course.list',
+                'route' => 'courses.list',
                 'text' => 'Cursos',
             ],
-            'course_registration' => [
+            'courses_registration' => [
                 'icon'=>'fa-building',
-                'route' => 'course_registration.list',
+                'route' => 'courses_registration.list',
                 'text' => 'Inscripción a cursado'
             ],
-            'subject' => [
+            'subjects' => [
                 'icon' => 'fa-book',
-                'route' => 'subject.list',
+                'route' => 'subjects.list',
                 'text' => 'Materias',
             ],
-            'level' => [
+            'levels' => [
                 'icon' => 'fa-book',
-                'route' => 'level.list',
+                'route' => 'levels.list',
                 'text' => 'Niveles',
             ],
-            'plan' => [
+            'plans' => [
                 'icon' => 'fa-book',
-                'route' => 'plan.list',
+                'route' => 'plans.list',
                 'text' => 'Planes',
             ],
-            'user' => [
+            'users' => [
                 'icon'=>'fa-users',
-                'route' => 'user.list',
+                'route' => 'users.list',
                 'text' => 'Usuarios',
             ],
             /*'country' => [            // example
@@ -55,28 +55,19 @@ return [
         'title' => 'Exámenes',
         'icon' => 'fa-cogs',
         'items' => [
-            /*'inscription' => [
+            'exam_instances' => [
                 'icon'=>'fa-building',
-                'route' => 'course.list',
-                'text' => 'Inscribir a Curso',
-                'sections' => [
-                    '' => '',
-                ],
-            ],*/
-            'exam_instance' => [
-                'icon'=>'fa-building',
-                'route' => 'exam_instance.list',
+                'route' => 'exam_instances.list',
                 'text' => 'Mesas de Exámen',
             ],
-            'exam_act' => [
+            'exam_acts' => [
                 'icon'=>'fa-building',
-                'route' => 'exam_act.list',
+                'route' => 'exam_acts.list',
                 'text' => 'Exámenes',
             ],
             'exam_registration' => [
-                'name' => 'exam_registration',
                 'icon'=>'fa-user',
-                'route' => 'exam_registration.search',
+                'route' => 'exam_registration.list',
                 'text' => 'Inscripción a Examen',
             ],
         ],
@@ -103,16 +94,16 @@ return [
     ],
     'shared' => [
         'items' => [
-            'profile' => [
-                'name' => 'profile',
+            'profiles' => [
+                'name' => 'profiles',
                 'icon'=>'fa-user',
-                'route' => 'profile.view',
+                'route' => 'profiles.view',
                 'text' => 'Perfil',
             ],
             /*'change_password' => [
-                'name' => 'profile',
+                'name' => 'profiles',
                 'icon' => 'fa-building-o',
-                'route' => 'profile.change_password',
+                'route' => 'profiles.change_password',
                 'text' => 'Cambiar Contraseña',
             ],*/
         ],
@@ -122,11 +113,11 @@ return [
         ],
     ],
     'others' => [
-        'title' => '',
+        'title' => 'Otros',
         'items' => [
-            '' => [
+            'profiles' => [
                 'icon'=>'fa-building-o',
-                'route' => 'profile.view',
+                'route' => 'profiles.view',
                 'text' => '',
             ],
         ],

@@ -21,7 +21,7 @@
                 <div class="ibox float-e-margins">
                     @include('admin.partials.table.title', [
                         'title'=> trans('admin.course.list.table.title'),
-                        'route'=> route('course.create'),
+                        'route'=> route('courses.create'),
                         'button' => trans('admin.course.list.table.add')])
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -41,12 +41,12 @@
                                         <td>
                                             @include('admin.partials.button.actions', [
                                                 'url' => [
-                                                    'edit' => route('course.edit', ['id' => $course->id]),
-                                                    'delete' => route('course.delete')],
+                                                    'edit' => route('courses.edit', ['id' => $course->id]),
+                                                    'delete' => route('courses.delete')],
                                                 'id' => $course->id,
                                                 'name' => $course->name])
                                             <a
-                                                href="{{ route('course.show', ['course_id'=>$course->id]) }}"
+                                                href="{{ route('courses.show', ['course_id'=>$course->id]) }}"
                                                 class="btn btn-primary btn-sm m-l-t-sm"
                                                 title="{{ trans('admin.course.show.action.detail') }}"
                                                 type="button">
