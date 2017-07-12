@@ -12,13 +12,16 @@ class Role extends Entity
      * @var array
      */
     protected $fillable = [
-        
+        'name', 'description'
     ];
 
-    /**
-     * Relationships
-     */
+    // Relationships
     public function users() {
-        return $this->hasMany(User::getClass());
+        return $this->hasMany(User::class);
+    }
+
+    public function sub_modules()
+    {
+        return $this->belongsToMany(SubModule::getClass(), 'role_sub_modules', 'role_id');
     }
 }

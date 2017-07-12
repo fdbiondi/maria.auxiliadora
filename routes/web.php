@@ -29,7 +29,7 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 // Logged Users Routes
-Route::group(['middleware'=> ['auth', 'revalidate']], function() {
+Route::group(['middleware'=> ['auth', 'revalidate', 'has.module']], function() {
     // Administration Routes - (For administrative matters, not admin user)
     Route::group(['namespace' => 'Admin'], function () {
         Route::group(['prefix' => 'subjects'], function () {
