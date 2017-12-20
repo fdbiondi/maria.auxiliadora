@@ -26,6 +26,10 @@ class CourseRegistration extends Entity
         return $this->belongsTo(Course::getClass());
     }
 
+    public function subjects() {
+        return $this->belongsToMany(Subject::getClass(), 'subjects_registration');
+    }
+
     public function subject_registration() {
         return $this->hasMany(SubjectRegistration::getClass());
     }

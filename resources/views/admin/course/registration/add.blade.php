@@ -9,7 +9,7 @@
     @include('partials.content-header', [
         'title'=> trans('admin.course.registration.list.title')." {$course->description}",
         'breadcrumbs' => [],
-        'previous_url' => URL::previous(),
+        'previous_url' => url()->previous(),
         'previous_text' => trans('general.button.back')])
 @endsection
 
@@ -63,7 +63,7 @@
 
     <script type="text/javascript">
         app.url.action = "{{ url()->current() }}";
-
-        formConfig.check = false;
+debugger
+        form.config.check = false;
     </script>
 @stop

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CourseRegistrationRepository;
 use App\Repositories\CourseRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -11,11 +12,15 @@ class CourseRegistrationController extends Controller
 {
 	protected $courseRepository;
 	protected $userRepository;
+	protected $courseRegistrationRepository;
 
-	public function __construct(CourseRepository $courseRepository, UserRepository $userRepository)
+	public function __construct(CourseRepository $courseRepository,
+                                UserRepository $userRepository,
+                                CourseRegistrationRepository $courseRegistrationRepository)
 	{
 		$this->courseRepository = $courseRepository;
 		$this->userRepository = $userRepository;
+		$this->courseRegistrationRepository = $courseRegistrationRepository;
 	}
 
     public function index() 

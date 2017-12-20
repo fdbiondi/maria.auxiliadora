@@ -27,13 +27,14 @@ class HasModule
     public function handle(Request $request, Closure $next/*, $request_module*/)
     {
 //        $this->request_module = $request_module;
-        //$request->route()->action['as']; // FOR REQUESTED ROUTE
+        $this->request_module = $request->route()->getName();
 
-        /*$this->user_modules = currentUser()->role->sub_modules->pluck('name')->all();
+        $this->user_modules = [];
+        //$this->user_modules = currentUser()->role->sub_modules->pluck('name')->all();
 
         if (!$this->check()) {
-            return $this->response('unauthorized', 401);
-        }*/
+            //return $this->response('unauthorized', 401);
+        }
 
         return $next($request);
     }

@@ -4,7 +4,7 @@
     @include('partials.content-header', [
         'title'=>trans('admin.subject.edit.title'),
         'breadcrumbs' => [],
-        'previous_url' => route('subjects.list'),
+        'previous_url' => url()->previous(),
         'previous_text' => trans('general.button.back')])
 @endsection
 

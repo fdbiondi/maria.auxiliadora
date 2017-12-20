@@ -35,7 +35,7 @@ class Course extends Entity
     }
 
     public function course_registration() {
-        return $this->belongsToMany(CourseRegistration::getClass(), 'courses_registration');
+        return $this->hasMany(CourseRegistration::getClass(), 'courses_registration');
     }
     
     /**

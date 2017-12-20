@@ -87,8 +87,12 @@ class CourseRepository extends BaseRepository
         $course->users()->detach();
 
         if(isset($data['users'])) {
+            $courseRegistrationRepository = new CourseRegistrationRepository();
+
             foreach ((array)$data['users'] as $user_id) {
                 $course->users()->attach($user_id);
+
+                $courseRegistrationRepository->registerStudentSubjects($user_id, $course);
             }
 
             return true;
